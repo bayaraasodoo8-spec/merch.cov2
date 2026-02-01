@@ -1,0 +1,8 @@
+{
+  "name": "MERCH.CORP - Brutalist Merch Design System",
+  "description": "A high-contrast, brutalist-style landing page and AI design lab for a modern merchandise corporation, featuring interactive elements and Gemini-powered creative brainstorming.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
