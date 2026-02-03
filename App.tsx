@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import LabModal from './components/LabModal';
-import CustomCursor from './components/CustomCursor';
 import Magnetic from './components/Magnetic';
 import { PROMISES, COLLECTIONS, CATEGORIES } from './constants';
 
@@ -10,10 +9,12 @@ const App: React.FC = () => {
   const [isLabOpen, setIsLabOpen] = useState(false);
 
   return (
-    <div className="min-h-screen selection:bg-neon-lime selection:text-deep-black">
-      <CustomCursor />
+    <div
+      className="min-h-screen selection:bg-neon-lime selection:text-deep-black"
+      style={{ zoom: 0.8 }}
+    >
       <Header />
-      
+
       <main>
         {/* HERO SECTION */}
         <section className="relative min-h-[90vh] bg-electric-blue flex flex-col justify-center overflow-hidden border-b-8 border-deep-black">
@@ -21,25 +22,25 @@ const App: React.FC = () => {
             <div className="text-[20vw] font-display leading-none text-deep-black whitespace-nowrap -rotate-3">IDENTITY</div>
             <div className="text-[25vw] font-display leading-none text-neon-lime whitespace-nowrap rotate-2">EVERYDAY</div>
           </div>
-          
+
           <div className="relative z-10 max-w-[1440px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 items-center gap-12 py-20">
             <div className="order-2 lg:order-1">
               <h1 className="text-6xl md:text-[90px] font-display text-neon-lime leading-[0.85] tracking-tighter uppercase mb-8 transition-transform hover:skew-x-2 duration-500">
-                YOUR STORY.<br/>YOUR VISION.<br/>YOUR MERCH.
+                YOUR STORY.<br />YOUR VISION.<br />YOUR MERCH.
               </h1>
               <p className="text-2xl font-black bg-deep-black text-white px-6 py-4 brutalist-border inline-block mb-10 transform -rotate-1">
                 FROM IDENTITY TO EVERYDAY.
               </p>
             </div>
-            
+
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
               <Magnetic strength={0.2}>
                 <div className="relative w-full max-w-lg">
                   <div className="absolute -inset-4 bg-hot-pink brutalist-border transform rotate-3"></div>
-                  <img 
-                    alt="Focal Model" 
-                    className="relative w-full brutalist-border grayscale hover:grayscale-0 transition-all duration-700 object-cover h-[600px] shadow-[15px_15px_0px_0px_rgba(0,0,0,1)] hover:scale-[1.02]" 
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQxBDGadevcsQORuZDVlpQE7VowJtMAv9En16woywKqf4XCPwNNL20FL97iQOlMyo5qNBv2hmkUmsS62zC47581XeCpbIzMVQzm_adyZZYOjl5F5qjpsrNI6mBdlSdt-6r-DxHU06iQjiEWR08z1yZ0PM4Zrpf_ZT09bjfsmIE4LIW9SMnz1_pyiL0vvxk-7hiCT5AEWb2OD5hQlcmqta_fKHB_HEj2IG6dLdf860Zn1PrcHS0VEHrKzVlxQDByTHEWpDO32OEO_HG" 
+                  <img
+                    alt="Focal Model"
+                    className="relative w-full brutalist-border grayscale hover:grayscale-0 transition-all duration-700 object-cover h-[600px] shadow-[15px_15px_0px_0px_rgba(0,0,0,1)] hover:scale-[1.02]"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQxBDGadevcsQORuZDVlpQE7VowJtMAv9En16woywKqf4XCPwNNL20FL97iQOlMyo5qNBv2hmkUmsS62zC47581XeCpbIzMVQzm_adyZZYOjl5F5qjpsrNI6mBdlSdt-6r-DxHU06iQjiEWR08z1yZ0PM4Zrpf_ZT09bjfsmIE4LIW9SMnz1_pyiL0vvxk-7hiCT5AEWb2OD5hQlcmqta_fKHB_HEj2IG6dLdf860Zn1PrcHS0VEHrKzVlxQDByTHEWpDO32OEO_HG"
                   />
                   <div className="absolute -bottom-6 -left-6 bg-deep-black text-neon-lime p-4 font-display text-xl brutalist-border">
                     EST. 2024
@@ -73,8 +74,8 @@ const App: React.FC = () => {
           <div className="max-w-[1440px] mx-auto text-center">
             <Magnetic strength={0.3}>
               <p className="text-4xl md:text-7xl font-display text-white leading-tight uppercase tracking-tighter hover:text-neon-lime transition-colors duration-500 cursor-default">
-                MORE THAN PRODUCTS. <br/>
-                <span className="text-neon-lime">WE BUILD THE ASSETS</span><br/>
+                MORE THAN PRODUCTS. <br />
+                <span className="text-neon-lime">WE BUILD THE ASSETS</span><br />
                 THAT DEFINE YOUR LEGACY.
               </p>
             </Magnetic>
@@ -88,7 +89,7 @@ const App: React.FC = () => {
               <div>
                 <span className="text-xl font-black uppercase tracking-[0.3em] bg-deep-black text-stark-white px-4 py-1 mb-6 inline-block">Catalog 2024</span>
                 <h2 className="text-7xl md:text-[10vw] font-display text-deep-black uppercase leading-[0.75] tracking-tighter">
-                  POPULAR <br/><span className="text-electric-blue">CATEGORIES</span>
+                  POPULAR <br /><span className="text-electric-blue">CATEGORIES</span>
                 </h2>
               </div>
               <div className="text-right hidden lg:block">
@@ -112,12 +113,12 @@ const App: React.FC = () => {
                     </div>
 
                     {/* Category Image */}
-                    <img 
-                      alt={cat.name} 
-                      className="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-700 scale-100 group-hover/card:scale-110 group-hover/card:rotate-1" 
-                      src={cat.image} 
+                    <img
+                      alt={cat.name}
+                      className="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-700 scale-100 group-hover/card:scale-110 group-hover/card:rotate-1"
+                      src={cat.image}
                     />
-                    
+
                     {/* Overlay Gradient for contrast */}
                     <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
 
@@ -136,7 +137,7 @@ const App: React.FC = () => {
                           <span className="font-display text-2xl uppercase tracking-tighter leading-none">{cat.name}</span>
                           <span className="text-[10px] font-black uppercase tracking-widest mt-1 opacity-0 group-hover/card:opacity-60 transition-opacity duration-300">EXPLORE CATEGORY</span>
                         </div>
-                        
+
                         <div className="overflow-hidden w-0 group-hover/card:w-12 transition-all duration-500 flex items-center justify-end">
                           <span className="material-symbols-outlined text-3xl transition-transform duration-500 group-hover/card:translate-x-1">arrow_forward</span>
                         </div>
@@ -159,13 +160,13 @@ const App: React.FC = () => {
           <div className="max-w-[1440px] mx-auto">
             <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
               <h2 className="text-7xl md:text-9xl font-display text-deep-black uppercase leading-[0.8] tracking-tighter">
-                HOW WE <br/><span className="text-white">OPERATE</span>
+                HOW WE <br /><span className="text-white">OPERATE</span>
               </h2>
               <div className="bg-deep-black text-neon-lime px-6 py-4 brutalist-border font-display text-xl uppercase -rotate-2">
                 System v.2.5
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {/* STEP 01 - ENGAGE */}
               <Magnetic strength={0.25}>
@@ -290,14 +291,14 @@ const App: React.FC = () => {
                 </div>
                 <h2 className="text-3xl font-display text-neon-lime tracking-tighter uppercase leading-none">MERCH.CORP</h2>
               </div>
-              <p className="text-xl font-bold text-white/60 mb-10 uppercase">The future of branded apparel. <br/>From identity to everyday.</p>
+              <p className="text-xl font-bold text-white/60 mb-10 uppercase">The future of branded apparel. <br />From identity to everyday.</p>
               <Magnetic strength={0.3}>
                 <button className="w-full bg-electric-blue text-white px-8 py-6 text-xl font-display brutalist-border brutalist-shadow-lime uppercase hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                   Start Your Project
                 </button>
               </Magnetic>
             </div>
-            
+
             <div>
               <h4 className="font-display text-neon-lime text-xl mb-8 uppercase tracking-widest border-b-2 border-neon-lime pb-2 inline-block">Explore</h4>
               <ul className="flex flex-col gap-4 text-lg font-bold">
@@ -307,7 +308,7 @@ const App: React.FC = () => {
                 <li><a className="hover:text-neon-lime transition-colors" href="#">Bulk Orders</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-display text-neon-lime text-xl mb-8 uppercase tracking-widest border-b-2 border-neon-lime pb-2 inline-block">Account</h4>
               <ul className="flex flex-col gap-4 text-lg font-bold text-white/80">
@@ -317,7 +318,7 @@ const App: React.FC = () => {
                 <li><a className="hover:text-white" href="#">Profile Settings</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-display text-neon-lime text-xl mb-8 uppercase tracking-widest border-b-2 border-neon-lime pb-2 inline-block">Contact</h4>
               <div className="flex flex-col gap-6">
@@ -340,7 +341,7 @@ const App: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="pt-12 border-t-4 border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
             <p className="text-xl font-display text-white/40 uppercase">© 2024 MERCH.CORP SYSTEM v5.0</p>
             <div className="flex gap-12 text-white/40">
@@ -355,7 +356,7 @@ const App: React.FC = () => {
       {/* FLOATING ACTION BUTTON */}
       <div className="fixed bottom-10 right-10 z-[110]">
         <Magnetic strength={0.4}>
-          <button 
+          <button
             onClick={() => setIsLabOpen(true)}
             className="bg-hot-pink text-white p-6 brutalist-border brutalist-shadow hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all flex items-center gap-4"
           >

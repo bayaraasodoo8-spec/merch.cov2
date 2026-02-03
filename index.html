@@ -55,48 +55,6 @@
         ::-webkit-scrollbar-track { background: #000000; }
         ::-webkit-scrollbar-thumb { background: #C6FF00; border: 3px solid #000000; }
 
-        /* Hide default cursor only on non-touch devices */
-        @media (pointer: fine) {
-            body, a, button {
-                cursor: none !important;
-            }
-        }
-
-        .cursor-dot {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 12px;
-            height: 12px;
-            background-color: #FFFFFF;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.1s ease-out;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-ring {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 40px;
-            height: 40px;
-            border: 2px solid #FFFFFF;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            mix-blend-mode: difference;
-            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), width 0.3s, height 0.3s, background-color 0.3s;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-active .cursor-ring {
-            width: 80px;
-            height: 80px;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
 
         .magnetic-wrap {
             display: inline-block;
