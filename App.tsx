@@ -1,12 +1,19 @@
-
 import React, { useState } from 'react';
 import Header from './components/Header';
 import LabModal from './components/LabModal';
 import Magnetic from './components/Magnetic';
-import { PROMISES, COLLECTIONS, CATEGORIES } from './constants';
+import ProcessCard from './components/ProcessCard'; // We might still use this elsewhere or keep for reference
+import VerticalTimeline from './components/VerticalTimeline';
+import SolutionsSlider from './components/SolutionsSlider';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { PROMISES, COLLECTIONS, CATEGORIES, PROCESS_STEPS } from './constants';
 
 const App: React.FC = () => {
   const [isLabOpen, setIsLabOpen] = useState(false);
+  // We can keep these if needed for other sections, but for now we'll focus on the vertical timeline
+  // const containerRef = React.useRef<HTMLDivElement>(null);
+  // const { scrollYProgress } = useScroll({ target: containerRef });
+  // const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   return (
     <div
@@ -155,103 +162,46 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* WORK PROCESS */}
-        <section className="bg-neon-lime py-32 px-6 border-b-8 border-deep-black overflow-hidden">
-          <div className="max-w-[1440px] mx-auto">
-            <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
-              <h2 className="text-7xl md:text-9xl font-display text-deep-black uppercase leading-[0.8] tracking-tighter">
-                HOW WE <br /><span className="text-white">OPERATE</span>
-              </h2>
-              <div className="bg-deep-black text-neon-lime px-6 py-4 brutalist-border font-display text-xl uppercase -rotate-2">
-                System v.2.5
+        {/* TAILORED SOLUTIONS SLIDER */}
+        <SolutionsSlider />
+
+        {/* WORK PROCESS - VERTICAL ZIG ZAG */}
+        <section className="bg-neon-lime py-32 border-b-8 border-deep-black overflow-hidden relative">
+          {/* Animated Background Grid */}
+          <div className="absolute inset-0 opacity-5 pointer-events-none">
+            <div className="grid grid-cols-8 grid-rows-8 w-full h-full">
+              {Array(64).fill(0).map((_, idx) => (
+                <div
+                  key={idx}
+                  className="border border-deep-black"
+                  style={{
+                    animation: `pulse ${2 + (idx % 3)}s ease-in-out infinite`,
+                    animationDelay: `${idx * 0.05}s`
+                  }}
+                ></div>
+              ))}
+            </div>
+          </div>
+
+          <div className="max-w-[1440px] mx-auto px-6 relative z-10 w-full">
+            <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
+              <div className="relative">
+                <h2 className="text-7xl md:text-9xl font-display text-deep-black uppercase leading-[0.8] tracking-tighter">
+                  HOW WE <br /><span className="text-white">OPERATE</span>
+                </h2>
+                <div className="absolute -left-8 top-1/2 w-2 h-32 bg-deep-black -translate-y-1/2 hidden lg:block"></div>
+              </div>
+              <div className="flex flex-col items-end gap-2 text-right">
+                <div className="bg-deep-black text-neon-lime px-6 py-4 brutalist-border font-display text-xl uppercase -rotate-2 hover:rotate-0 transition-transform duration-300">
+                  System v.6.0
+                </div>
+                <p className="text-deep-black font-black uppercase tracking-widest text-sm max-w-[300px] leading-tight opacity-60">
+                  A comprehensive blueprint from conceptualization to global distribution.
+                </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {/* STEP 01 - ENGAGE */}
-              <Magnetic strength={0.25}>
-                <div className="relative bg-deep-black text-white p-10 brutalist-border brutalist-shadow-blue min-h-[450px] group interactive overflow-hidden transition-all duration-500 hover:bg-neon-lime hover:text-deep-black">
-                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                    <span className="material-symbols-outlined text-9xl">forum</span>
-                  </div>
-                  <div className="relative z-10 h-full flex flex-col">
-                    <span className="text-6xl font-display text-neon-lime group-hover:text-deep-black transition-colors">01</span>
-                    <div className="mt-8 transition-transform duration-500 group-hover:-translate-y-4">
-                      <h3 className="text-4xl font-display uppercase leading-none">ENGAGE</h3>
-                      <div className="w-12 h-2 bg-neon-lime mt-4 group-hover:bg-deep-black group-hover:w-full transition-all duration-500"></div>
-                    </div>
-                    <div className="mt-auto opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                      <p className="font-bold text-xl leading-snug">
-                        Initial consultation to understand your brand DNA, target audience, and project scope. We don't just take orders; we build partnerships.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Magnetic>
-
-              {/* STEP 02 - RESEARCH */}
-              <Magnetic strength={0.25}>
-                <div className="relative bg-electric-blue text-white p-10 brutalist-border brutalist-shadow min-h-[450px] group interactive overflow-hidden transition-all duration-500 hover:bg-white hover:text-electric-blue">
-                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                    <span className="material-symbols-outlined text-9xl">search_insights</span>
-                  </div>
-                  <div className="relative z-10 h-full flex flex-col">
-                    <span className="text-6xl font-display text-white group-hover:text-electric-blue transition-colors opacity-50 group-hover:opacity-100">02</span>
-                    <div className="mt-8 transition-transform duration-500 group-hover:-translate-y-4">
-                      <h3 className="text-4xl font-display uppercase leading-none">RESEARCH</h3>
-                      <div className="w-12 h-2 bg-white mt-4 group-hover:bg-electric-blue group-hover:w-full transition-all duration-500"></div>
-                    </div>
-                    <div className="mt-auto opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                      <p className="font-bold text-xl leading-snug">
-                        Deep dive into market trends and material sourcing. We find the perfect canvas that aligns with your specific brand legacy requirements.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Magnetic>
-
-              {/* STEP 03 - DESIGN */}
-              <Magnetic strength={0.25}>
-                <div className="relative bg-hot-pink text-white p-10 brutalist-border brutalist-shadow-lime min-h-[450px] group interactive overflow-hidden transition-all duration-500 hover:bg-deep-black hover:text-neon-lime">
-                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                    <span className="material-symbols-outlined text-9xl">palette</span>
-                  </div>
-                  <div className="relative z-10 h-full flex flex-col">
-                    <span className="text-6xl font-display text-white group-hover:text-neon-lime transition-colors opacity-50 group-hover:opacity-100">03</span>
-                    <div className="mt-8 transition-transform duration-500 group-hover:-translate-y-4">
-                      <h3 className="text-4xl font-display uppercase leading-none">DESIGN</h3>
-                      <div className="w-12 h-2 bg-white mt-4 group-hover:bg-neon-lime group-hover:w-full transition-all duration-500"></div>
-                    </div>
-                    <div className="mt-auto opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                      <p className="font-bold text-xl leading-snug">
-                        Professional layout and mockup creation. Our senior design team ensures every graphic element is optimized for high-impact production.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Magnetic>
-
-              {/* STEP 04 - CREATE */}
-              <Magnetic strength={0.25}>
-                <div className="relative bg-stark-white text-deep-black p-10 brutalist-border brutalist-shadow min-h-[450px] group interactive overflow-hidden transition-all duration-500 hover:bg-electric-blue hover:text-white">
-                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                    <span className="material-symbols-outlined text-9xl">precision_manufacturing</span>
-                  </div>
-                  <div className="relative z-10 h-full flex flex-col">
-                    <span className="text-6xl font-display text-electric-blue group-hover:text-white transition-colors">04</span>
-                    <div className="mt-8 transition-transform duration-500 group-hover:-translate-y-4">
-                      <h3 className="text-4xl font-display uppercase leading-none">CREATE</h3>
-                      <div className="w-12 h-2 bg-electric-blue mt-4 group-hover:bg-white group-hover:w-full transition-all duration-500"></div>
-                    </div>
-                    <div className="mt-auto opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                      <p className="font-bold text-xl leading-snug">
-                        Precision production using state-of-the-art technology. Every piece undergoes a multi-stage quality control protocol before shipping.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Magnetic>
-            </div>
+            <VerticalTimeline />
           </div>
         </section>
 
@@ -291,9 +241,9 @@ const App: React.FC = () => {
                 </div>
                 <h2 className="text-3xl font-display text-neon-lime tracking-tighter uppercase leading-none">MERCH.CORP</h2>
               </div>
-              <p className="text-xl font-bold text-white/60 mb-10 uppercase">The future of branded apparel. <br />From identity to everyday.</p>
+              <p className="text-xl font-bold text-deep-black/60 mb-10 uppercase">The future of branded apparel. <br />From identity to everyday.</p>
               <Magnetic strength={0.3}>
-                <button className="w-full bg-electric-blue text-white px-8 py-6 text-xl font-display brutalist-border brutalist-shadow-lime uppercase hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                <button className="w-full bg-electric-blue text-deep-black px-8 py-6 text-xl font-display brutalist-border brutalist-shadow-lime uppercase hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                   Start Your Project
                 </button>
               </Magnetic>
@@ -311,7 +261,7 @@ const App: React.FC = () => {
 
             <div>
               <h4 className="font-display text-neon-lime text-xl mb-8 uppercase tracking-widest border-b-2 border-neon-lime pb-2 inline-block">Account</h4>
-              <ul className="flex flex-col gap-4 text-lg font-bold text-white/80">
+              <ul className="flex flex-col gap-4 text-lg font-bold text-deep-black/80">
                 <li><a className="hover:text-white" href="#">Email Preferences</a></li>
                 <li><a className="hover:text-white" href="#">Order History</a></li>
                 <li><a className="hover:text-white" href="#">Invoices & Receipts</a></li>
@@ -358,7 +308,7 @@ const App: React.FC = () => {
         <Magnetic strength={0.4}>
           <button
             onClick={() => setIsLabOpen(true)}
-            className="bg-hot-pink text-white p-6 brutalist-border brutalist-shadow hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all flex items-center gap-4"
+            className="bg-electric-blue text-white p-6 brutalist-border brutalist-shadow hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all flex items-center gap-4"
           >
             <span className="material-symbols-outlined text-4xl">draw</span>
             <span className="font-display text-2xl uppercase hidden sm:block">Start your project</span>

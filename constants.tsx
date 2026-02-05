@@ -116,3 +116,89 @@ export const CATEGORIES: Category[] = [
     labelColor: 'text-deep-black'
   }
 ];
+
+export const PROCESS_STEPS = [
+  {
+    number: '01',
+    title: 'ENGAGE',
+    description: "Initial consultation to understand your brand DNA, target audience, and project scope. We don't just take orders; we build partnerships.",
+    icon: 'forum',
+    bgColor: 'bg-deep-black',
+    hoverColor: 'hover:bg-neon-lime hover:text-deep-black',
+    shadowColor: 'brutalist-shadow-blue',
+    accentColor: 'border-t-neon-lime'
+  },
+  {
+    number: '02',
+    title: 'RESEARCH',
+    description: 'Deep dive into market trends and material sourcing. We find the perfect canvas that aligns with your specific brand legacy requirements.',
+    icon: 'search_insights',
+    bgColor: 'bg-electric-blue',
+    hoverColor: 'hover:bg-white hover:text-electric-blue',
+    shadowColor: 'brutalist-shadow',
+    accentColor: 'border-t-electric-blue'
+  },
+  {
+    number: '03',
+    title: 'DESIGN',
+    description: 'Professional layout and mockup creation. Our senior design team ensures every graphic element is optimized for high-impact production.',
+    icon: 'palette',
+    bgColor: 'bg-hot-pink',
+    hoverColor: 'hover:bg-deep-black hover:text-neon-lime',
+    shadowColor: 'brutalist-shadow-lime',
+    accentColor: 'border-t-neon-lime'
+  },
+  {
+    number: '04',
+    title: 'CREATE',
+    description: 'Precision production using state-of-the-art technology. Every piece undergoes a multi-stage quality control protocol before shipping.',
+    icon: 'precision_manufacturing',
+    bgColor: 'bg-stark-white',
+    hoverColor: 'hover:bg-electric-blue hover:text-white',
+    shadowColor: 'brutalist-shadow',
+    accentColor: 'border-t-white'
+  },
+  {
+    number: '05',
+    title: 'LOGISTICS',
+    description: 'Seamless worldwide shipping and distribution. We handle the heavy lifting so your brand can reach every corner of the globe.',
+    icon: 'local_shipping',
+    bgColor: 'bg-neon-lime',
+    hoverColor: 'hover:bg-deep-black hover:text-neon-lime',
+    shadowColor: 'brutalist-shadow-blue',
+    accentColor: 'border-t-deep-black'
+  },
+  {
+    number: '06',
+    title: 'EVOLVE',
+    description: 'Continuous feedback loop and strategy for your next drop. We grow with you, ensuring your legacy remains relevant and impactful.',
+    icon: 'auto_graph',
+    bgColor: 'bg-deep-black',
+    hoverColor: 'hover:bg-electric-blue hover:text-white',
+    shadowColor: 'brutalist-shadow-lime',
+    accentColor: 'border-t-electric-blue'
+  }
+];
+
+export const SOLUTIONS = [
+  {
+    title: 'Customized MERCH',
+    image: '/Users/dmtmobiledev/.gemini/antigravity/brain/3f0ff63d-7ede-4b99-b2ca-f5912c2871f7/customized_merch_card_v2_1770271443110.png',
+    description: 'Tailored branded products specifically designed for your unique identity.'
+  },
+  {
+    title: 'Events',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCuHjVX2s68aGYfuXqWq3BkAm6Y7tw4jmHUQBxvBJDSeRw04fedP2SiPiXFFpOdk65qvTL6CsbfvoHhNFK_qkbiOeiB_uNp7_ItPqJ-pWpU9jDPMt86hHZd73-J7T3Uh6ohLzHZy7b41r3cdf-KhJ7f3h5dr22x7y0MqYDLjEV3wAzYJ-HUdtymEBZKRyITT8X4aZVl7fYIriL3vN4JQD5Lb6H-rogol5LmWKtjMXZ4RSqlNUY7on1NcAMb00kkuXiu0HIEfKR0ZNGk',
+    description: 'High-impact gear for conferences, trade shows, and corporate gatherings.'
+  },
+  {
+    title: 'Partner Companies',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAsmT1GVrjlmu0gnevL0fIIr91TdmZJxpSErxbzKW-kvKf1PisJ5dkAK1YJ9ktmuiEI-haVbMdJLnkdjpo1Zf7j2RXCGbC0vxKzAa-ABavdwxvLQx3yBPaRhMos2qU41wStxA0qGkHtw8d_b-aIyvAGhIEL8ypPWZnsT2T3cbsZVbhhxFTxcchI32IawQhaQMOYdvAAMWdBxWFVv9R4G2CXAL89Ea2RCKaGs1A88xjGECQP2SQ4nJoIYzpYA7s2NpKnrOYuXfO9YxhB',
+    description: 'Exclusive collaborated swag sets for your most valued business partners.'
+  },
+  {
+    title: 'People',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBcWDE0ZECyE3b5H-dy1SZ7t7Ib-o5fs85wN5-SBQgVdchJRUzc64er0agMVD_o0NzhZ-3yM4IwmfaICkXAf7dFO9KfXWabekKTSU-uyl7xNh-I5DGbcshsKVvxZdk2IecMCrop3AVkyf9JkzWDo0rui0zYhcPcZtt2ZLHFG8s7lvdDNSG2LS7PvqnlkQZsjBHrqXGb0WjcEa22MqndZCln5FxCy_HzqI5Kk8FCApwRfOIgRrjDhYDhHg7fzj4IW9Lgcsag0Fl5J52o',
+    description: 'Employee onboarding and appreciation kits that build strong team culture.'
+  }
+];
