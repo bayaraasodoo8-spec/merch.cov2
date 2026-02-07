@@ -13,8 +13,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
 
   const navItems = [
     { label: 'Products', id: 'products' },
-    { label: 'Corporate Merch', id: 'corporate' },
-    { label: 'Projects', id: 'projects' },
+    { label: 'Project', id: 'corporate' },
+    { label: 'Work', id: 'projects' },
     { label: 'About Us', id: 'about', type: 'page' },
   ];
 

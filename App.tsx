@@ -47,36 +47,36 @@ const App: React.FC = () => {
         {currentPage === 'home' ? (
           <>
             {/* HERO SECTION */}
-            <section id="home" className="relative min-h-[90vh] bg-brand-blue flex flex-col justify-center overflow-hidden border-b-8 border-deep-black">
-              <div className="absolute inset-0 pointer-events-none flex flex-col justify-center items-center select-none opacity-20">
-                <div className="text-[20vw] font-display leading-none text-deep-black whitespace-nowrap -rotate-3">IDENTITY</div>
+            <section id="home" className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden border-b-8 border-deep-black bg-deep-black">
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQxBDGadevcsQORuZDVlpQE7VowJtMAv9En16woywKqf4XCPwNNL20FL97iQOlMyo5qNBv2hmkUmsS62zC47581XeCpbIzMVQzm_adyZZYOjl5F5qjpsrNI6mBdlSdt-6r-DxHU06iQjiEWR08z1yZ0PM4Zrpf_ZT09bjfsmIE4LIW9SMnz1_pyiL0vvxk-7hiCT5AEWb2OD5hQlcmqta_fKHB_HEj2IG6dLdf860Zn1PrcHS0VEHrKzVlxQDByTHEWpDO32OEO_HG"
+                  alt="Background"
+                  className="w-full h-full object-cover opacity-60"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-deep-black/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-black/20"></div>
+              </div>
+
+              {/* Background Text Overlay */}
+              <div className="absolute inset-0 pointer-events-none flex flex-col justify-center items-center select-none opacity-10 z-0">
+                <div className="text-[20vw] font-display leading-none text-white whitespace-nowrap -rotate-3">IDENTITY</div>
                 <div className="text-[25vw] font-display leading-none text-brand-yellow whitespace-nowrap rotate-2">EVERYDAY</div>
               </div>
 
-              <div className="relative z-10 max-w-[1440px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 items-center gap-12 py-20">
-                <div className="order-2 lg:order-1">
-                  <h1 className="text-5xl md:text-7xl lg:text-[90px] font-display text-brand-yellow leading-[0.85] tracking-tighter uppercase mb-8 transition-transform hover:skew-x-2 duration-500">
+              <div className="relative z-10 max-w-[1440px] mx-auto px-6 w-full flex justify-end items-center h-full py-20">
+                <div className="flex flex-col items-end text-right">
+                  <h1 className="text-5xl md:text-7xl lg:text-[100px] font-display text-brand-yellow leading-[0.85] tracking-tighter uppercase mb-8 drop-shadow-lg">
                     YOUR STORY.<br />YOUR VISION.<br />YOUR MERCH.
                   </h1>
-                  <p className="text-xl md:text-2xl font-black bg-deep-black text-white px-6 py-4 brutalist-border inline-block mb-10 transform -rotate-1">
+                  <p className="text-xl md:text-2xl font-black bg-brand-yellow text-deep-black px-6 py-4 brutalist-border inline-block mb-10 transform rotate-1 shadow-[4px_4px_0px_0px_#000]">
                     FROM IDENTITY TO EVERYDAY.
                   </p>
-                </div>
 
-                <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                  <Magnetic strength={0.2}>
-                    <div className="relative w-full max-w-lg">
-                      <div className="absolute -inset-4 bg-brand-pink brutalist-border transform rotate-3"></div>
-                      <img
-                        alt="Focal Model"
-                        className="relative w-full brutalist-border grayscale hover:grayscale-0 transition-all duration-700 object-cover h-[400px] md:h-[600px] shadow-[15px_15px_0px_0px_rgba(0,0,0,1)] hover:scale-[1.02]"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQxBDGadevcsQORuZDVlpQE7VowJtMAv9En16woywKqf4XCPwNNL20FL97iQOlMyo5qNBv2hmkUmsS62zC47581XeCpbIzMVQzm_adyZZYOjl5F5qjpsrNI6mBdlSdt-6r-DxHU06iQjiEWR08z1yZ0PM4Zrpf_ZT09bjfsmIE4LIW9SMnz1_pyiL0vvxk-7hiCT5AEWb2OD5hQlcmqta_fKHB_HEj2IG6dLdf860Zn1PrcHS0VEHrKzVlxQDByTHEWpDO32OEO_HG"
-                      />
-                      <div className="absolute -bottom-6 -left-6 bg-deep-black text-brand-yellow p-4 font-display text-xl brutalist-border">
-                        EST. 2024
-                      </div>
-                    </div>
-                  </Magnetic>
+                  <div className="bg-deep-black text-white p-4 font-display text-xl brutalist-border inline-block rotate-3">
+                    EST. 2024
+                  </div>
                 </div>
               </div>
             </section>
