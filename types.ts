@@ -6,7 +6,7 @@ export interface Product {
   specs: string;
   image: string;
   bgColor: string;
-  shadowColor: 'lime' | 'black' | 'blue';
+  shadowColor: 'yellow' | 'black' | 'blue';
   buttonColor: string;
   textColor: string;
 }
@@ -25,4 +25,16 @@ export interface PromiseItem {
   title: string;
   description: string;
   hoverColor: string;
+}
+
+export interface StepItem {
+  number: string;
+  title: string;
+  description: string;
+  year: string;
+  icon: string;
+  bgColor: string;
+  hoverColor: string;
+  shadowColor: string;
+  accentColor: string;
 }
