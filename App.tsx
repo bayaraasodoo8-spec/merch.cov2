@@ -143,14 +143,27 @@ const App: React.FC = () => {
             </div>
 
             {/* ASSET STATEMENT - Standard v.7.0 */}
-            <section className="bg-brand-blue py-48 px-6 overflow-hidden border-b-[1px] border-deep-black/10">
-              <div className="max-w-[1440px] mx-auto text-center">
-                <Magnetic strength={0.3}>
-                  <p className="text-3xl md:text-5xl lg:text-7xl font-display text-white leading-tight uppercase tracking-tighter hover:text-brand-yellow transition-colors duration-500 cursor-default">
-                    Your vision is unique.
-                    <br />
-                    <span className="text-brand-yellow">Your merch should be too.</span>
+            <section className="bg-brand-blue py-32 md:py-48 px-6 overflow-hidden border-b-[1px] border-deep-black/10">
+              <div className="max-w-[1440px] mx-auto text-center flex flex-col items-center gap-12">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+                  className="max-w-5xl"
+                >
+                  <p className="text-3xl md:text-5xl lg:text-7xl font-display text-white leading-[0.9] uppercase tracking-tighter cursor-default">
+                    We Don't Just Make Merch. <br />
+                    <span className="text-brand-yellow">We Build Legacies.</span>
                   </p>
+                </motion.div>
+
+                <Magnetic strength={0.3}>
+                  <button
+                    onClick={() => setIsContactOpen(true)}
+                    className="bg-brand-yellow text-deep-black px-12 py-6 text-xl font-bold uppercase tracking-widest hover:bg-white transition-all border border-brand-yellow"
+                  >
+                    Start a Project
+                  </button>
                 </Magnetic>
               </div>
             </section>

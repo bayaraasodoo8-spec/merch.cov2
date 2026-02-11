@@ -81,7 +81,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                             <Magnetic strength={0.3}>
                                 <button
                                     onClick={onContact}
-                                    className="bg-white text-deep-black px-8 py-4 md:px-10 md:py-5 text-xl font-display brutalist-border brutalist-shadow-blue uppercase hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all inline-block w-fit"
+                                    className="bg-brand-yellow text-deep-black px-10 py-5 text-xl font-bold uppercase tracking-widest hover:bg-white transition-all border border-brand-yellow"
                                 >
                                     Start a Project
                                 </button>
