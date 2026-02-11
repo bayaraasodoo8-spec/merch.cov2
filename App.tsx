@@ -86,13 +86,13 @@ const App: React.FC = () => {
               <div className="animate-marquee flex gap-8 md:gap-12 items-center">
                 {Array(10).fill(null).map((_, i) => (
                   <React.Fragment key={i}>
-                    <span className="text-2xl md:text-4xl font-display uppercase">SCREEN PRINTING</span>
+                    <span className="text-2xl md:text-4xl font-display uppercase">Events</span>
                     <span className="text-2xl md:text-4xl text-brand-blue">•</span>
-                    <span className="text-2xl md:text-4xl font-display uppercase">EMBROIDERY</span>
+                    <span className="text-2xl md:text-4xl font-display uppercase">People</span>
                     <span className="text-2xl md:text-4xl text-brand-blue">•</span>
-                    <span className="text-2xl md:text-4xl font-display uppercase">CUSTOM DESIGN</span>
+                    <span className="text-2xl md:text-4xl font-display uppercase">Partner Companies</span>
                     <span className="text-2xl md:text-4xl text-brand-blue">•</span>
-                    <span className="text-2xl md:text-4xl font-display uppercase">WORLDWIDE SHIPPING</span>
+                    <span className="text-2xl md:text-4xl font-display uppercase">Customized Merch</span>
                     <span className="text-2xl md:text-4xl text-electric-blue">•</span>
                   </React.Fragment>
                 ))}
