@@ -75,9 +75,6 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                             <h2 className="text-5xl md:text-7xl lg:text-8xl font-display uppercase leading-[0.85] tracking-tighter mb-8">
                                 We Don't Just Make Merch. <br /><span className="text-brand-yellow stroke-text-black">We Build Legacies.</span>
                             </h2>
-                            <p className="text-xl md:text-2xl text-stark-white/70 max-w-2xl mx-auto leading-relaxed font-light">
-                                Merch.Corp was founded on a simple principle: <strong className="text-white font-bold">Your brand deserves better.</strong> We combine high-fashion aesthetics with industrial-grade production to create merchandise that people actually want to wear.
-                            </p>
                         </div>
 
                         <div className="flex gap-4 justify-center">
@@ -93,70 +90,6 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                     </div>
                 </div>
             </section>
-
-            {/* STATS & SKILLS GAP */}
-            <section className="py-32 px-6 bg-deep-black border-t-8 border-deep-black relative">
-                <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32">
-                    {/* Skills */}
-                    <div className="flex flex-col gap-16">
-                        <div>
-                            <h2 className="text-5xl md:text-7xl font-display uppercase tracking-tighter mb-8 text-white">Our Expertise</h2>
-                            <p className="text-xl text-stark-white/60 font-bold max-w-md leading-relaxed">
-                                Decades of refined craftsmanship meets modern technology.
-                            </p>
-                        </div>
-
-                        <div className="flex flex-col gap-10">
-                            {[
-                                { label: 'Design & Strategy', value: 95 },
-                                { label: 'Textile Engineering', value: 90 },
-                                { label: 'Global Logistics', value: 85 },
-                                { label: 'Brand Integration', value: 98 },
-                            ].map((skill, i) => (
-                                <div key={i} className="flex flex-col gap-3 group">
-                                    <div className="flex justify-between items-end">
-                                        <span className="font-display text-2xl md:text-3xl uppercase tracking-tight">{skill.label}</span>
-                                        <span className="font-display text-2xl text-brand-yellow">{skill.value}%</span>
-                                    </div>
-                                    <div className="h-4 bg-white/5 brutalist-border-sm overflow-hidden relative">
-                                        <motion.div
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: `${skill.value}%` }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 1.2, ease: 'circOut', delay: 0.2 }}
-                                            className="h-full bg-brand-yellow absolute top-0 left-0"
-                                        />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-2 gap-6 md:gap-8 content-center">
-                        {[
-                            { label: 'Years Active', value: '12+' },
-                            { label: 'Global Brands', value: '450+' },
-                            { label: 'Items Shipped', value: '2.5M+' },
-                            { label: 'Design Awards', value: '18' },
-                        ].map((stat, i) => (
-                            <motion.div
-                                key={i}
-                                whileHover={{ scale: 1.05, rotate: i % 2 === 0 ? 2 : -2 }}
-                                className="bg-white/5 p-8 md:p-12 brutalist-border hover:bg-brand-blue hover:border-brand-blue transition-colors flex flex-col justify-center text-center group cursor-default aspect-square"
-                            >
-                                <span className="text-6xl md:text-7xl lg:text-8xl font-display text-brand-yellow mb-2 group-hover:text-white transition-colors">
-                                    {stat.value}
-                                </span>
-                                <span className="text-xs md:text-sm font-black uppercase tracking-[0.2em] text-stark-white/60 group-hover:text-white transition-colors">
-                                    {stat.label}
-                                </span>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
             {/* VALUES SECTION - REFINED */}
             <section className="py-32 px-6 bg-stark-white text-deep-black border-y-8 border-deep-black overflow-hidden">
                 <div className="max-w-[1440px] mx-auto">

@@ -6,16 +6,44 @@ import Magnetic from './Magnetic';
 const SolutionsSlider: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const sliderRef = useRef<HTMLDivElement>(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [cardWidth, setCardWidth] = useState(0);
     const [sliderWidth, setSliderWidth] = useState(0);
 
     const x = useMotionValue(0);
     const springX = useSpring(x, { stiffness: 150, damping: 20, mass: 0.5 });
 
     useEffect(() => {
-        if (sliderRef.current && containerRef.current) {
-            setSliderWidth(sliderRef.current.scrollWidth - containerRef.current.offsetWidth);
-        }
+        const updateWidth = () => {
+            if (sliderRef.current && sliderRef.current.children.length > 0) {
+                const firstCard = sliderRef.current.children[0] as HTMLElement;
+                const style = window.getComputedStyle(sliderRef.current);
+                const gap = parseInt(style.gap) || 0;
+                setCardWidth(firstCard.offsetWidth + gap);
+                setSliderWidth(sliderRef.current.scrollWidth - containerRef.current!.offsetWidth);
+            }
+        };
+
+        updateWidth();
+        window.addEventListener('resize', updateWidth);
+        return () => window.removeEventListener('resize', updateWidth);
     }, []);
+
+    const handleNext = () => {
+        if (currentIndex < SOLUTIONS.length) {
+            const nextIndex = currentIndex + 1;
+            setCurrentIndex(nextIndex);
+            x.set(-nextIndex * cardWidth);
+        }
+    };
+
+    const handlePrev = () => {
+        if (currentIndex > 0) {
+            const prevIndex = currentIndex - 1;
+            setCurrentIndex(prevIndex);
+            x.set(-prevIndex * cardWidth);
+        }
+    };
 
     return (
         <section className="bg-stark-white py-24 md:py-32 border-b-8 border-deep-black overflow-hidden relative">
@@ -45,10 +73,24 @@ const SolutionsSlider: React.FC = () => {
                             From concept to delivery, we provide the infrastructure for high-impact merchandise programs.
                         </p>
 
-                        {/* Desktop Navigation Hints */}
-                        <div className="hidden lg:flex gap-4 items-center">
-                            <span className="text-xs font-black uppercase tracking-widest opacity-40">Drag to Explore</span>
-                            <div className="w-12 h-[2px] bg-deep-black/20"></div>
+                        {/* Navigation Buttons */}
+                        <div className="flex gap-4 items-center mt-4 lg:mt-0">
+                            <button
+                                onClick={handlePrev}
+                                disabled={currentIndex === 0}
+                                className="w-14 h-14 brutalist-border-sm flex items-center justify-center bg-white hover:bg-brand-yellow transition-colors disabled:opacity-20 disabled:cursor-not-allowed group"
+                                aria-label="Previous Slide"
+                            >
+                                <span className="material-symbols-outlined group-active:scale-90 transition-transform">arrow_back</span>
+                            </button>
+                            <button
+                                onClick={handleNext}
+                                disabled={currentIndex >= SOLUTIONS.length}
+                                className="w-14 h-14 brutalist-border-sm flex items-center justify-center bg-white hover:bg-brand-yellow transition-colors disabled:opacity-20 disabled:cursor-not-allowed group"
+                                aria-label="Next Slide"
+                            >
+                                <span className="material-symbols-outlined group-active:scale-90 transition-transform">arrow_forward</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -59,6 +101,20 @@ const SolutionsSlider: React.FC = () => {
                         ref={sliderRef}
                         drag="x"
                         dragConstraints={{ right: 0, left: -sliderWidth }}
+                        onDragEnd={(_, info) => {
+                            const dragDistance = info.offset.x;
+                            const threshold = cardWidth / 4;
+                            if (Math.abs(dragDistance) > threshold) {
+                                if (dragDistance > 0 && currentIndex > 0) {
+                                    handlePrev();
+                                } else if (dragDistance < 0 && currentIndex < SOLUTIONS.length) {
+                                    handleNext();
+                                }
+                            } else {
+                                // Snap back
+                                x.set(-currentIndex * cardWidth);
+                            }
+                        }}
                         whileTap={{ cursor: "grabbing" }}
                         style={{ x: springX }}
                         className="flex gap-6 md:gap-10 pb-12"

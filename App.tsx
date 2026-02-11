@@ -117,9 +117,8 @@ const App: React.FC = () => {
               <div className="max-w-[1440px] mx-auto">
                 <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
                   <div>
-                    <span className="text-xl font-black uppercase tracking-[0.3em] bg-deep-black text-stark-white px-4 py-1 mb-6 inline-block">Catalog 2024</span>
-                    <h2 className="text-5xl md:text-7xl lg:text-[10vw] font-display text-deep-black uppercase leading-[0.75] tracking-tighter">
-                      POPULAR <br /><span className="text-brand-blue">CATEGORIES</span>
+                    <h2 className="text-2xl md:text-5xl lg:text-[8vw] font-display text-deep-black uppercase leading-[0.75] tracking-tighter">
+                      PRODUCTS <br />
                     </h2>
                   </div>
                   <div className="text-right hidden lg:block">
