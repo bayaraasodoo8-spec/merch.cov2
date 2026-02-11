@@ -75,7 +75,6 @@ const SolutionsSlider: React.FC = () => {
                     </div>
                     <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-between h-full gap-6">
                         <p className="text-deep-black/60 font-bold uppercase tracking-tight text-sm md:text-base max-w-[300px] leading-relaxed text-left lg:text-right">
-                            From concept to delivery, we provide the infrastructure for high-impact merchandise programs.
                         </p>
 
                         {/* Navigation Buttons */}
