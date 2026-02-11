@@ -183,7 +183,7 @@ export const PROCESS_STEPS = [
 export const SOLUTIONS = [
   {
     title: 'Customized MERCH',
-    image: '/Users/dmtmobiledev/.gemini/antigravity/brain/3f0ff63d-7ede-4b99-b2ca-f5912c2871f7/customized_merch_card_v2_1770271443110.png',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBcWDE0ZECyE3b5H-dy1SZ7t7Ib-o5fs85wN5-SBQgVdchJRUzc64er0agMVD_o0NzhZ-3yM4IwmfaICkXAf7dFO9KfXWabekKTSU-uyl7xNh-I5DGbcshsKVvxZdk2IecMCrop3AVkyf9JkzWDo0rui0zYhcPcZtt2ZLHFG8s7lvdDNSG2LS7PvqnlkQZsjBHrqXGb0WjcEa22MqndZCln5FxCy_HzqI5Kk8FCApwRfOIgRrjDhYDhHg7fzj4IW9Lgcsag0Fl5J52o',
     description: 'Tailored branded products specifically designed for your unique identity.'
   },
   {

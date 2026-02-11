@@ -263,13 +263,7 @@ const App: React.FC = () => {
       </main>
 
       {/* FOOTER - Standard v.7.0 */}
-      <footer className="bg-deep-black text-white pt-32 pb-12 border-t-[1px] border-white/5 overflow-hidden relative">
-        {/* Animated Background Text */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03] select-none">
-          <div className="whitespace-nowrap text-[300px] font-display uppercase tracking-tighter leading-none -mt-20">
-            MERCH.CORP MERCH.CORP MERCH.CORP
-          </div>
-        </div>
+      <footer className="bg-deep-black text-white pt-24 pb-12 border-t-[1px] border-white/10 overflow-hidden relative">
 
         <div className="max-w-[1440px] mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
@@ -283,7 +277,7 @@ const App: React.FC = () => {
                 <h2 className="text-4xl md:text-5xl font-display text-brand-yellow tracking-tighter uppercase leading-none">MERCH.CORP</h2>
               </div>
 
-              <h3 className="text-4xl md:text-5xl lg:text-7xl font-display uppercase leading-[0.85] tracking-tighter mb-12">
+              <h3 className="text-3xl md:text-5xl font-display uppercase leading-tight tracking-tighter mb-10">
                 READY TO START <br /><span className="text-brand-pink">YOUR BRAND?</span>
               </h3>
 
@@ -291,66 +285,57 @@ const App: React.FC = () => {
                 <Magnetic strength={0.3}>
                   <button
                     onClick={() => setIsContactOpen(true)}
-                    className="bg-brand-yellow text-deep-black px-12 py-6 text-xl font-bold border border-brand-yellow hover:bg-transparent hover:text-brand-yellow uppercase transition-all flex items-center gap-4 tracking-widest"
+                    className="bg-brand-yellow text-deep-black px-10 py-5 text-lg font-bold border border-brand-yellow hover:bg-transparent hover:text-brand-yellow uppercase transition-all flex items-center gap-3 tracking-widest"
                   >
                     Start Your Project
-                    <span className="material-symbols-outlined font-bold">arrow_forward</span>
                   </button>
                 </Magnetic>
               </div>
             </div>
 
             <div className="lg:col-span-2 lg:col-start-7">
-              <h4 className="font-display text-brand-pink text-xl mb-10 uppercase tracking-[0.2em]">Quick Links</h4>
-              <ul className="flex flex-col gap-5 text-[11px] font-bold uppercase tracking-[0.3em]">
-                <li><button onClick={() => setCurrentPage('about')} className="hover:text-brand-yellow transition-colors duration-300 flex items-center gap-2 group text-left">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">/</span> About Us
+              <h4 className="font-display text-brand-pink text-xs mb-8 uppercase tracking-[0.4em] opacity-60">General</h4>
+              <ul className="flex flex-col gap-4 text-[10px] font-bold uppercase tracking-[0.3em]">
+                <li><button onClick={() => setCurrentPage('about')} className="hover:text-brand-yellow transition-colors duration-300 group text-left">
+                  About Us
                 </button></li>
-                <li><button onClick={() => handleScrollToSection('products')} className="hover:text-brand-yellow transition-colors duration-300 flex items-center gap-2 group text-left">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">/</span> Products
+                <li><button onClick={() => handleScrollToSection('products')} className="hover:text-brand-yellow transition-colors duration-300 group text-left">
+                  Products
                 </button></li>
-                <li><button onClick={() => handleScrollToSection('corporate')} className="hover:text-brand-yellow transition-colors duration-300 flex items-center gap-2 group text-left">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">/</span> Corporate
+                <li><button onClick={() => handleScrollToSection('corporate')} className="hover:text-brand-yellow transition-colors duration-300 group text-left">
+                  Corporate
                 </button></li>
-                <li><button onClick={() => handleScrollToSection('projects')} className="hover:text-brand-yellow transition-colors duration-300 flex items-center gap-2 group text-left">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">/</span> Projects
+                <li><button onClick={() => handleScrollToSection('projects')} className="hover:text-brand-yellow transition-colors duration-300 group text-left">
+                  Projects
                 </button></li>
               </ul>
             </div>
 
             <div className="lg:col-span-3 lg:col-start-10">
-              <h4 className="font-display text-brand-blue text-xl mb-10 uppercase tracking-[0.2em]">Connect</h4>
+              <h4 className="font-display text-brand-blue text-xs mb-8 uppercase tracking-[0.4em] opacity-60">Connect</h4>
               <div className="flex flex-col gap-8">
-                <div className="space-y-4">
-                  <p className="text-white/40 font-bold uppercase tracking-widest text-[10px]">Direct Line</p>
-                  <p className="text-2xl font-display uppercase tracking-tight">+1 (888) MERCH-HQ</p>
+                <div className="space-y-2">
+                  <p className="text-white/40 font-bold uppercase tracking-widest text-[9px]">Direct Line</p>
+                  <p className="text-xl font-display uppercase tracking-tight">+1 (888) MERCH-HQ</p>
                 </div>
 
-                <div className="flex gap-4">
-                  {[
-                    { icon: 'share', label: 'Social' },
-                    { icon: 'mail', label: 'Email' },
-                    { icon: 'location_on', label: 'Office' }
-                  ].map((item, i) => (
-                    <Magnetic key={i} strength={0.4}>
-                      <div className="w-14 h-14 border border-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-deep-black transition-colors cursor-pointer group">
-                        <span className="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">
-                          {item.icon}
-                        </span>
-                      </div>
-                    </Magnetic>
-                  ))}
+                <div className="flex gap-10 text-[10px] font-bold uppercase tracking-[0.3em] text-white/50">
+                  <button className="hover:text-brand-yellow transition-colors">Social</button>
+                  <button className="hover:text-brand-yellow transition-colors">Email</button>
+                  <button className="hover:text-brand-yellow transition-colors">Office</button>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="pt-12 border-t-[1px] border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
-            <p className="text-[11px] font-bold text-white/40 uppercase tracking-widest">© 2024 MERCH.CORP SYSTEM v7.0</p>
-            <div className="flex gap-8 text-white/20">
-              <span className="material-symbols-outlined text-2xl hover:text-brand-yellow cursor-default transition-colors">payments</span>
-              <span className="material-symbols-outlined text-2xl hover:text-brand-blue cursor-default transition-colors">verified</span>
-              <span className="material-symbols-outlined text-2xl hover:text-brand-pink cursor-default transition-colors">encrypted</span>
+            <p className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em]">© 2024 MERCH.CORP SYSTEM v7.0</p>
+            <div className="flex gap-8 text-[9px] font-black uppercase tracking-widest text-white/10">
+              <span className="hover:text-brand-yellow transition-colors cursor-default">Security Protocol</span>
+              <span className="opacity-30">•</span>
+              <span className="hover:text-brand-blue transition-colors cursor-default">Verified Network</span>
+              <span className="opacity-30">•</span>
+              <span className="hover:text-brand-pink transition-colors cursor-default">Encrypted Layer</span>
             </div>
           </div>
         </div>
@@ -361,10 +346,19 @@ const App: React.FC = () => {
         <Magnetic strength={0.4}>
           <button
             onClick={() => setIsContactOpen(true)}
-            className="bg-brand-pink text-white p-4 md:p-6 brutalist-border brutalist-shadow-yellow hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all flex items-center gap-4"
+            className="group relative px-10 py-4 border-[1px] border-brand-pink rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,100,203,0.4)] bg-transparent"
           >
-            <span className="material-symbols-outlined text-3xl md:text-4xl font-bold">campaign</span>
-            <span className="font-display text-xl md:text-2xl uppercase hidden sm:block">Start your project</span>
+            {/* Hover Background Fill */}
+            <div className="absolute inset-0 bg-brand-pink translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo" />
+
+            <div className="relative z-10 flex items-center gap-3">
+              {/* Minimal Live Dot */}
+              <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse" />
+
+              <span className="font-display text-lg uppercase tracking-[0.3em] text-brand-pink group-hover:text-white transition-colors duration-500">
+                Start
+              </span>
+            </div>
           </button>
         </Magnetic>
       </div>

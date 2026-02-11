@@ -131,7 +131,6 @@ const SolutionsSlider: React.FC = () => {
                             >
                                 {/* Technical Reference Label */}
                                 <div className="flex justify-between items-end mb-4 px-2 opacity-40 group-hover:opacity-100 transition-opacity">
-                                    <span className="text-[10px] font-black tracking-[0.2em] uppercase">REF: SLC-00{index + 1}</span>
                                     <div className="flex gap-1">
                                         <div className="w-1 h-1 bg-deep-black"></div>
                                         <div className="w-4 h-1 bg-deep-black"></div>
