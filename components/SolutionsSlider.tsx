@@ -47,9 +47,14 @@ const SolutionsSlider: React.FC = () => {
 
     return (
         <section className="bg-stark-white py-24 md:py-32 border-b-8 border-deep-black overflow-hidden relative">
-            {/* Ambient Background */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-                <div className="w-full h-full" style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+            {/* Parallax Background Text */}
+            <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full whitespace-nowrap overflow-hidden pointer-events-none opacity-[0.05] z-0 select-none">
+                <motion.div
+                    style={{ x: springX }}
+                    className="text-[25vw] font-display uppercase leading-none stroke-text-black"
+                >
+                    CAPABILITIES CAPABILITIES CAPABILITIES
+                </motion.div>
             </div>
 
             <div className="max-w-[1440px] mx-auto px-6 relative z-10">
@@ -122,41 +127,54 @@ const SolutionsSlider: React.FC = () => {
                         {SOLUTIONS.map((item, index) => (
                             <motion.div
                                 key={index}
-                                className="min-w-[280px] md:min-w-[340px] lg:min-w-[380px] relative group"
+                                className="min-w-[300px] md:min-w-[400px] lg:min-w-[450px] relative group"
                             >
-                                {/* Index Number */}
-                                <div className="absolute -left-4 -top-6 text-9xl font-display text-transparent stroke-text-gray opacity-20 group-hover:opacity-10 pointer-events-none transition-opacity duration-300 z-0">
-                                    0{index + 1}
+                                {/* Technical Reference Label */}
+                                <div className="flex justify-between items-end mb-4 px-2 opacity-40 group-hover:opacity-100 transition-opacity">
+                                    <span className="text-[10px] font-black tracking-[0.2em] uppercase">REF: SLC-00{index + 1}</span>
+                                    <div className="flex gap-1">
+                                        <div className="w-1 h-1 bg-deep-black"></div>
+                                        <div className="w-4 h-1 bg-deep-black"></div>
+                                    </div>
                                 </div>
 
                                 {/* Card Image */}
-                                <div className="aspect-[4/5] relative overflow-hidden brutalist-border bg-deep-black z-10 transition-transform duration-500 hover:-translate-y-2">
-                                    <div className="absolute inset-0 bg-brand-blue/20 z-10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    <img
-                                        src={item.image}
-                                        alt={item.title}
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
-                                    />
+                                <div className="aspect-[4/5] relative p-4 brutalist-border bg-white z-10 transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+                                    <div className="relative w-full h-full overflow-hidden brutalist-border-sm">
+                                        <div className="absolute inset-0 bg-brand-blue/10 z-10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                        <img
+                                            src={item.image}
+                                            alt={item.title}
+                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                                        />
+
+                                        {/* Corner Accents */}
+                                        <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-white z-20 opacity-60"></div>
+                                        <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-white z-20 opacity-60"></div>
+                                    </div>
 
                                     {/* Overlay Content */}
-                                    <div className="absolute inset-0 p-6 flex flex-col justify-end z-20">
-                                        <div className="bg-white/90 backdrop-blur-sm p-6 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 brutalist-border-sm shadow-xl">
-                                            <h3 className="text-xl font-display uppercase tracking-tight mb-2 text-deep-black">
+                                    <div className="absolute inset-0 p-8 flex flex-col justify-end z-20">
+                                        <div className="bg-deep-black text-white p-6 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out brutalist-border-sm">
+                                            <h3 className="text-2xl font-display uppercase tracking-tight mb-2 text-brand-yellow">
                                                 {item.title}
                                             </h3>
-                                            <p className="text-xs font-bold uppercase tracking-widest text-deep-black/60 line-clamp-3">
+                                            <p className="text-xs font-bold uppercase tracking-widest leading-relaxed opacity-70">
                                                 {item.description}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Bottom Label (Visible when not hovered) */}
-                                <div className="mt-6 pl-2 group-hover:opacity-0 transition-opacity duration-300">
-                                    <div className="w-8 h-[2px] bg-brand-yellow mb-3"></div>
-                                    <h3 className="text-2xl font-display uppercase leading-none tracking-tight text-deep-black">
-                                        {item.title}
-                                    </h3>
+                                {/* Bottom Label */}
+                                <div className="mt-8 flex items-start gap-4 px-2 group-hover:opacity-0 transition-opacity duration-300">
+                                    <span className="text-4xl font-display text-brand-yellow stroke-text-black mt-[-4px]">0{index + 1}</span>
+                                    <div>
+                                        <h3 className="text-2xl font-display uppercase leading-none tracking-tight text-deep-black mb-1">
+                                            {item.title}
+                                        </h3>
+                                        <div className="w-12 h-[2px] bg-brand-yellow"></div>
+                                    </div>
                                 </div>
                             </motion.div>
                         ))}

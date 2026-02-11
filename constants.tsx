@@ -84,7 +84,8 @@ export const CATEGORIES: Category[] = [
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAsmT1GVrjlmu0gnevL0fIIr91TdmZJxpSErxbzKW-kvKf1PisJ5dkAK1YJ9ktmuiEI-haVbMdJLnkdjpo1Zf7j2RXCGbC0vxKzAa-ABavdwxvLQx3yBPaRhMos2qU41wStxA0qGkHtw8d_b-aIyvAGhIEL8ypPWZnsT2T3cbsZVbhhxFTxcchI32IawQhaQMOYdvAAMWdBxWFVv9R4G2CXAL89Ea2RCKaGs1A88xjGECQP2SQ4nJoIYzpYA7s2NpKnrOYuXfO9YxhB',
     bgColor: 'bg-stark-white',
     labelBg: 'bg-deep-black',
-    labelColor: 'text-stark-white'
+    labelColor: 'text-stark-white',
+    span: 'lg:row-span-2'
   },
   {
     name: 'Tech',
@@ -92,7 +93,7 @@ export const CATEGORIES: Category[] = [
     bgColor: 'bg-deep-black',
     labelBg: 'bg-brand-yellow',
     labelColor: 'text-deep-black',
-    span: 'md:row-span-2 lg:col-start-4 lg:row-start-1 h-full'
+    span: 'lg:row-span-2'
   },
   {
     name: 'Office',
@@ -107,13 +108,6 @@ export const CATEGORIES: Category[] = [
     bgColor: 'bg-stark-white',
     labelBg: 'bg-brand-pink',
     labelColor: 'text-stark-white'
-  },
-  {
-    name: 'Packaging',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCuHjVX2s68aGYfuXqWq3BkAm6Y7tw4jmHUQBxvBJDSeRw04fedP2SiPiXFFpOdk65qvTL6CsbfvoHhNFK_qkbiOeiB_uNp7_ItPqJ-pWpU9jDPMt86hHZd73-J7T3Uh6ohLzHZy7b41r3cdf-KhJ7f3h5dr22x7y0MqYDLjEV3wAzYJ-HUdtymEBZKRyITT8X4aZVl7fYIriL3vN4JQD5Lb6H-rogol5LmWKtjMXZ4RSqlNUY7on1NcAMb00kkuXiu0HIEfKR0ZNGk',
-    bgColor: 'bg-brand-blue',
-    labelBg: 'bg-stark-white',
-    labelColor: 'text-deep-black'
   }
 ];
 

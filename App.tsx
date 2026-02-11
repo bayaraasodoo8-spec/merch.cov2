@@ -116,12 +116,11 @@ const App: React.FC = () => {
             <section id="products" className="bg-stark-white py-32 px-6 border-b-8 border-deep-black">
               <div className="max-w-[1440px] mx-auto">
                 <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
-                  <div>
-                    <h2 className="text-2xl md:text-5xl lg:text-[8vw] font-display text-deep-black uppercase leading-[0.75] tracking-tighter">
-                      PRODUCTS <br />
+                  <div className="relative">
+                    <h2 className="text-5xl md:text-7xl lg:text-[10vw] font-display text-deep-black uppercase leading-[0.75] tracking-tighter">
+                      <span className="text-brand-blue">PRODUCTS</span>
                     </h2>
-                  </div>
-                  <div className="text-right hidden lg:block">
+                    <div className="absolute -left-8 top-1/2 w-2 h-32 bg-brand-blue -translate-y-1/2 hidden lg:block"></div>
                   </div>
                 </div>
 
