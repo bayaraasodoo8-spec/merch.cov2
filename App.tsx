@@ -329,7 +329,12 @@ const App: React.FC = () => {
               <div className="flex flex-col gap-8">
                 <div className="space-y-2">
                   <p className="text-white/40 font-bold uppercase tracking-widest text-[9px]">Direct Line</p>
-                  <p className="text-xl font-display uppercase tracking-tight">+1 (888) MERCH-HQ</p>
+                  <a href="tel:+97677377007" className="text-xl font-display tracking-tight hover:text-brand-yellow transition-colors block">+976 77377007</a>
+                </div>
+
+                <div className="space-y-2">
+                  <p className="text-white/40 font-bold uppercase tracking-widest text-[9px]">Email</p>
+                  <a href="mailto:contact@merchand.co" className="text-xl font-display lowercase tracking-tight hover:text-brand-yellow transition-colors">contact@merchand.co</a>
                 </div>
 
                 <div className="flex gap-10 text-[10px] font-bold uppercase tracking-[0.3em] text-white/50">

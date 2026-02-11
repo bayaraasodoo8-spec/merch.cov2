@@ -158,7 +158,7 @@ export const PROCESS_STEPS = [
   },
   {
     number: '05',
-    title: 'LOGISTICS',
+    title: 'LAUNCH',
     description: 'Seamless worldwide shipping and distribution. We handle the heavy lifting so your brand can reach every corner of the globe.',
     year: '2025',
     icon: 'local_shipping',
@@ -167,17 +167,6 @@ export const PROCESS_STEPS = [
     shadowColor: 'brutalist-shadow-blue',
     accentColor: 'border-t-brand-pink'
   },
-  {
-    number: '06',
-    title: 'EVOLVE',
-    description: 'Continuous feedback loop and strategy for your next drop. We grow with you, ensuring your legacy remains relevant and impactful.',
-    year: '2026',
-    icon: 'auto_graph',
-    bgColor: 'bg-deep-black',
-    hoverColor: 'hover:bg-brand-pink hover:text-white',
-    shadowColor: 'brutalist-shadow-yellow',
-    accentColor: 'border-t-brand-pink'
-  }
 ];
 
 export const SOLUTIONS = [
