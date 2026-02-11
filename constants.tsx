@@ -119,9 +119,9 @@ export const PROCESS_STEPS = [
     year: '2024',
     icon: 'forum',
     bgColor: 'bg-deep-black',
-    hoverColor: 'hover:bg-brand-yellow hover:text-deep-black',
+    hoverColor: 'hover:bg-brand-pink hover:text-white',
     shadowColor: 'brutalist-shadow-blue',
-    accentColor: 'border-t-brand-yellow'
+    accentColor: 'border-t-brand-pink'
   },
   {
     number: '02',
@@ -129,10 +129,10 @@ export const PROCESS_STEPS = [
     description: 'Deep dive into market trends and material sourcing. We find the perfect canvas that aligns with your specific brand legacy requirements.',
     year: '2024',
     icon: 'search_insights',
-    bgColor: 'bg-brand-blue',
-    hoverColor: 'hover:bg-white hover:text-brand-blue',
+    bgColor: 'bg-deep-black',
+    hoverColor: 'hover:bg-brand-pink hover:text-white',
     shadowColor: 'brutalist-shadow',
-    accentColor: 'border-t-brand-blue'
+    accentColor: 'border-t-brand-pink'
   },
   {
     number: '03',
@@ -140,10 +140,10 @@ export const PROCESS_STEPS = [
     description: 'Professional layout and mockup creation. Our senior design team ensures every graphic element is optimized for high-impact production.',
     year: '2024',
     icon: 'palette',
-    bgColor: 'bg-brand-pink',
-    hoverColor: 'hover:bg-deep-black hover:text-brand-yellow',
+    bgColor: 'bg-deep-black',
+    hoverColor: 'hover:bg-brand-pink hover:text-white',
     shadowColor: 'brutalist-shadow-yellow',
-    accentColor: 'border-t-brand-yellow'
+    accentColor: 'border-t-brand-pink'
   },
   {
     number: '04',
@@ -151,10 +151,10 @@ export const PROCESS_STEPS = [
     description: 'Precision production using state-of-the-art technology. Every piece undergoes a multi-stage quality control protocol before shipping.',
     year: '2025',
     icon: 'precision_manufacturing',
-    bgColor: 'bg-stark-white',
-    hoverColor: 'hover:bg-brand-blue hover:text-white',
+    bgColor: 'bg-deep-black',
+    hoverColor: 'hover:bg-brand-pink hover:text-white',
     shadowColor: 'brutalist-shadow',
-    accentColor: 'border-t-white'
+    accentColor: 'border-t-brand-pink'
   },
   {
     number: '05',
@@ -162,10 +162,10 @@ export const PROCESS_STEPS = [
     description: 'Seamless worldwide shipping and distribution. We handle the heavy lifting so your brand can reach every corner of the globe.',
     year: '2025',
     icon: 'local_shipping',
-    bgColor: 'bg-brand-yellow',
-    hoverColor: 'hover:bg-deep-black hover:text-brand-yellow',
+    bgColor: 'bg-deep-black',
+    hoverColor: 'hover:bg-brand-pink hover:text-white',
     shadowColor: 'brutalist-shadow-blue',
-    accentColor: 'border-t-deep-black'
+    accentColor: 'border-t-brand-pink'
   },
   {
     number: '06',
@@ -174,9 +174,9 @@ export const PROCESS_STEPS = [
     year: '2026',
     icon: 'auto_graph',
     bgColor: 'bg-deep-black',
-    hoverColor: 'hover:bg-brand-blue hover:text-white',
+    hoverColor: 'hover:bg-brand-pink hover:text-white',
     shadowColor: 'brutalist-shadow-yellow',
-    accentColor: 'border-t-brand-blue'
+    accentColor: 'border-t-brand-pink'
   }
 ];
 

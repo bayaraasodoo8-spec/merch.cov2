@@ -49,7 +49,7 @@ const VerticalTimeline: React.FC = () => {
                                 shadow-lg
                                 transition-all duration-500 group-hover:scale-110
                             `}>
-                                <span className={`font-display text-lg md:text-xl font-bold ${step.hoverColor.includes('text-deep-black') ? 'text-deep-black' : 'text-white'}`}>
+                                <span className="font-display text-lg md:text-xl font-bold text-white group-hover:text-white transition-colors">
                                     {step.number}
                                 </span>
                             </div>
