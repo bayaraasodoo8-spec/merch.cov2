@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
   return (
     <>
       <header
-        className={`fixed top-0 z-[100] w-full transition-all duration-700 ${isScrolled ? 'bg-white/90 backdrop-blur-md border-b-[1px] border-deep-black/5 py-2' : 'bg-transparent py-6'
+        className={`fixed top-0 z-[100] w-full transition-all duration-700 ${isScrolled ? 'bg-white/90 backdrop-blur-md border-b-[1px] border-deep-black/5 py-1.5' : 'bg-transparent py-4'
           }`}
       >
         <div className="max-w-[1440px] mx-auto px-8 flex items-center justify-between">
@@ -44,14 +44,14 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
               className="flex items-center gap-3 cursor-pointer group relative z-[110]"
               onClick={() => onNavigate('home')}
             >
-              <h2 className={`text-xl md:text-2xl font-elegant font-bold tracking-[0.2em] uppercase leading-none transition-colors duration-500 ${isScrolled ? 'text-deep-black' : 'text-deep-black'
+              <h2 className={`text-lg md:text-xl font-elegant font-bold tracking-[0.2em] uppercase leading-none transition-colors duration-500 ${isScrolled ? 'text-deep-black' : 'text-deep-black'
                 }`}>
                 MERCH.CORP
               </h2>
             </div>
           </Magnetic>
 
-          <nav className="hidden lg:flex items-center gap-12">
+          <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <Magnetic key={item.label} strength={0.2}>
                 <button
@@ -85,8 +85,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
             <div className="hidden lg:block">
               <Magnetic strength={0.4}>
                 <button className={`px-8 py-2.5 text-[10px] font-bold uppercase tracking-[0.4em] border transition-all duration-500 ${isScrolled
-                    ? 'bg-deep-black text-white border-deep-black'
-                    : 'bg-white text-deep-black border-white hover:bg-transparent hover:text-white'
+                  ? 'bg-deep-black text-white border-deep-black'
+                  : 'bg-white text-deep-black border-white hover:bg-transparent hover:text-white'
                   }`}>
                   Project Portal
                 </button>

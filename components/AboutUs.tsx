@@ -19,7 +19,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
     return (
         <div className="bg-deep-black text-white selection:bg-brand-yellow selection:text-deep-black min-h-screen">
             {/* HERO SECTION - Refined v.7.0 */}
-            <section className="relative min-h-[80dvh] flex flex-col items-center justify-center overflow-hidden border-b-[1px] border-white/5">
+            <section className="relative min-h-[60dvh] flex flex-col items-center justify-center overflow-hidden border-b-[1px] border-white/5">
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRhmFf_-vZLhO3T3PvH9wxpb5AWYmSqkBHdMZWBskDQHGxdcUuYargz01cHCxXh5fuHyLCp9jqGYcTrzeJf8zP7j6fzsQ3d3j-IfNkIDXPBIhlQJspmNFl-kGk_lHymKeei4hS9FtNbYq6NXckBmJkLhgVKtOQ1cCMQKdTLiqk42nnVg-0Nt6-QAh2VFmRLQKoL9Xu2nOosOxdysJmeJrAtgLSQ3jR3JxBdbNnW5fKBOs389yOv4toFbACkx0f1vRNPsgbAZH78Ax1"
@@ -36,7 +36,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "circOut" }}
                     >
-                        <h1 className="text-6xl md:text-[100px] font-display uppercase tracking-tighter leading-[0.85] mb-6 drop-shadow-2xl">
+                        <h1 className="text-5xl md:text-[80px] font-display uppercase tracking-tighter leading-[0.85] mb-6 drop-shadow-2xl">
                             About <span className="text-brand-yellow">Us</span>
                         </h1>
                     </motion.div>
@@ -62,7 +62,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
             </section>
 
             {/* MISSION SECTION */}
-            <section className="py-24 md:py-32 px-6 bg-deep-black overflow-hidden relative">
+            <section className="py-16 md:py-24 px-6 bg-deep-black overflow-hidden relative">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 pointer-events-none opacity-10">
                     <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(#333 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
@@ -72,63 +72,59 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                     <div className="flex flex-col gap-8 md:gap-10 max-w-4xl mx-auto">
                         <div>
                             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-blue mb-6 block">Our Mission</span>
-                            <h2 className="text-4xl md:text-6xl font-display uppercase leading-[0.9] tracking-tighter mb-8">
+                            <h2 className="text-3xl md:text-5xl font-display uppercase leading-[0.9] tracking-tighter mb-8">
                                 We Don't Just Make Merch. <br /><span className="text-brand-yellow">We Build Legacies.</span>
                             </h2>
-                        </div>
-
-                        <div className="flex gap-4 justify-center">
-                            <Magnetic strength={0.3}>
-                                <button
-                                    onClick={onContact}
-                                    className="bg-brand-yellow text-deep-black px-10 py-5 text-xl font-bold uppercase tracking-widest hover:bg-white transition-all border border-brand-yellow"
-                                >
-                                    Start a Project
-                                </button>
-                            </Magnetic>
                         </div>
                     </div>
                 </div>
             </section>
-            {/* VALUES SECTION - Standard v.7.0 */}
-            <section className="py-32 px-6 bg-white text-deep-black border-y-[1px] border-deep-black/10 overflow-hidden">
+            {/* VALUES SECTION - Compact v7.1 */}
+            <section className="py-16 md:py-20 px-6 bg-white text-deep-black border-y-[1px] border-deep-black/10 overflow-hidden">
                 <div className="max-w-[1440px] mx-auto">
-                    <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-12">
+                    <div className="flex flex-col lg:flex-row items-end justify-between mb-16 md:mb-20 gap-10">
                         <div className="relative">
-                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] bg-brand-blue text-white px-4 py-2 mb-8 inline-block">Core Values</span>
-                            <h2 className="text-4xl md:text-7xl font-display uppercase leading-[0.9] tracking-tighter">
-                                WHAT WE <br /><span className="text-brand-pink">STAND FOR</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] bg-brand-blue text-white px-4 py-2 mb-6 inline-block">
+                                Core Values
+                            </span>
+                            <h2 className="text-3xl md:text-6xl font-display uppercase leading-[0.9] tracking-tighter">
+                                WHAT WE <br />
+                                <span className="text-brand-pink">STAND FOR</span>
                             </h2>
                         </div>
+
                         <div className="text-right max-w-md">
-                            <p className="text-xl md:text-2xl font-body font-medium uppercase leading-tight opacity-70 italic">
+                            <p className="text-lg md:text-xl font-body font-medium uppercase leading-tight opacity-70 italic">
                                 Uncompromising standards. Ethical practices. Relentless innovation.
                             </p>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                         {[
                             {
                                 title: 'Precision',
                                 desc: 'Every stitch counts. We obsess over details others ignore.',
                                 icon: 'precision_manufacturing',
                                 color: 'bg-brand-yellow',
-                                span: 'lg:col-span-2'
+                                span: 'lg:col-span-2',
+                                tag: 'Quality-first'
                             },
                             {
                                 title: 'Integrity',
                                 desc: 'Honest pricing, ethical sourcing, and transparency.',
                                 icon: 'handshake',
                                 color: 'bg-white',
-                                border: 'border-2 border-deep-black'
+                                border: 'border-2 border-deep-black',
+                                tag: 'Transparent'
                             },
                             {
                                 title: 'Speed',
                                 desc: 'Rapid prototyping to global distribution at scale.',
                                 icon: 'rocket_launch',
                                 color: 'bg-brand-pink',
-                                textColor: 'text-white'
+                                textColor: 'text-white',
+                                tag: 'Fast turnaround'
                             },
                             {
                                 title: 'Partnership',
@@ -136,7 +132,8 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                 icon: 'groups',
                                 color: 'bg-brand-blue',
                                 textColor: 'text-white',
-                                span: 'lg:col-span-2'
+                                span: 'lg:col-span-2',
+                                tag: 'Long-term'
                             },
                             {
                                 title: 'Innovation',
@@ -144,26 +141,72 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                 icon: 'lightbulb',
                                 color: 'bg-deep-black',
                                 textColor: 'text-white',
-                                span: 'lg:col-span-2'
+                                span: 'lg:col-span-2',
+                                tag: 'Always evolving'
                             },
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, y: 50 }}
+                                initial={{ opacity: 0, y: 32 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1, duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+                                transition={{ delay: i * 0.08, duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
                                 viewport={{ once: true }}
-                                className={`
-                                    p-12 md:p-16 border-[1px] border-deep-black/10 relative overflow-hidden group min-h-[400px] flex flex-col justify-between
-                                    ${item.color || 'bg-white'} 
-                                    ${item.textColor || 'text-deep-black'}
-                                    ${item.span || ''}
-                                    shadow-2xl hover:shadow-none transition-all duration-500
-                                `}
+                                className={[
+                                    "relative overflow-hidden group",
+                                    "border-[1px] border-deep-black/10",
+                                    "rounded-2xl",
+                                    "shadow-xl hover:shadow-none transition-all duration-500",
+                                    "p-6 md:p-8",                 // ✅ smaller padding
+                                    "min-h-[220px] md:min-h-[240px]",// ✅ smaller height
+                                    "flex flex-col justify-between",
+                                    item.color || "bg-white",
+                                    item.textColor || "text-deep-black",
+                                    item.span || "",
+                                    item.border || ""
+                                ].join(" ")}
                             >
+                                {/* subtle accent */}
+                                <div className="absolute -right-20 -top-20 w-48 h-48 rounded-full bg-deep-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
                                 <div className="relative z-10">
-                                    <h3 className="text-3xl md:text-4xl font-display uppercase mb-4 tracking-tighter leading-tight">{item.title}</h3>
-                                    <p className="text-base md:text-lg font-body font-medium opacity-80 leading-snug italic">"{item.desc}"</p>
+                                    {/* header row: icon + tag */}
+                                    <div className="flex items-center justify-between mb-6">
+                                        <span
+                                            className={[
+                                                "material-symbols-outlined text-[28px]",
+                                                item.textColor ? "opacity-90" : "text-deep-black/70"
+                                            ].join(" ")}
+                                        >
+                                            {item.icon}
+                                        </span>
+
+                                        <span
+                                            className={[
+                                                "text-[10px] font-bold uppercase tracking-[0.35em]",
+                                                "px-3 py-2 rounded-full",
+                                                item.textColor ? "bg-white/15 text-white/90" : "bg-deep-black/5 text-deep-black/70"
+                                            ].join(" ")}
+                                        >
+                                            {item.tag}
+                                        </span>
+                                    </div>
+
+                                    <h3 className="text-2xl md:text-3xl font-display uppercase mb-3 tracking-tighter leading-tight">
+                                        {item.title}
+                                    </h3>
+
+                                    {/* ✅ clamp so the card doesn’t look empty, and doesn’t become too tall */}
+                                    <p className="text-base md:text-lg font-body font-medium opacity-80 leading-snug italic line-clamp-3">
+                                        “{item.desc}”
+                                    </p>
+                                </div>
+
+                                {/* footer micro-detail */}
+                                <div className="relative z-10 mt-8 flex items-center gap-3 opacity-70 group-hover:opacity-100 transition-opacity">
+                                    <span className="w-8 h-[1px] bg-current opacity-40" />
+                                    <span className="text-[11px] font-bold uppercase tracking-[0.35em]">
+                                        Learn more
+                                    </span>
                                 </div>
                             </motion.div>
                         ))}
@@ -171,13 +214,14 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                 </div>
             </section>
 
+
             {/* PARTNERS GRID SECTION - Unified Design */}
-            <section className="py-24 px-6 bg-white border-y-[1px] border-deep-black/10">
+            <section className="py-16 px-6 bg-white border-y-[1px] border-deep-black/10">
                 <div className="max-w-[1440px] mx-auto">
                     <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
                         <div>
                             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-blue mb-4 block">Collaborations</span>
-                            <h2 className="text-5xl md:text-7xl font-display uppercase tracking-tighter text-deep-black leading-none">
+                            <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tighter text-deep-black leading-none">
                                 OUR VALUABLE <br /><span className="text-brand-pink">PARTNERS</span>
                             </h2>
                         </div>
@@ -206,14 +250,14 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
             </section>
 
             {/* CALL TO ACTION - Standard v.7.0 */}
-            <section className="relative py-32 md:py-48 px-6 overflow-hidden border-y-[1px] border-deep-black/10 bg-brand-yellow">
+            <section className="relative py-24 md:py-32 px-6 overflow-hidden border-y-[1px] border-deep-black/10 bg-brand-yellow">
                 <div className="max-w-[1440px] mx-auto text-center relative z-10">
                     <motion.div
                         initial={{ scale: 0.9, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
                     >
-                        <h2 className="text-7xl md:text-[10vw] font-display uppercase leading-[0.8] tracking-tighter text-deep-black mb-16">
+                        <h2 className="text-6xl md:text-[8vw] font-display uppercase leading-[0.8] tracking-tighter text-deep-black mb-16">
                             Ready To <br /> <span className="text-white">Make It Real?</span>
                         </h2>
 

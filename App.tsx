@@ -77,13 +77,13 @@ const App: React.FC = () => {
 
               {/* Background Brand Text Layer - Luxury Subtle Over Image */}
               <div className="absolute inset-0 flex items-center justify-center z-10 overflow-hidden pointer-events-none">
-                <h1 className="text-[22vw] font-elegant font-bold uppercase text-white/[0.08] leading-none tracking-tighter select-none mix-blend-overlay">
+                <h1 className="text-[18vw] font-elegant font-bold uppercase text-white/[0.08] leading-none tracking-tighter select-none mix-blend-overlay">
                   MERCH.CORP
                 </h1>
               </div>
 
               {/* Action Layer - Luxury Minimal Typography with Merch Energy */}
-              <div className="absolute bottom-24 left-0 right-0 z-20 flex flex-col items-center gap-10">
+              <div className="absolute bottom-16 left-0 right-0 z-20 flex flex-col items-center gap-8">
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 0.9, y: 0 }}
@@ -125,7 +125,7 @@ const App: React.FC = () => {
             </section>
 
             {/* MARQUEE - Refined for Luxury */}
-            <div className="bg-brand-yellow border-y-[1px] border-deep-black/10 py-4 overflow-hidden flex whitespace-nowrap">
+            <div className="bg-brand-yellow border-y-[1px] border-deep-black/10 py-3 overflow-hidden flex whitespace-nowrap">
               <div className="animate-marquee flex gap-8 md:gap-12 items-center">
                 {Array(10).fill(null).map((_, i) => (
                   <React.Fragment key={i}>
@@ -143,7 +143,7 @@ const App: React.FC = () => {
             </div>
 
             {/* ASSET STATEMENT - Standard v.7.0 */}
-            <section className="bg-brand-blue py-32 md:py-48 px-6 overflow-hidden border-b-[1px] border-deep-black/10">
+            <section className="bg-brand-blue py-24 md:py-32 px-6 overflow-hidden border-b-[1px] border-deep-black/10">
               <div className="max-w-[1440px] mx-auto text-center flex flex-col items-center gap-12">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -151,35 +151,27 @@ const App: React.FC = () => {
                   transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
                   className="max-w-5xl"
                 >
-                  <p className="text-3xl md:text-5xl lg:text-7xl font-display text-white leading-[0.9] uppercase tracking-tighter cursor-default">
-                    We Don't Just Make Merch. <br />
-                    <span className="text-brand-yellow">We Build Legacies.</span>
+                  <p className="text-xl md:text-3xl lg:text-5xl font-display text-white leading-[0.9] uppercase tracking-tighter cursor-default">
+                    94% of employees receiving swag monthly reported being <span className="text-brand-yellow">very satisfied</span> with the their jobs.<br />
+
                   </p>
                 </motion.div>
 
-                <Magnetic strength={0.3}>
-                  <button
-                    onClick={() => setIsContactOpen(true)}
-                    className="bg-brand-yellow text-deep-black px-12 py-6 text-xl font-bold uppercase tracking-widest hover:bg-white transition-all border border-brand-yellow"
-                  >
-                    Start a Project
-                  </button>
-                </Magnetic>
               </div>
             </section>
 
             {/* POPULAR CATEGORIES - Standard v.7.0 */}
-            <section id="products" className="bg-white py-32 px-6 border-b-[1px] border-deep-black/10">
+            <section id="products" className="bg-white py-20 px-6 border-b-[1px] border-deep-black/10">
               <div className="max-w-[1440px] mx-auto">
                 <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
                   <div className="relative">
-                    <h2 className="text-4xl md:text-6xl font-display text-deep-black uppercase leading-tight tracking-tighter">
+                    <h2 className="text-3xl md:text-5xl font-display text-deep-black uppercase leading-tight tracking-tighter">
                       <span className="text-brand-pink">PRODUCTS</span>
                     </h2>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[350px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[300px]">
                   {CATEGORIES.map((cat, i) => (
                     <Magnetic key={i} strength={0.1} className={`${cat.span || ''} group/card`}>
                       <div className={`relative border-[1px] border-deep-black/10 overflow-hidden h-full w-full interactive cursor-pointer ${cat.bgColor}`}>
@@ -228,7 +220,7 @@ const App: React.FC = () => {
             </div>
 
             {/* WORK PROCESS - Standard v.7.0 */}
-            <section id="projects" className="bg-brand-yellow py-32 border-b-[1px] border-deep-black/10 overflow-hidden relative">
+            <section id="projects" className="bg-brand-yellow py-20 border-b-[1px] border-deep-black/10 overflow-hidden relative">
               {/* Animated Background Grid */}
               <div className="absolute inset-0 opacity-5 pointer-events-none">
                 <div className="grid grid-cols-8 grid-rows-8 w-full h-full">
@@ -248,18 +240,10 @@ const App: React.FC = () => {
               <div className="max-w-[1440px] mx-auto px-6 relative z-10 w-full">
                 <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
                   <div className="relative">
-                    <h2 className="text-5xl md:text-8xl font-display text-deep-black uppercase leading-[0.85] tracking-tighter">
+                    <h2 className="text-4xl md:text-7xl font-display text-deep-black uppercase leading-[0.85] tracking-tighter">
                       HOW WE <br /><span className="text-white">OPERATE</span>
                     </h2>
                     <div className="absolute -left-12 top-1/2 w-3 h-32 bg-deep-black -translate-y-1/2 hidden lg:block"></div>
-                  </div>
-                  <div className="flex flex-col items-end gap-2 text-right">
-                    <div className="bg-deep-black text-brand-yellow px-6 py-4 border border-deep-black font-display text-xl uppercase -rotate-2 hover:rotate-0 transition-transform duration-300">
-                      System v.7.0
-                    </div>
-                    <p className="text-deep-black font-black uppercase tracking-widest text-sm max-w-[300px] leading-tight opacity-60">
-                      A comprehensive blueprint from conceptualization to global distribution.
-                    </p>
                   </div>
                 </div>
 
@@ -276,7 +260,7 @@ const App: React.FC = () => {
       </main>
 
       {/* FOOTER - Standard v.7.0 */}
-      <footer className="bg-deep-black text-white pt-24 pb-12 border-t-[1px] border-white/10 overflow-hidden relative">
+      <footer className="bg-deep-black text-white pt-16 pb-12 border-t-[1px] border-white/10 overflow-hidden relative">
 
         <div className="max-w-[1440px] mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
@@ -290,7 +274,7 @@ const App: React.FC = () => {
                 <h2 className="text-4xl md:text-5xl font-display text-brand-yellow tracking-tighter uppercase leading-none">MERCH.CORP</h2>
               </div>
 
-              <h3 className="text-3xl md:text-5xl font-display uppercase leading-tight tracking-tighter mb-10">
+              <h3 className="text-2xl md:text-4xl font-display uppercase leading-tight tracking-tighter mb-10">
                 READY TO START <br /><span className="text-brand-pink">YOUR BRAND?</span>
               </h3>
 
@@ -347,7 +331,7 @@ const App: React.FC = () => {
           </div>
 
           <div className="pt-12 border-t-[1px] border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
-            <p className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em]">© 2024 MERCH.CORP SYSTEM v7.0</p>
+            <p className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em]">© 2026 MERCH.CORP</p>
             <div className="flex gap-8 text-[9px] font-black uppercase tracking-widest text-white/10">
               <span className="hover:text-brand-yellow transition-colors cursor-default">Security Protocol</span>
               <span className="opacity-30">•</span>

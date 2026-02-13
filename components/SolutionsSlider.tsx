@@ -46,12 +46,12 @@ const SolutionsSlider: React.FC = () => {
     };
 
     return (
-        <section className="bg-stark-white py-24 md:py-32 border-b-8 border-deep-black overflow-hidden relative">
+        <section className="bg-stark-white py-16 md:py-24 border-b-8 border-deep-black overflow-hidden relative">
             {/* Parallax Background Text */}
             <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full whitespace-nowrap overflow-hidden pointer-events-none opacity-[0.05] z-0 select-none">
                 <motion.div
                     style={{ x: springX }}
-                    className="text-[25vw] font-display uppercase leading-none stroke-text-black"
+                    className="text-[20vw] font-display uppercase leading-none stroke-text-black"
                 >
                     CAPABILITIES CAPABILITIES CAPABILITIES
                 </motion.div>
@@ -65,7 +65,7 @@ const SolutionsSlider: React.FC = () => {
                         <div className="inline-block bg-deep-black text-brand-yellow px-3 py-1 mb-6 brutalist-border-sm text-xs font-bold tracking-[0.2em] uppercase">
                             Capabilities
                         </div>
-                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-display text-deep-black uppercase leading-[0.85] tracking-tighter">
+                        <h2 className="text-3xl md:text-5xl lg:text-7xl font-display text-deep-black uppercase leading-[0.85] tracking-tighter">
                             Tailored <span className="text-transparent stroke-text-black hover:text-brand-blue transition-colors duration-500">Solutions</span>
                             <br />
                             <span className="text-deep-black italic font-serif lowercase tracking-normal">for your</span> <span className="text-brand-yellow bg-deep-black px-2">Brand's</span>
@@ -82,7 +82,7 @@ const SolutionsSlider: React.FC = () => {
                             <button
                                 onClick={handlePrev}
                                 disabled={currentIndex === 0}
-                                className="w-14 h-14 brutalist-border-sm flex items-center justify-center bg-white hover:bg-brand-yellow transition-colors disabled:opacity-20 disabled:cursor-not-allowed group"
+                                className="w-12 h-12 brutalist-border-sm flex items-center justify-center bg-white hover:bg-brand-yellow transition-colors disabled:opacity-20 disabled:cursor-not-allowed group"
                                 aria-label="Previous Slide"
                             >
                                 <span className="material-symbols-outlined group-active:scale-90 transition-transform">arrow_back</span>
@@ -90,7 +90,7 @@ const SolutionsSlider: React.FC = () => {
                             <button
                                 onClick={handleNext}
                                 disabled={currentIndex >= SOLUTIONS.length}
-                                className="w-14 h-14 brutalist-border-sm flex items-center justify-center bg-white hover:bg-brand-yellow transition-colors disabled:opacity-20 disabled:cursor-not-allowed group"
+                                className="w-12 h-12 brutalist-border-sm flex items-center justify-center bg-white hover:bg-brand-yellow transition-colors disabled:opacity-20 disabled:cursor-not-allowed group"
                                 aria-label="Next Slide"
                             >
                                 <span className="material-symbols-outlined group-active:scale-90 transition-transform">arrow_forward</span>
@@ -126,7 +126,7 @@ const SolutionsSlider: React.FC = () => {
                         {SOLUTIONS.map((item, index) => (
                             <motion.div
                                 key={index}
-                                className="min-w-[300px] md:min-w-[400px] lg:min-w-[450px] relative group"
+                                className="min-w-[280px] md:min-w-[350px] lg:min-w-[400px] relative group"
                             >
                                 {/* Technical Reference Label */}
                                 <div className="flex justify-between items-end mb-4 px-2 opacity-40 group-hover:opacity-100 transition-opacity">

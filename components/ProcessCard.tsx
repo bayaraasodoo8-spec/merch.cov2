@@ -25,7 +25,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
 }) => {
     return (
         <Magnetic strength={0.25}>
-            <div className={`relative ${bgColor} text-white p-10 brutalist-border ${shadowColor} min-h-[450px] w-[350px] md:w-[450px] group interactive overflow-hidden transition-all duration-500 ${hoverColor} hover:scale-[1.02] flex-shrink-0`}>
+            <div className={`relative ${bgColor} text-white p-6 brutalist-border ${shadowColor} min-h-[350px] w-[280px] md:w-[350px] group interactive overflow-hidden transition-all duration-500 ${hoverColor} hover:scale-[1.02] flex-shrink-0`}>
                 {/* Animated corner accent */}
                 <div className={`absolute top-0 left-0 w-0 h-0 border-l-[40px] border-l-transparent border-t-[40px] ${accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
 
@@ -40,17 +40,17 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
 
                 <div className="relative z-10 h-full flex flex-col">
                     <div className="flex items-baseline gap-3">
-                        <span className={`text-6xl font-display text-white transition-colors duration-500`}>{number}</span>
-                        <span className="text-sm font-black uppercase tracking-widest opacity-0 group-hover:opacity-60 transition-opacity duration-500 delay-200">STEP</span>
+                        <span className={`text-4xl font-display text-white transition-colors duration-500`}>{number}</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-60 transition-opacity duration-500 delay-200">STEP</span>
                     </div>
 
-                    <div className="mt-8 transition-transform duration-500 group-hover:-translate-y-4">
-                        <h3 className="text-4xl font-display uppercase leading-none">{title}</h3>
-                        <div className={`w-12 h-2 bg-white mt-4 group-hover:w-full transition-all duration-500`}></div>
+                    <div className="mt-6 transition-transform duration-500 group-hover:-translate-y-4">
+                        <h3 className="text-2xl font-display uppercase leading-none">{title}</h3>
+                        <div className={`w-12 h-1 bg-white mt-4 group-hover:w-full transition-all duration-500`}></div>
                     </div>
 
-                    <div className="mt-auto opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                        <p className="font-bold text-xl leading-snug">
+                    <div className="mt-auto opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                        <p className="font-bold text-lg leading-snug">
                             {description}
                         </p>
                     </div>
