@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
               className="flex items-center gap-3 cursor-pointer group relative z-[110]"
               onClick={() => onNavigate('home')}
             >
-              <h2 className={`text-lg md:text-xl font-elegant font-bold tracking-[0.2em] uppercase leading-none transition-colors duration-500 ${isScrolled ? 'text-deep-black' : 'text-deep-black'
+              <h2 className={`text-lg md:text-xl font-elegant font-bold tracking-[0.2em] uppercase leading-none transition-colors duration-500 ${isScrolled ? 'text-deep-black' : 'text-white'
                 }`}>
                 MERCH.CORP
               </h2>

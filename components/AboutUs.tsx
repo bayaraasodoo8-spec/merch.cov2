@@ -205,39 +205,6 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
             </section>
 
 
-            {/* PARTNERS GRID SECTION - Unified Design */}
-            <section className="py-16 px-6 bg-white border-y-[1px] border-deep-black/10">
-                <div className="max-w-[1440px] mx-auto">
-                    <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
-                        <div>
-                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-blue mb-4 block">Collaborations</span>
-                            <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tighter text-deep-black leading-none">
-                                OUR VALUABLE <br /><span className="text-brand-pink">PARTNERS</span>
-                            </h2>
-                        </div>
-                        <div className="flex gap-4">
-                            <button onClick={onContact} className="bg-brand-blue text-white px-8 py-3 font-bold uppercase tracking-widest hover:bg-deep-black transition-all border-[1px] border-brand-blue text-[11px]">
-                                Get Started
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 border-[1px] border-deep-black/10">
-                        {[
-                            "W", "Spotify", "Discord", "Netflix",
-                            "GitHub", "Confluence", "Vimeo", "Figma",
-                            "Slack", "Webflow", "Atlassian", "Linear"
-                        ].map((partner, i) => (
-                            <div key={i} className="bg-white p-12 flex items-center justify-center aspect-[3/2] border-[1px] border-deep-black/5 hover:bg-brand-yellow/10 transition-colors group relative overflow-hidden">
-                                <span className={`text-xl font-display uppercase tracking-tight text-deep-black/20 group-hover:text-deep-black group-hover:scale-110 transition-all z-10 ${i % 3 === 0 ? 'font-elegant italic' : ''}`}>
-                                    {partner}
-                                </span>
-                                <div className="absolute inset-0 bg-brand-yellow/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* CALL TO ACTION - Standard v.7.0 */}
             <section className="relative py-24 md:py-32 px-6 overflow-hidden border-y-[1px] border-deep-black/10 bg-brand-yellow">

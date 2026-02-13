@@ -8,7 +8,9 @@ import VerticalTimeline from './components/VerticalTimeline';
 import SolutionsSlider from './components/SolutionsSlider';
 import AboutUs from './components/AboutUs';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Footer from './components/Footer';
 import { PROMISES, COLLECTIONS, CATEGORIES, PROCESS_STEPS } from './constants';
+import heroImage from './assets/image.png';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
@@ -67,7 +69,7 @@ const App: React.FC = () => {
                 className="absolute inset-0 z-0"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2000&auto=format&fit=crop"
+                  src={heroImage}
                   alt="High Fashion Editorial"
                   className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
                 />
@@ -259,89 +261,11 @@ const App: React.FC = () => {
         )}
       </main>
 
-      {/* FOOTER - Standard v.7.0 */}
-      <footer className="bg-deep-black text-white pt-16 pb-12 border-t-[1px] border-white/10 overflow-hidden relative">
-
-        <div className="max-w-[1440px] mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
-            <div className="lg:col-span-5">
-              <div className="flex items-center gap-3 mb-10 group cursor-pointer" onClick={() => setCurrentPage('home')}>
-                <div className="bg-brand-yellow p-1.5 border border-deep-black group-hover:rotate-12 transition-transform duration-500">
-                  <svg className="w-10 h-10 text-deep-black" fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
-                  </svg>
-                </div>
-                <h2 className="text-4xl md:text-5xl font-display text-brand-yellow tracking-tighter uppercase leading-none">MERCH.CORP</h2>
-              </div>
-
-              <h3 className="text-2xl md:text-4xl font-display uppercase leading-tight tracking-tighter mb-10">
-                READY TO START <br /><span className="text-brand-pink">YOUR BRAND?</span>
-              </h3>
-
-              <div className="flex flex-col sm:flex-row gap-6">
-                <Magnetic strength={0.3}>
-                  <button
-                    onClick={() => setIsContactOpen(true)}
-                    className="bg-brand-yellow text-deep-black px-10 py-5 text-lg font-bold border border-brand-yellow hover:bg-transparent hover:text-brand-yellow uppercase transition-all flex items-center gap-3 tracking-widest"
-                  >
-                    Start Your Project
-                  </button>
-                </Magnetic>
-              </div>
-            </div>
-
-            <div className="lg:col-span-2 lg:col-start-7">
-              <h4 className="font-display text-brand-pink text-xs mb-8 uppercase tracking-[0.4em] opacity-60">General</h4>
-              <ul className="flex flex-col gap-4 text-[10px] font-bold uppercase tracking-[0.3em]">
-                <li><button onClick={() => setCurrentPage('about')} className="hover:text-brand-yellow transition-colors duration-300 group text-left">
-                  About Us
-                </button></li>
-                <li><button onClick={() => handleScrollToSection('products')} className="hover:text-brand-yellow transition-colors duration-300 group text-left">
-                  Products
-                </button></li>
-                <li><button onClick={() => handleScrollToSection('corporate')} className="hover:text-brand-yellow transition-colors duration-300 group text-left">
-                  Corporate
-                </button></li>
-                <li><button onClick={() => handleScrollToSection('projects')} className="hover:text-brand-yellow transition-colors duration-300 group text-left">
-                  Projects
-                </button></li>
-              </ul>
-            </div>
-
-            <div className="lg:col-span-3 lg:col-start-10">
-              <h4 className="font-display text-brand-blue text-xs mb-8 uppercase tracking-[0.4em] opacity-60">Connect</h4>
-              <div className="flex flex-col gap-8">
-                <div className="space-y-2">
-                  <p className="text-white/40 font-bold uppercase tracking-widest text-[9px]">Direct Line</p>
-                  <a href="tel:+97677377007" className="text-xl font-display tracking-tight hover:text-brand-yellow transition-colors block">+976 77377007</a>
-                </div>
-
-                <div className="space-y-2">
-                  <p className="text-white/40 font-bold uppercase tracking-widest text-[9px]">Email</p>
-                  <a href="mailto:contact@merchand.co" className="text-xl font-display lowercase tracking-tight hover:text-brand-yellow transition-colors">contact@merchand.co</a>
-                </div>
-
-                <div className="flex gap-10 text-[10px] font-bold uppercase tracking-[0.3em] text-white/50">
-                  <button className="hover:text-brand-yellow transition-colors">Social</button>
-                  <button className="hover:text-brand-yellow transition-colors">Email</button>
-                  <button className="hover:text-brand-yellow transition-colors">Office</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-12 border-t-[1px] border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
-            <p className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em]">© 2026 MERCH.CORP</p>
-            <div className="flex gap-8 text-[9px] font-black uppercase tracking-widest text-white/10">
-              <span className="hover:text-brand-yellow transition-colors cursor-default">Security Protocol</span>
-              <span className="opacity-30">•</span>
-              <span className="hover:text-brand-blue transition-colors cursor-default">Verified Network</span>
-              <span className="opacity-30">•</span>
-              <span className="hover:text-brand-pink transition-colors cursor-default">Encrypted Layer</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer
+        onNavigate={setCurrentPage}
+        onScrollToSection={handleScrollToSection}
+        onContact={() => setIsContactOpen(true)}
+      />
 
       {/* FLOATING ACTION BUTTON */}
       <div className="fixed bottom-10 right-10 z-[110]">

@@ -27,26 +27,16 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         setIsSending(true);
 
         try {
-            // Create mailto link with form data
             const subject = encodeURIComponent(`New Inquiry: ${formData.service}`);
             const body = encodeURIComponent(
                 `Name: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\n\nMessage:\n${formData.message}`
             );
             const mailtoLink = `mailto:contact@merchand.co?subject=${subject}&body=${body}`;
-
-            // Open email client
             window.location.href = mailtoLink;
-
-            // Show success message
             setSubmitted(true);
             setTimeout(() => {
                 setSubmitted(false);
-                setFormData({
-                    name: '',
-                    email: '',
-                    service: 'Custom Design',
-                    message: '',
-                });
+                setFormData({ name: '', email: '', service: 'Custom Design', message: '' });
                 onClose();
             }, 2000);
         } catch (err: any) {
@@ -59,120 +49,129 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-deep-black/90 backdrop-blur-md">
+                <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-deep-black/60 backdrop-blur-md">
+                    <div
+                        className="absolute inset-0 cursor-pointer"
+                        onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}
+                    />
+
                     <motion.div
-                        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                        initial={{ scale: 0.98, opacity: 0, y: 10 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                        className="bg-stark-white w-full max-w-xl brutalist-border brutalist-shadow-blue p-6 md:p-10 relative overflow-hidden"
+                        exit={{ scale: 0.98, opacity: 0, y: 10 }}
+                        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                        className="bg-deep-black w-full max-w-md max-h-[90vh] flex flex-col border border-white/10 shadow-2xl relative overflow-hidden rounded-sm"
                     >
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-brand-yellow brutalist-border-sm -mr-16 -mt-16 rotate-45 pointer-events-none" />
-
-                        <button
-                            onClick={onClose}
-                            className="absolute top-4 right-4 bg-deep-black text-white p-2 hover:bg-brand-pink transition-colors brutalist-border-sm z-10"
-                        >
-                            <span className="material-symbols-outlined font-bold">close</span>
-                        </button>
-
-                        {!submitted ? (
-                            <>
-                                <h2 className="text-3xl md:text-5xl font-display text-deep-black uppercase tracking-tighter mb-2">
-                                    LET&apos;S BUILD <br />
-                                    <span className="text-brand-blue">YOUR LEGACY</span>
+                        {/* header */}
+                        <div className="sticky top-0 z-20 bg-deep-black/90 backdrop-blur-sm border-b border-white/5 px-6 py-4">
+                            <div className="flex items-center justify-between">
+                                <h2 className="text-xl font-display text-white uppercase tracking-tight">
+                                    Inquiry <span className="text-brand-blue font-normal">v1</span>
                                 </h2>
-                                <p className="text-base font-bold uppercase tracking-widest text-deep-black/60 mb-8">
-                                    Start your project inquiry below.
-                                </p>
 
-                                {errorMsg && (
-                                    <div className="mb-6 p-4 bg-brand-pink/15 brutalist-border-sm">
-                                        <p className="font-bold text-deep-black">{errorMsg}</p>
+                                <button
+                                    onClick={onClose}
+                                    className="h-8 w-8 grid place-items-center bg-white/5 hover:bg-white/10 border border-white/5 transition-colors rounded-full"
+                                    aria-label="Close"
+                                >
+                                    <span className="material-symbols-outlined text-[18px] text-white/60">close</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
+                            {!submitted ? (
+                                <>
+                                    <div className="mb-8">
+                                        <p className="text-[9px] font-bold uppercase tracking-widest text-white/40 mb-1">
+                                            Project Brief
+                                        </p>
+                                        <h3 className="text-base font-body text-white/80">
+                                            Start your neural project mapping.
+                                        </h3>
                                     </div>
-                                )}
 
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div className="space-y-2">
-                                            <label className="block text-sm font-black uppercase tracking-widest">Full Name</label>
+                                    {errorMsg && (
+                                        <div className="mb-6 px-4 py-2 border border-brand-pink/30 bg-brand-pink/5">
+                                            <p className="text-xs text-brand-pink">{errorMsg}</p>
+                                        </div>
+                                    )}
+
+                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                        <div className="space-y-1.5">
+                                            <label className="text-[9px] font-bold uppercase tracking-widest text-white/30 px-0.5">Identify</label>
                                             <input
                                                 required
                                                 type="text"
                                                 value={formData.name}
                                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                                className="w-full bg-white brutalist-border-sm p-4 font-bold focus:ring-2 focus:ring-brand-blue outline-none transition-all"
-                                                placeholder="John Doe"
+                                                className="w-full bg-white/5 border border-white/10 p-3 text-sm font-body text-white placeholder:text-white/20 outline-none focus:border-brand-blue/30 transition-all rounded-sm"
+                                                placeholder="Name"
                                                 disabled={isSending}
                                             />
                                         </div>
 
-                                        <div className="space-y-2">
-                                            <label className="block text-sm font-black uppercase tracking-widest">Email Address</label>
+                                        <div className="space-y-1.5">
+                                            <label className="text-[9px] font-bold uppercase tracking-widest text-white/30 px-0.5">Endpoint</label>
                                             <input
                                                 required
                                                 type="email"
                                                 value={formData.email}
                                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                className="w-full bg-white brutalist-border-sm p-4 font-bold focus:ring-2 focus:ring-brand-blue outline-none transition-all"
-                                                placeholder="john@brand.com"
+                                                className="w-full bg-white/5 border border-white/10 p-3 text-sm font-body text-white placeholder:text-white/20 outline-none focus:border-brand-blue/30 transition-all rounded-sm"
+                                                placeholder="Email"
                                                 disabled={isSending}
                                             />
                                         </div>
-                                    </div>
 
-                                    <div className="space-y-2">
-                                        <label className="block text-sm font-black uppercase tracking-widest">Service Type</label>
-                                        <select
-                                            value={formData.service}
-                                            onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                                            className="w-full bg-white brutalist-border-sm p-4 font-bold focus:ring-2 focus:ring-brand-blue outline-none appearance-none cursor-pointer"
-                                            disabled={isSending}
-                                        >
-                                            <option>Screen Printing</option>
-                                            <option>Embroidery</option>
-                                            <option>Custom Design</option>
-                                            <option>Bulk Order</option>
-                                        </select>
-                                    </div>
+                                        <div className="space-y-1.5">
+                                            <label className="text-[9px] font-bold uppercase tracking-widest text-white/30 px-0.5">Sector</label>
+                                            <select
+                                                value={formData.service}
+                                                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                                                className="w-full bg-white/5 border border-white/10 p-3 text-sm font-body text-white/80 outline-none cursor-pointer rounded-sm"
+                                                disabled={isSending}
+                                            >
+                                                <option className="bg-deep-black">Screen Printing</option>
+                                                <option className="bg-deep-black">Embroidery</option>
+                                                <option className="bg-deep-black">Custom Design</option>
+                                                <option className="bg-deep-black">Bulk Order</option>
+                                            </select>
+                                        </div>
 
-                                    <div className="space-y-2">
-                                        <label className="block text-[10px] font-black uppercase tracking-widest">Project Details</label>
-                                        <textarea
-                                            required
-                                            value={formData.message}
-                                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                            className="w-full h-28 bg-white brutalist-border-sm p-4 font-bold focus:ring-2 focus:ring-brand-blue outline-none transition-all resize-none"
-                                            placeholder="Tell us about your vision..."
-                                            disabled={isSending}
-                                        />
-                                    </div>
+                                        <div className="space-y-1.5">
+                                            <label className="text-[9px] font-bold uppercase tracking-widest text-white/30 px-0.5">Logic</label>
+                                            <textarea
+                                                required
+                                                value={formData.message}
+                                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                                className="w-full h-24 bg-white/5 border border-white/10 p-3 text-sm font-body text-white placeholder:text-white/20 outline-none focus:border-brand-blue/30 transition-all resize-none rounded-sm"
+                                                placeholder="Scope"
+                                                disabled={isSending}
+                                            />
+                                        </div>
 
-                                    <Magnetic strength={0.2}>
                                         <button
                                             type="submit"
                                             disabled={isSending}
-                                            className="w-full bg-deep-black text-brand-yellow py-4 text-xl font-display uppercase brutalist-border brutalist-shadow-blue hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all disabled:opacity-60 disabled:hover:translate-x-0 disabled:hover:translate-y-0 disabled:hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                                            className="w-full py-3 mt-4 bg-brand-blue text-white text-[10px] font-black uppercase tracking-[0.4em] hover:opacity-90 disabled:opacity-20 transition-all rounded-sm"
                                         >
-                                            {isSending ? 'SENDING...' : 'SEND INQUIRY'}
+                                            {isSending ? 'Transmitting...' : 'Initialize'}
                                         </button>
-                                    </Magnetic>
-                                </form>
-                            </>
-                        ) : (
-                            <div className="text-center py-20 flex flex-col items-center gap-6">
-                                <motion.div
-                                    initial={{ scale: 0 }}
-                                    animate={{ scale: 1 }}
-                                    className="w-24 h-24 bg-brand-yellow rounded-full flex items-center justify-center brutalist-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-                                >
-                                    <span className="material-symbols-outlined text-5xl text-deep-black font-bold">check</span>
-                                </motion.div>
-                                <h2 className="text-4xl font-display uppercase tracking-tight">MISSION RECEIVED</h2>
-                                <p className="text-xl font-bold uppercase tracking-widest text-deep-black/60">
-                                    Our team will reach out within 24 hours.
-                                </p>
-                            </div>
-                        )}
+                                    </form>
+                                </>
+                            ) : (
+                                <div className="text-center py-12 flex flex-col items-center gap-4">
+                                    <div className="w-12 h-12 border border-brand-yellow/30 flex items-center justify-center rounded-full">
+                                        <span className="material-symbols-outlined text-brand-yellow text-xl">check</span>
+                                    </div>
+                                    <h2 className="text-lg font-display text-white uppercase tracking-tight">Received</h2>
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">
+                                        Response within 24 standard hours.
+                                    </p>
+                                </div>
+                            )}
+                        </div>
                     </motion.div>
                 </div>
             )}

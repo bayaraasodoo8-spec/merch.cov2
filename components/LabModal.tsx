@@ -50,7 +50,7 @@ const LabModal: React.FC<LabModalProps> = ({ isOpen, onClose }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-deep-black/90 backdrop-blur-xl transition-all duration-500">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-deep-black/60 backdrop-blur-md transition-all duration-500">
           {/* Backdrop interaction layer */}
           <div
             className="absolute inset-0 cursor-pointer"
@@ -61,174 +61,142 @@ const LabModal: React.FC<LabModalProps> = ({ isOpen, onClose }) => {
 
           <motion.div
             ref={panelRef}
-            initial={{ scale: 0.95, opacity: 0, y: 30 }}
+            initial={{ scale: 0.98, opacity: 0, y: 10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-            className="bg-deep-black w-full max-w-2xl max-h-[85vh] flex flex-col brutalist-border-sm border-white/20 shadow-[0_0_50px_rgba(0,0,0,0.5)] relative overflow-hidden"
+            exit={{ scale: 0.98, opacity: 0, y: 10 }}
+            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            className="bg-deep-black w-full max-w-lg max-h-[80vh] flex flex-col border border-white/10 shadow-2xl relative overflow-hidden"
           >
-            {/* Ambient Background Glow */}
-            <div className="absolute top-0 right-0 w-48 h-48 bg-brand-blue/10 rounded-full blur-[80px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-pink/10 rounded-full blur-[80px] pointer-events-none" />
+            {/* Minimal Background indicator (optional, kept very subtle) */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue/5 rounded-full blur-[60px] pointer-events-none" />
 
             {/* header */}
-            <div className="sticky top-0 z-20 bg-deep-black/80 backdrop-blur-md border-b border-white/10 px-6 md:px-8 py-4">
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex flex-col">
-                  <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-white/40 mb-1">
-                    NEURAL DESIGN FACILITY
-                  </span>
-                  <div className="flex items-baseline gap-3">
-                    <h2 className="text-2xl md:text-4xl font-display text-white uppercase tracking-tighter leading-none">
-                      LAB <span className="text-brand-yellow italic">V2</span>
-                    </h2>
-                    <div className="px-2 py-0.5 bg-brand-blue/20 border border-brand-blue/30 rounded text-[9px] font-black text-brand-blue uppercase tracking-widest">
-                      AI Powered
-                    </div>
+            <div className="sticky top-0 z-20 bg-deep-black/90 backdrop-blur-sm border-b border-white/5 px-6 py-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <h2 className="text-xl font-display text-white uppercase tracking-tight">
+                    LAB <span className="text-brand-yellow font-normal">v2</span>
+                  </h2>
+                  <div className="px-1.5 py-0.5 border border-white/10 rounded text-[8px] font-medium text-white/40 uppercase tracking-widest">
+                    Neural
                   </div>
                 </div>
 
-                <Magnetic strength={0.3}>
-                  <button
-                    onClick={onClose}
-                    className="group shrink-0 h-12 w-12 grid place-items-center bg-white/5 hover:bg-brand-pink border border-white/10 hover:border-brand-pink transition-all duration-300 rounded-full"
-                    aria-label="Close"
-                  >
-                    <span className="material-symbols-outlined text-[20px] text-white group-hover:scale-110 group-hover:rotate-90 transition-transform duration-500">close</span>
-                  </button>
-                </Magnetic>
+                <button
+                  onClick={onClose}
+                  className="h-8 w-8 grid place-items-center bg-white/5 hover:bg-white/10 border border-white/5 transition-colors rounded-full"
+                  aria-label="Close"
+                >
+                  <span className="material-symbols-outlined text-[18px] text-white/60">close</span>
+                </button>
               </div>
             </div>
 
             {/* Scrollable container */}
             <div className="flex-1 overflow-y-auto custom-scrollbar">
-              <div className="px-6 md:px-8 py-6 md:py-8">
-                <div className="grid gap-6">
-                  <div className="space-y-3">
-                    <div className="flex items-end justify-between">
-                      <label className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-white/60">
-                        Describe your conceptual vision
+              <div className="px-6 py-6">
+                <div className="grid gap-5">
+                  <div className="space-y-2">
+                    <div className="flex items-end justify-between px-0.5">
+                      <label className="text-[9px] font-bold uppercase tracking-widest text-white/40">
+                        Concept Vision
                       </label>
-                      <span className="text-[9px] font-bold font-mono text-brand-yellow/50">
+                      <span className="text-[8px] font-mono text-white/20">
                         {description.length}/320
                       </span>
                     </div>
 
-                    <div className="relative group">
+                    <div className="relative">
                       <textarea
                         ref={textareaRef}
                         value={description}
                         onChange={(e) => setDescription(e.target.value.slice(0, 320))}
-                        placeholder="e.g. Minimalist cyber-organic coffee brand. High contrast, monochromatic with electric blue accents. Sharp edges, technical typography."
-                        className="w-full h-28 md:h-32 bg-white/5 border border-white/10 p-5 text-sm md:text-base font-body font-medium text-white placeholder:text-white/20 outline-none focus:border-brand-yellow/50 focus:bg-white/[0.08] transition-all resize-none rounded-sm"
+                        placeholder="e.g. Minimalist coffee brand, monochromatic, technical typography."
+                        className="w-full h-24 bg-white/5 border border-white/10 p-4 text-sm font-body text-white placeholder:text-white/20 outline-none focus:border-brand-yellow/30 transition-all resize-none rounded-sm"
                       />
-                      <div className="absolute bottom-0 left-0 h-[2px] bg-brand-yellow w-0 group-focus-within:w-full transition-all duration-700" />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-2">
                     <button
                       onClick={() => {
                         setDescription('');
                         setResult(null);
                         textareaRef.current?.focus();
                       }}
-                      className="group relative overflow-hidden py-3 border border-white/10 hover:border-white/20 transition-colors"
+                      className="py-2.5 border border-white/5 bg-white/5 hover:bg-white/10 transition-colors rounded-sm"
                     >
-                      <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.3em] text-white/50 group-hover:text-white transition-colors">
-                        Reset System
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-white/40">
+                        Reset
                       </span>
                     </button>
 
-                    <Magnetic strength={0.1}>
-                      <button
-                        onClick={handleGenerate}
-                        disabled={loading || !description.trim()}
-                        className="w-full relative overflow-hidden py-3 bg-brand-yellow group disabled:opacity-30 disabled:grayscale"
-                      >
-                        <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                        <span className="relative z-10 text-center text-[10px] font-black uppercase tracking-[0.3em] text-deep-black">
-                          {loading ? (
-                            <span className="flex items-center justify-center gap-2">
-                              <svg className="animate-spin h-3 w-3 text-deep-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                              </svg>
-                              Processing...
-                            </span>
-                          ) : 'Initialize Brainstorm'}
-                        </span>
-                      </button>
-                    </Magnetic>
+                    <button
+                      onClick={handleGenerate}
+                      disabled={loading || !description.trim()}
+                      className="py-2.5 bg-brand-yellow hover:opacity-90 disabled:opacity-20 transition-all rounded-sm"
+                    >
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-deep-black">
+                        {loading ? 'Processing...' : 'Generate'}
+                      </span>
+                    </button>
                   </div>
-
-                  <p className="text-[10px] md:text-xs font-medium text-white/30 uppercase tracking-widest leading-relaxed">
-                    <span className="text-brand-pink mr-2">PROTOCOL:</span>
-                    Include audience demographics, stylistic keywords (e.g. "Acid House", "Swiss Grid"), and core values for optimal neural mapping.
-                  </p>
                 </div>
 
                 {/* result */}
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                   {result && (
                     <motion.div
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4"
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mt-8 space-y-3"
                     >
-                      {/* Brand Logic Card */}
-                      <div className="bg-white/5 border border-white/10 p-6 relative group overflow-hidden">
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-brand-blue/5 -mr-10 -mt-10 rounded-full blur-xl group-hover:bg-brand-blue/10 transition-colors" />
-
-                        <div className="flex items-center justify-between mb-6">
-                          <h3 className="text-[9px] font-black uppercase tracking-[0.4em] text-brand-blue">
-                            Strategic Mapping
+                      {/* Strategic Mapping */}
+                      <div className="bg-white/5 border border-white/10 p-5 rounded-sm">
+                        <div className="flex items-center gap-2 mb-4">
+                          <div className="w-1 h-1 bg-brand-blue rounded-full" />
+                          <h3 className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-blue">
+                            Strategy
                           </h3>
-                          <div className="h-[1px] w-10 bg-brand-blue/30" />
                         </div>
 
-                        <p className="text-lg md:text-xl font-display text-white uppercase leading-tight tracking-tighter mb-8">
+                        <p className="text-base font-display text-white uppercase tracking-tight mb-6">
                           {result.brandAngle}
                         </p>
 
-                        <div className="space-y-3">
-                          <span className="text-[8px] font-bold text-white/30 uppercase tracking-[0.4em]">Suggested Artifacts</span>
-                          <ul className="grid grid-cols-1 gap-2">
+                        <div className="space-y-2">
+                          <span className="text-[8px] font-bold text-white/20 uppercase tracking-widest">Artifacts</span>
+                          <div className="flex flex-wrap gap-2">
                             {result.suggestedItems?.map((item: string, i: number) => (
-                              <li key={i} className="flex items-center gap-2">
-                                <div className="w-1 h-1 bg-brand-blue rounded-full" />
-                                <span className="text-xs font-bold text-white/80 uppercase tracking-widest">{item}</span>
-                              </li>
+                              <span key={i} className="px-2 py-1 bg-white/5 border border-white/5 text-[9px] font-medium text-white/60 uppercase tracking-wider rounded-sm">
+                                {item}
+                              </span>
                             ))}
-                          </ul>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Creative Expression Card */}
-                      <div className="bg-brand-pink p-6 relative group overflow-hidden">
-                        <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-deep-black/10 rounded-full" />
-
-                        <div className="flex items-center justify-between mb-6">
-                          <h3 className="text-[9px] font-black uppercase tracking-[0.4em] text-deep-black">
-                            Verbal Identity
+                      {/* Verbal & Visual direction */}
+                      <div className="bg-white/5 border border-white/10 p-5 rounded-sm">
+                        <div className="flex items-center gap-2 mb-4">
+                          <div className="w-1 h-1 bg-brand-pink rounded-full" />
+                          <h3 className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-pink">
+                            Identity
                           </h3>
-                          <div className="h-[1px] w-10 bg-deep-black/20" />
                         </div>
 
-                        <div className="space-y-4 mb-8">
+                        <div className="space-y-2 mb-6">
                           {result.slogans?.map((slogan: string, i: number) => (
-                            <p
-                              key={i}
-                              className="text-xl md:text-2xl font-display text-white uppercase leading-[0.85] tracking-tighter"
-                            >
+                            <p key={i} className="text-lg font-display text-white uppercase leading-none tracking-tight">
                               “{slogan}”
                             </p>
                           ))}
                         </div>
 
-                        <div className="pt-6 border-t border-deep-black/10">
-                          <span className="text-[8px] font-bold text-deep-black/40 uppercase tracking-[0.4em] block mb-2">Visual Direction</span>
-                          <p className="text-xs md:text-sm font-body font-bold italic text-deep-black/80 leading-snug">
+                        <div className="pt-4 border-t border-white/5">
+                          <span className="text-[8px] font-bold text-white/20 uppercase tracking-widest block mb-2">Visual Direction</span>
+                          <p className="text-xs font-body text-white/60 leading-relaxed italic">
                             {result.visualDirection}
                           </p>
                         </div>
