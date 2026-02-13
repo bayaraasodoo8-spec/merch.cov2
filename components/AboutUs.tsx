@@ -84,26 +84,19 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                 <div className="max-w-[1440px] mx-auto">
                     <div className="flex flex-col lg:flex-row items-end justify-between mb-16 md:mb-20 gap-10">
                         <div className="relative">
-                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] bg-brand-blue text-white px-4 py-2 mb-6 inline-block">
-                                Core Values
-                            </span>
                             <h2 className="text-3xl md:text-6xl font-display uppercase leading-[0.9] tracking-tighter">
                                 WHAT WE <br />
                                 <span className="text-brand-pink">STAND FOR</span>
                             </h2>
                         </div>
 
-                        <div className="text-right max-w-md">
-                            <p className="text-lg md:text-xl font-body font-medium uppercase leading-tight opacity-70 italic">
-                                Uncompromising standards. Ethical practices. Relentless innovation.
-                            </p>
-                        </div>
+
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                         {[
                             {
-                                title: 'Precision',
+                                title: 'Storytelling',
                                 desc: 'Every stitch counts. We obsess over details others ignore.',
                                 icon: 'precision_manufacturing',
                                 color: 'bg-brand-yellow',
@@ -111,7 +104,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                 tag: 'Quality-first'
                             },
                             {
-                                title: 'Integrity',
+                                title: 'Lifestyle',
                                 desc: 'Honest pricing, ethical sourcing, and transparency.',
                                 icon: 'handshake',
                                 color: 'bg-white',
@@ -119,7 +112,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                 tag: 'Transparent'
                             },
                             {
-                                title: 'Speed',
+                                title: 'feeling',
                                 desc: 'Rapid prototyping to global distribution at scale.',
                                 icon: 'rocket_launch',
                                 color: 'bg-brand-pink',
@@ -127,7 +120,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                 tag: 'Fast turnaround'
                             },
                             {
-                                title: 'Partnership',
+                                title: 'Quality',
                                 desc: 'We are not just vendors; we are extensions of your brand team, dedicated to your growth.',
                                 icon: 'groups',
                                 color: 'bg-brand-blue',
@@ -204,9 +197,6 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                 {/* footer micro-detail */}
                                 <div className="relative z-10 mt-8 flex items-center gap-3 opacity-70 group-hover:opacity-100 transition-opacity">
                                     <span className="w-8 h-[1px] bg-current opacity-40" />
-                                    <span className="text-[11px] font-bold uppercase tracking-[0.35em]">
-                                        Learn more
-                                    </span>
                                 </div>
                             </motion.div>
                         ))}
