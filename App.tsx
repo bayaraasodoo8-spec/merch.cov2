@@ -79,22 +79,27 @@ const App: React.FC = () => {
                 </h1>
               </div>
 
-              <div className="absolute bottom-32 left-0 right-0 z-20 flex flex-col items-center gap-8">
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 0.9, y: 0 }}
-                  transition={{ delay: 1, duration: 1.5 }}
-                  className="text-[10px] md:text-xs font-display tracking-[0.5em] text-white uppercase drop-shadow-lg"
-                >
-                  Defining the next generation of identities
-                </motion.p>
+              <div className="absolute bottom-40 md:bottom-48 left-0 right-0 z-20 flex flex-col items-center gap-12 px-6">
+                <div className="max-w-12xl text-center">
+                  <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
+                    className="text-5xl md:text-9xl lg:text-12xl font-display font-bold text-white uppercase leading-[1.1] tracking-tighter drop-shadow-2xl mb-24"
+                  >
+                    Бид таны брэндийг <br />
+                    <span className="text-brand-yellow">бодит болгоно</span>
+                  </motion.h2>
+
+                </div>
+
                 <div className="flex flex-col items-center">
                   <button
                     onClick={() => setIsContactOpen(true)}
-                    className="group relative px-10 py-5 overflow-hidden border border-brand-yellow bg-brand-yellow"
+                    className="group relative px-12 py-6 overflow-hidden border border-brand-yellow bg-brand-yellow transition-transform duration-300 hover:scale-105 active:scale-95"
                   >
-                    <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.4em] text-deep-black transition-colors duration-500 group-hover:text-white">
-                      Get Started
+                    <span className="relative z-10 text-[12px] font-bold uppercase tracking-[0.4em] text-deep-black transition-colors duration-500 group-hover:text-white">
+                      Customize your merch
                     </span>
                     <motion.div
                       className="absolute inset-0 bg-deep-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
