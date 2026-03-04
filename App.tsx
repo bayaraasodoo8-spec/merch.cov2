@@ -75,7 +75,7 @@ const App: React.FC = () => {
 
               <div className="absolute inset-0 flex items-center justify-center z-10 overflow-hidden pointer-events-none">
                 <h1 className="text-[18vw] font-elegant font-bold uppercase text-white/[0.08] leading-none tracking-tighter select-none mix-blend-overlay">
-                  MERCH.CORP
+                  Merch.Corp
                 </h1>
               </div>
 
@@ -98,7 +98,7 @@ const App: React.FC = () => {
                     onClick={() => setIsContactOpen(true)}
                     className="group relative px-12 py-6 overflow-hidden border border-brand-yellow bg-brand-yellow transition-transform duration-300 hover:scale-105 active:scale-95"
                   >
-                    <span className="relative z-10 text-[12px] font-bold uppercase tracking-[0.4em] text-deep-black transition-colors duration-500 group-hover:text-white">
+                    <span className="relative z-10 text-[12px] font-bold tracking-[0.4em] text-deep-black transition-colors duration-500 group-hover:text-white">
                       Customize your merch
                     </span>
                     <motion.div
@@ -117,13 +117,13 @@ const App: React.FC = () => {
               <div className="animate-marquee flex gap-8 md:gap-12 items-center">
                 {Array(10).fill(null).map((_, i) => (
                   <React.Fragment key={i}>
-                    <span className="text-xl md:text-2xl font-display uppercase tracking-widest opacity-80 text-deep-black">Events</span>
+                    <span className="text-xl md:text-2xl font-display tracking-widest opacity-80 text-deep-black">Events</span>
                     <span className="text-lg text-brand-blue/40">•</span>
-                    <span className="text-xl md:text-2xl font-display uppercase tracking-widest opacity-80 text-deep-black">People</span>
+                    <span className="text-xl md:text-2xl font-display tracking-widest opacity-80 text-deep-black">People</span>
                     <span className="text-lg text-brand-blue/40">•</span>
-                    <span className="text-xl md:text-2xl font-display uppercase tracking-widest opacity-80 text-deep-black">Partner Companies</span>
+                    <span className="text-xl md:text-2xl font-display tracking-widest opacity-80 text-deep-black">Partner Companies</span>
                     <span className="text-lg text-brand-blue/40">•</span>
-                    <span className="text-xl md:text-2xl font-display uppercase tracking-widest opacity-80 text-deep-black">Customized Merch</span>
+                    <span className="text-xl md:text-2xl font-display tracking-widest opacity-80 text-deep-black">Customized Merch</span>
                     <span className="text-lg text-electric-blue/40">•</span>
                   </React.Fragment>
                 ))}
@@ -138,7 +138,7 @@ const App: React.FC = () => {
                   transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
                   className="max-w-5xl"
                 >
-                  <p className="text-xl md:text-3xl lg:text-5xl font-display text-white leading-[0.9] uppercase tracking-tighter cursor-default">
+                  <p className="text-xl md:text-3xl lg:text-5xl font-display text-white leading-[0.9] tracking-tighter cursor-default">
                     94% of employees receiving swag monthly reported being <span className="text-brand-yellow">very satisfied</span> with the their jobs.<br />
                   </p>
                 </motion.div>
@@ -149,8 +149,8 @@ const App: React.FC = () => {
               <div className="max-w-[1440px] mx-auto">
                 <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
                   <div className="relative">
-                    <h2 className="text-3xl md:text-5xl font-display text-deep-black uppercase leading-tight tracking-tighter">
-                      <span className="text-brand-pink">PRODUCTS</span>
+                    <h2 className="text-3xl md:text-5xl font-display text-deep-black leading-tight tracking-tighter">
+                      <span className="text-brown">Products</span>
                     </h2>
                   </div>
                 </div>
@@ -177,14 +177,14 @@ const App: React.FC = () => {
 
                         <div className="absolute inset-0 p-8 flex flex-col justify-end">
                           <div className="flex flex-col transform translate-y-4 group-hover/card:translate-y-0 transition-transform duration-500">
-                            <span className="font-display text-4xl text-white uppercase tracking-tighter leading-none mb-2">{cat.name}</span>
+                            <span className="font-display text-4xl text-white tracking-tighter leading-none mb-2">{cat.name}</span>
                             <div className="h-[1px] w-0 group-hover/card:w-full bg-brand-yellow transition-all duration-700 mb-4" />
-                            <span className="text-[10px] font-bold text-white uppercase tracking-[0.4em] opacity-60 group-hover/card:opacity-100 transition-opacity">Explore Collection</span>
+                            <span className="text-[10px] font-bold text-white tracking-[0.4em] opacity-60 group-hover/card:opacity-100 transition-opacity">Explore Collection</span>
                           </div>
                         </div>
 
                         <div className="absolute top-6 right-6 bg-brand-yellow text-deep-black font-display text-[10px] px-3 py-1.5 border border-deep-black opacity-0 group-hover/card:opacity-100 transition-all transform -rotate-12 group-hover/card:rotate-0 duration-500">
-                          LIMITED EDITION
+                          Limited Edition
                         </div>
                       </div>
                     </Magnetic>
@@ -222,13 +222,13 @@ const App: React.FC = () => {
             <Magnetic strength={0.4}>
               <button
                 onClick={() => setIsContactOpen(true)}
-                className="group relative px-10 py-4 border-[1px] border-brand-pink rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,100,203,0.4)] bg-transparent"
+                className="group relative px-10 py-4 border-[1px] border-brown rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(147,133,96,0.4)] bg-transparent"
               >
-                <div className="absolute inset-0 bg-brand-pink translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo" />
+                <div className="absolute inset-0 bg-brown translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo" />
 
                 <div className="relative z-10 flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse" />
-                  <span className="font-display text-lg uppercase tracking-[0.3em] text-brand-pink group-hover:text-white transition-colors duration-500">
+                  <span className="font-display text-lg tracking-[0.3em] text-brown group-hover:text-white transition-colors duration-500">
                     Start
                   </span>
                 </div>

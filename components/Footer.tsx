@@ -26,7 +26,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
                         transition={{ duration: 0.8 }}
                         className="text-3xl md:text-4xl font-display font-bold text-deep-black mb-6 uppercase tracking-tight"
                     >
-                        Our trusted <span className="text-brand-pink">partners</span>
+                        Our trusted <span className="text-brown">partners</span>
                     </motion.h2>
                     <div className="flex justify-center mb-8">
                         <button
@@ -121,11 +121,11 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
                         {/* Column 2: Social Connectivity */}
                         <div className="flex flex-col md:items-center">
                             <div className="space-y-6 w-fit">
-                                <h3 className="text-2xl font-display font-bold uppercase text-brand-pink mb-4">Follow us</h3>
+                                <h3 className="text-2xl font-display font-bold uppercase text-brown mb-4">Follow us</h3>
                                 {['Facebook', 'Instagram', 'LinkedIn', 'Behance'].map((social) => (
-                                    <a key={social} href="#" className="flex items-center justify-between gap-12 group hover:text-brand-pink transition-all font-bold uppercase tracking-widest text-sm text-stark-white/40">
+                                    <a key={social} href="#" className="flex items-center justify-between gap-12 group hover:text-brown transition-all font-bold uppercase tracking-widest text-sm text-stark-white/40">
                                         {social}
-                                        <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform opacity-0 group-hover:opacity-100 text-brand-pink">↗</span>
+                                        <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform opacity-0 group-hover:opacity-100 text-brown">↗</span>
                                     </a>
                                 ))}
                             </div>
@@ -162,7 +162,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
                         </div>
                         <div className="flex items-center gap-8 bg-white/5 px-8 py-3 rounded-full backdrop-blur-md border border-white/5 text-[10px] font-black uppercase tracking-widest">
                             <a className="opacity-40 hover:opacity-100 hover:text-brand-yellow transition-all" href="#">Cookies policy</a>
-                            <a className="opacity-40 hover:opacity-100 hover:text-brand-pink transition-all" href="#">Privacy policy</a>
+                            <a className="opacity-40 hover:opacity-100 hover:text-brown transition-all" href="#">Privacy policy</a>
                         </div>
                     </div>
                 </div>

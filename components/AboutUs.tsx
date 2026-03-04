@@ -87,7 +87,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                         <div className="relative">
                             <h2 className="text-3xl md:text-6xl font-display uppercase leading-[0.9] tracking-tighter">
                                 WHAT WE <br />
-                                <span className="text-brand-pink">STAND FOR</span>
+                                <span className="text-brown">STAND FOR</span>
                             </h2>
                         </div>
                     </div>
@@ -114,7 +114,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                 title: 'feeling',
                                 desc: 'Rapid prototyping to global distribution at scale.',
                                 icon: 'rocket_launch',
-                                color: 'bg-brand-pink',
+                                color: 'bg-brown',
                                 textColor: 'text-white',
                                 tag: 'Fast turnaround'
                             },

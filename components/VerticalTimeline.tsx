@@ -67,7 +67,7 @@ const VerticalTimeline: React.FC = () => {
                                 >
                                     {/* Header Section - No Icon */}
                                     <div className="flex flex-col gap-1 mb-6 border-b-[1px] border-deep-black/5 pb-6">
-                                        <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-pink">
+                                        <span className="text-[9px] font-bold uppercase tracking-[0.4em] text-brown">
                                             Phase {step.number}
                                         </span>
                                         <h3 className="text-2xl md:text-3xl font-display uppercase leading-tight tracking-tighter text-deep-black">
@@ -81,7 +81,7 @@ const VerticalTimeline: React.FC = () => {
 
                                     {/* Hover Accent */}
                                     <motion.div
-                                        className="absolute bottom-0 left-0 h-[2px] bg-brand-pink"
+                                        className="absolute bottom-0 left-0 h-[2px] bg-brown"
                                         initial={{ width: 0 }}
                                         whileHover={{ width: '100%' }}
                                         transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}

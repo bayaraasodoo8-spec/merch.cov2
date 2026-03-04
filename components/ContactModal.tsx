@@ -92,8 +92,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                     </div>
 
                                     {errorMsg && (
-                                        <div className="mb-6 px-4 py-2 border border-brand-pink/30 bg-brand-pink/5">
-                                            <p className="text-xs text-brand-pink">{errorMsg}</p>
+                                        <div className="mb-6 px-4 py-2 border-brown/30 bg-brown/5">
+                                            <p className="text-xs text-brown">{errorMsg}</p>
                                         </div>
                                     )}
 

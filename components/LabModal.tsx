@@ -181,7 +181,7 @@ const LabModal: React.FC<LabModalProps> = ({ isOpen, onClose }) => {
                       <div className="bg-white/5 border border-white/10 p-5 rounded-sm">
                         <div className="flex items-center gap-2 mb-4">
                           <div className="w-1 h-1 bg-brand-pink rounded-full" />
-                          <h3 className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-pink">
+                          <h3 className="text-[9px] font-bold uppercase tracking-[0.2em] text-brown">
                             Identity
                           </h3>
                         </div>

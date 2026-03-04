@@ -51,9 +51,9 @@ const SolutionsSlider: React.FC = () => {
             <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full whitespace-nowrap overflow-hidden pointer-events-none opacity-[0.05] z-0 select-none">
                 <motion.div
                     style={{ x: springX }}
-                    className="text-[20vw] font-display uppercase leading-none stroke-text-black"
+                    className="text-[20vw] font-display leading-none stroke-text-black"
                 >
-                    CAPABILITIES CAPABILITIES CAPABILITIES
+                    Capabilities Capabilities Capabilities
                 </motion.div>
             </div>
 
@@ -62,10 +62,10 @@ const SolutionsSlider: React.FC = () => {
                 {/* Hero Header */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16 md:mb-24 items-end">
                     <div className="lg:col-span-8">
-                        <div className="inline-block bg-deep-black text-brand-yellow px-3 py-1 mb-6 brutalist-border-sm text-xs font-bold tracking-[0.2em] uppercase">
+                        <div className="inline-block bg-deep-black text-brand-yellow px-3 py-1 mb-6 brutalist-border-sm text-xs font-bold tracking-[0.2em]">
                             Capabilities
                         </div>
-                        <h2 className="text-3xl md:text-5xl lg:text-7xl font-display text-deep-black uppercase leading-[0.85] tracking-tighter">
+                        <h2 className="text-3xl md:text-5xl lg:text-7xl font-display text-deep-black leading-[0.85] tracking-tighter">
                             Tailored <span className="text-transparent stroke-text-black hover:text-brand-blue transition-colors duration-500">Solutions</span>
                             <br />
                             <span className="text-deep-black italic font-serif lowercase tracking-normal">for your</span> <span className="text-brand-yellow bg-deep-black px-2">Brand's</span>
@@ -74,7 +74,7 @@ const SolutionsSlider: React.FC = () => {
                         </h2>
                     </div>
                     <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-between h-full gap-6">
-                        <p className="text-deep-black/60 font-bold uppercase tracking-tight text-sm md:text-base max-w-[300px] leading-relaxed text-left lg:text-right">
+                        <p className="text-deep-black/60 font-bold tracking-tight text-sm md:text-base max-w-[300px] leading-relaxed text-left lg:text-right">
                         </p>
 
                         {/* Navigation Buttons */}
@@ -154,10 +154,10 @@ const SolutionsSlider: React.FC = () => {
                                     {/* Overlay Content */}
                                     <div className="absolute inset-0 p-8 flex flex-col justify-end z-20">
                                         <div className="bg-deep-black text-white p-6 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out brutalist-border-sm">
-                                            <h3 className="text-2xl font-display uppercase tracking-tight mb-2 text-brand-yellow">
+                                            <h3 className="text-2xl font-display tracking-tight mb-2 text-brand-yellow">
                                                 {item.title}
                                             </h3>
-                                            <p className="text-xs font-bold uppercase tracking-widest leading-relaxed opacity-70">
+                                            <p className="text-xs font-bold tracking-widest leading-relaxed opacity-70">
                                                 {item.description}
                                             </p>
                                         </div>
@@ -168,7 +168,7 @@ const SolutionsSlider: React.FC = () => {
                                 <div className="mt-8 flex items-start gap-4 px-2 group-hover:opacity-0 transition-opacity duration-300">
                                     <span className="text-4xl font-display text-brand-yellow stroke-text-black mt-[-4px]">0{index + 1}</span>
                                     <div>
-                                        <h3 className="text-2xl font-display uppercase leading-none tracking-tight text-deep-black mb-1">
+                                        <h3 className="text-2xl font-display leading-none tracking-tight text-deep-black mb-1">
                                             {item.title}
                                         </h3>
                                         <div className="w-12 h-[2px] bg-brand-yellow"></div>
@@ -180,7 +180,7 @@ const SolutionsSlider: React.FC = () => {
                         {/* Call to Action Card at the end */}
                         <motion.div className="min-w-[280px] md:min-w-[340px] aspect-[4/5] flex items-center justify-center bg-brand-yellow brutalist-border group cursor-pointer relative overflow-hidden">
                             <div className="text-center relative z-10 p-8">
-                                <h3 className="text-4xl font-display uppercase leading-none mb-4 text-deep-black">
+                                <h3 className="text-4xl font-display leading-none mb-4 text-deep-black">
                                     See All <br /> Services
                                 </h3>
                                 <div className="w-12 h-12 rounded-full border-2 border-deep-black flex items-center justify-center mx-auto group-hover:bg-deep-black group-hover:text-brand-yellow transition-colors duration-300">
