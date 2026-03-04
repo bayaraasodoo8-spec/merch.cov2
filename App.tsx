@@ -75,7 +75,7 @@ const App: React.FC = () => {
 
               <div className="absolute inset-0 flex items-center justify-center z-10 overflow-hidden pointer-events-none">
                 <h1 className="text-[18vw] font-elegant font-bold uppercase text-white/[0.08] leading-none select-none mix-blend-overlay">
-                  Merch.Corp
+                  Merch.Coыөбйыөй
                 </h1>
               </div>
 
