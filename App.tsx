@@ -10,6 +10,7 @@ import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import Footer from './components/Footer';
 import { PROMISES, COLLECTIONS, CATEGORIES, PROCESS_STEPS } from './constants';
 import heroImage from './assets/image.png';
+import BackgroundLogo from './components/BackgroundLogo';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
@@ -74,13 +75,13 @@ const App: React.FC = () => {
               </motion.div>
 
               <div className="absolute inset-0 flex items-center justify-center z-10 overflow-hidden pointer-events-none">
-                <h1 className="text-[18vw] font-elegant font-bold uppercase text-white/[0.08] leading-none select-none mix-blend-overlay">
-                  Merch.Coыөбйыөй
-                </h1>
+                <div className="w-[120vw] max-w-[1200px] text-brand-yellow/20 blur-[60px] md:blur-[100px] mix-blend-screen scale-150">
+                  <BackgroundLogo className="w-full h-auto" />
+                </div>
               </div>
 
               <div className="absolute bottom-40 md:bottom-48 left-0 right-0 z-20 flex flex-col items-center gap-12 px-6">
-                <div className="max-w-8xl text-center">
+                <div className="max-w-8xl text-center ">
                   <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

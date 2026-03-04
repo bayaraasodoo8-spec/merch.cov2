@@ -2,6 +2,7 @@ import React from 'react';
 import Magnetic from './Magnetic';
 import { motion } from 'framer-motion';
 import logo from '../assets/logo.svg';
+import logoLong from '../assets/logolong.svg';
 
 interface FooterProps {
     onNavigate: (page: 'home' | 'about') => void;
@@ -82,9 +83,11 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
                             </svg>
                         </motion.div>
 
-                        <h2 className="text-6xl md:text-8xl font-elegant font-bold  mb-2">
-                            merchand co
-                        </h2>
+                        <img
+                            src={logoLong}
+                            alt="merchand co"
+                            className="h-12 md:h-16 lg:h-20 w-auto mb-6"
+                        />
 
                         <div className="flex flex-wrap justify-center gap-6">
                         </div>
