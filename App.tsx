@@ -85,7 +85,7 @@ const App: React.FC = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
-                    className="text-5xl md:text-9xl lg:text-10xl font-display font-bold text-white uppercase leading-[1.1] tracking-tighter drop-shadow-2xl mb-24"
+                    className="text-5xl md:text-9xl lg:text-8xl font-display font-bold text-white uppercase leading-[1.1] tracking-tighter drop-shadow-2xl mb-24"
                   >
                     Бид таны брэндийг <br />
                     <span className="text-brand-yellow">бодит болгоно</span>
@@ -96,9 +96,9 @@ const App: React.FC = () => {
                 <div className="flex flex-col items-center">
                   <button
                     onClick={() => setIsContactOpen(true)}
-                    className="group relative px-12 py-6 overflow-hidden border border-brand-yellow bg-brand-yellow transition-transform duration-300 hover:scale-105 active:scale-95"
+                    className="group relative px-12 py-6 overflow-hidden border border-brand-yellow bg-brand-yellow transition-transform duration-300 hover:scale-105 active:scale-95 rounded-full"
                   >
-                    <span className="relative z-10 text-[12px] font-bold tracking-[0.4em] text-deep-black transition-colors duration-500 group-hover:text-white">
+                    <span className="relative z-10 text-[14px] font-bold tracking-[0em] text-deep-black transition-colors duration-500 group-hover:text-white">
                       Customize your merch
                     </span>
                     <motion.div

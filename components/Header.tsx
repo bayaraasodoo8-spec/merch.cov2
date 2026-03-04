@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
 
   const navItems = [
     { label: 'Category', id: 'category', isDropdown: true },
-    { label: 'Project', id: 'corporate' },
+    // { label: 'Project', id: 'corporate' },
     { label: 'About Us', id: 'about', type: 'page' },
   ];
 
