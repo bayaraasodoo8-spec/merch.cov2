@@ -65,7 +65,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                         {/* header */}
                         <div className="sticky top-0 z-20 bg-deep-black/90 backdrop-blur-sm border-b border-white/5 px-6 py-4">
                             <div className="flex items-center justify-between">
-                                <h2 className="text-xl font-display text-white uppercase tracking-tight">
+                                <h2 className="text-xl font-display text-white uppercase">
                                     Inquiry <span className="text-brand-blue font-normal">v1</span>
                                 </h2>
 
@@ -83,7 +83,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                             {!submitted ? (
                                 <>
                                     <div className="mb-8">
-                                        <p className="text-[9px] font-bold uppercase tracking-widest text-white/40 mb-1">
+                                        <p className="text-[9px] font-bold uppercase text-white/40 mb-1">
                                             Project Brief
                                         </p>
                                         <h3 className="text-base font-body text-white/80">
@@ -99,7 +99,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
 
                                     <form onSubmit={handleSubmit} className="space-y-4">
                                         <div className="space-y-1.5">
-                                            <label className="text-[9px] font-bold uppercase tracking-widest text-white/30 px-0.5">Identify</label>
+                                            <label className="text-[9px] font-bold uppercase text-white/30 px-0.5">Identify</label>
                                             <input
                                                 required
                                                 type="text"
@@ -112,7 +112,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                         </div>
 
                                         <div className="space-y-1.5">
-                                            <label className="text-[9px] font-bold uppercase tracking-widest text-white/30 px-0.5">Endpoint</label>
+                                            <label className="text-[9px] font-bold uppercase text-white/30 px-0.5">Endpoint</label>
                                             <input
                                                 required
                                                 type="email"
@@ -125,7 +125,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                         </div>
 
                                         <div className="space-y-1.5">
-                                            <label className="text-[9px] font-bold uppercase tracking-widest text-white/30 px-0.5">Sector</label>
+                                            <label className="text-[9px] font-bold uppercase text-white/30 px-0.5">Sector</label>
                                             <select
                                                 value={formData.service}
                                                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
@@ -140,7 +140,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                         </div>
 
                                         <div className="space-y-1.5">
-                                            <label className="text-[9px] font-bold uppercase tracking-widest text-white/30 px-0.5">Logic</label>
+                                            <label className="text-[9px] font-bold uppercase text-white/30 px-0.5">Logic</label>
                                             <textarea
                                                 required
                                                 value={formData.message}
@@ -154,7 +154,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                         <button
                                             type="submit"
                                             disabled={isSending}
-                                            className="w-full py-3 mt-4 bg-brand-blue text-white text-[10px] font-black uppercase tracking-[0.4em] hover:opacity-90 disabled:opacity-20 transition-all rounded-sm"
+                                            className="w-full py-3 mt-4 bg-brand-blue text-white text-[10px] font-black uppercase hover:opacity-90 disabled:opacity-20 transition-all rounded-sm"
                                         >
                                             {isSending ? 'Transmitting...' : 'Initialize'}
                                         </button>
@@ -165,8 +165,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                                     <div className="w-12 h-12 border border-brand-yellow/30 flex items-center justify-center rounded-full">
                                         <span className="material-symbols-outlined text-brand-yellow text-xl">check</span>
                                     </div>
-                                    <h2 className="text-lg font-display text-white uppercase tracking-tight">Received</h2>
-                                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">
+                                    <h2 className="text-lg font-display text-white uppercase">Received</h2>
+                                    <p className="text-[10px] font-bold uppercase text-white/40">
                                         Response within 24 standard hours.
                                     </p>
                                 </div>

@@ -41,7 +41,7 @@ const ProcessCard: React.FC<ProcessCardProps> = ({
                 <div className="relative z-10 h-full flex flex-col">
                     <div className="flex items-baseline gap-3">
                         <span className={`text-4xl font-display text-white transition-colors duration-500`}>{number}</span>
-                        <span className="text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-60 transition-opacity duration-500 delay-200">STEP</span>
+                        <span className="text-[10px] font-black uppercase opacity-0 group-hover:opacity-60 transition-opacity duration-500 delay-200">STEP</span>
                     </div>
 
                     <div className="mt-6 transition-transform duration-500 group-hover:-translate-y-4">

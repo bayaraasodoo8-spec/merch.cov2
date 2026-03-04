@@ -74,7 +74,7 @@ const App: React.FC = () => {
               </motion.div>
 
               <div className="absolute inset-0 flex items-center justify-center z-10 overflow-hidden pointer-events-none">
-                <h1 className="text-[18vw] font-elegant font-bold uppercase text-white/[0.08] leading-none tracking-tighter select-none mix-blend-overlay">
+                <h1 className="text-[18vw] font-elegant font-bold uppercase text-white/[0.08] leading-none select-none mix-blend-overlay">
                   Merch.Corp
                 </h1>
               </div>
@@ -85,7 +85,7 @@ const App: React.FC = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
-                    className="text-5xl md:text-9xl lg:text-8xl font-display font-bold text-white uppercase leading-[1.1] tracking-tighter drop-shadow-2xl mb-24"
+                    className="text-5xl md:text-9xl lg:text-8xl font-display font-bold text-white uppercase leading-[1.1] drop-shadow-2xl mb-24"
                   >
                     Бид таны брэндийг <br />
                     <span className="text-brand-yellow">бодит болгоно</span>
@@ -138,7 +138,7 @@ const App: React.FC = () => {
                   transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
                   className="max-w-5xl"
                 >
-                  <p className="text-xl md:text-3xl lg:text-5xl font-display text-white leading-[0.9] tracking-tighter cursor-default">
+                  <p className="text-xl md:text-3xl lg:text-5xl font-display text-white leading-[0.9] cursor-default">
                     94% of employees receiving swag monthly reported being <span className="text-brand-yellow">very satisfied</span> with the their jobs.<br />
                   </p>
                 </motion.div>
@@ -149,7 +149,7 @@ const App: React.FC = () => {
               <div className="max-w-[1440px] mx-auto">
                 <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
                   <div className="relative">
-                    <h2 className="text-3xl md:text-5xl font-display text-deep-black leading-tight tracking-tighter">
+                    <h2 className="text-3xl md:text-5xl font-display text-deep-black leading-tight">
                       <span className="text-brown">Products</span>
                     </h2>
                   </div>
@@ -177,9 +177,9 @@ const App: React.FC = () => {
 
                         <div className="absolute inset-0 p-8 flex flex-col justify-end">
                           <div className="flex flex-col transform translate-y-4 group-hover/card:translate-y-0 transition-transform duration-500">
-                            <span className="font-display text-4xl text-white tracking-tighter leading-none mb-2">{cat.name}</span>
+                            <span className="font-display text-4xl text-white leading-none mb-2">{cat.name}</span>
                             <div className="h-[1px] w-0 group-hover/card:w-full bg-brand-yellow transition-all duration-700 mb-4" />
-                            <span className="text-[10px] font-bold text-white tracking-[0.4em] opacity-60 group-hover/card:opacity-100 transition-opacity">Explore Collection</span>
+                            <span className="text-[10px] font-bold text-white opacity-60 group-hover/card:opacity-100 transition-opacity">Explore Collection</span>
                           </div>
                         </div>
 
@@ -228,7 +228,7 @@ const App: React.FC = () => {
 
                 <div className="relative z-10 flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse" />
-                  <span className="font-display text-lg tracking-[0.3em] text-brown group-hover:text-white transition-colors duration-500">
+                  <span className="font-display text-lg text-brown group-hover:text-white transition-colors duration-500">
                     Start
                   </span>
                 </div>

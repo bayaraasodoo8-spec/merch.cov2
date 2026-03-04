@@ -74,10 +74,10 @@ const LabModal: React.FC<LabModalProps> = ({ isOpen, onClose }) => {
             <div className="sticky top-0 z-20 bg-deep-black/90 backdrop-blur-sm border-b border-white/5 px-6 py-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-xl font-display text-white uppercase tracking-tight">
+                  <h2 className="text-xl font-display text-white uppercase">
                     LAB <span className="text-brand-yellow font-normal">v2</span>
                   </h2>
-                  <div className="px-1.5 py-0.5 border border-white/10 rounded text-[8px] font-medium text-white/40 uppercase tracking-widest">
+                  <div className="px-1.5 py-0.5 border border-white/10 rounded text-[8px] font-medium text-white/40 uppercase">
                     Neural
                   </div>
                 </div>
@@ -98,7 +98,7 @@ const LabModal: React.FC<LabModalProps> = ({ isOpen, onClose }) => {
                 <div className="grid gap-5">
                   <div className="space-y-2">
                     <div className="flex items-end justify-between px-0.5">
-                      <label className="text-[9px] font-bold uppercase tracking-widest text-white/40">
+                      <label className="text-[9px] font-bold uppercase text-white/40">
                         Concept Vision
                       </label>
                       <span className="text-[8px] font-mono text-white/20">
@@ -126,7 +126,7 @@ const LabModal: React.FC<LabModalProps> = ({ isOpen, onClose }) => {
                       }}
                       className="py-2.5 border border-white/5 bg-white/5 hover:bg-white/10 transition-colors rounded-sm"
                     >
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-white/40">
+                      <span className="text-[9px] font-bold uppercase text-white/40">
                         Reset
                       </span>
                     </button>
@@ -136,7 +136,7 @@ const LabModal: React.FC<LabModalProps> = ({ isOpen, onClose }) => {
                       disabled={loading || !description.trim()}
                       className="py-2.5 bg-brand-yellow hover:opacity-90 disabled:opacity-20 transition-all rounded-sm"
                     >
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-deep-black">
+                      <span className="text-[9px] font-bold uppercase text-deep-black">
                         {loading ? 'Processing...' : 'Generate'}
                       </span>
                     </button>
@@ -156,20 +156,20 @@ const LabModal: React.FC<LabModalProps> = ({ isOpen, onClose }) => {
                       <div className="bg-white/5 border border-white/10 p-5 rounded-sm">
                         <div className="flex items-center gap-2 mb-4">
                           <div className="w-1 h-1 bg-brand-blue rounded-full" />
-                          <h3 className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-blue">
+                          <h3 className="text-[9px] font-bold uppercase text-brand-blue">
                             Strategy
                           </h3>
                         </div>
 
-                        <p className="text-base font-display text-white uppercase tracking-tight mb-6">
+                        <p className="text-base font-display text-white uppercase mb-6">
                           {result.brandAngle}
                         </p>
 
                         <div className="space-y-2">
-                          <span className="text-[8px] font-bold text-white/20 uppercase tracking-widest">Artifacts</span>
+                          <span className="text-[8px] font-bold text-white/20 uppercase">Artifacts</span>
                           <div className="flex flex-wrap gap-2">
                             {result.suggestedItems?.map((item: string, i: number) => (
-                              <span key={i} className="px-2 py-1 bg-white/5 border border-white/5 text-[9px] font-medium text-white/60 uppercase tracking-wider rounded-sm">
+                              <span key={i} className="px-2 py-1 bg-white/5 border border-white/5 text-[9px] font-medium text-white/60 uppercase rounded-sm">
                                 {item}
                               </span>
                             ))}
@@ -181,21 +181,21 @@ const LabModal: React.FC<LabModalProps> = ({ isOpen, onClose }) => {
                       <div className="bg-white/5 border border-white/10 p-5 rounded-sm">
                         <div className="flex items-center gap-2 mb-4">
                           <div className="w-1 h-1 bg-brand-pink rounded-full" />
-                          <h3 className="text-[9px] font-bold uppercase tracking-[0.2em] text-brown">
+                          <h3 className="text-[9px] font-bold uppercase text-brown">
                             Identity
                           </h3>
                         </div>
 
                         <div className="space-y-2 mb-6">
                           {result.slogans?.map((slogan: string, i: number) => (
-                            <p key={i} className="text-lg font-display text-white uppercase leading-none tracking-tight">
+                            <p key={i} className="text-lg font-display text-white uppercase leading-none">
                               “{slogan}”
                             </p>
                           ))}
                         </div>
 
                         <div className="pt-4 border-t border-white/5">
-                          <span className="text-[8px] font-bold text-white/20 uppercase tracking-widest block mb-2">Visual Direction</span>
+                          <span className="text-[8px] font-bold text-white/20 uppercase block mb-2">Visual Direction</span>
                           <p className="text-xs font-body text-white/60 leading-relaxed italic">
                             {result.visualDirection}
                           </p>

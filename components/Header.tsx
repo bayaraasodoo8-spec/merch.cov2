@@ -81,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
                       }
                     }}
                   >
-                    <span className={`relative z-10 text-[11px] font-bold tracking-[0.2em] transition-colors duration-300 ${isScrolled ? 'text-deep-black' : 'text-white'
+                    <span className={`relative z-10 text-[11px] font-bold transition-colors duration-300 ${isScrolled ? 'text-deep-black' : 'text-white'
                       }`}>
                       {item.label}
                     </span>
@@ -109,7 +109,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
                           {categories.map((cat) => (
                             <button
                               key={cat.label}
-                              className="w-full text-left px-6 py-3 text-[10px] font-bold tracking-[0.2em] text-deep-black hover:bg-brand-yellow hover:text-deep-black transition-colors duration-300"
+                              className="w-full text-left px-6 py-3 text-[10px] font-bold text-deep-black hover:bg-brand-yellow hover:text-deep-black transition-colors duration-300"
                               onClick={() => {
                                 onScrollToSection(cat.id);
                                 setIsCategoryOpen(false);
@@ -130,7 +130,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
           <div className="flex items-center gap-6">
             <div className="hidden lg:block">
               <Magnetic strength={0.4}>
-                <button className={`px-8 py-2.5 text-[10px] font-bold tracking-[0.4em] border transition-all duration-500 ${isScrolled
+                <button className={`px-8 py-2.5 text-[10px] font-bold border transition-all duration-500 ${isScrolled
                   ? 'bg-deep-black text-white border-deep-black'
                   : 'bg-white text-deep-black border-white hover:bg-transparent hover:text-white'
                   }`}>
@@ -168,7 +168,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + index * 0.1 }}
-                    className="text-left text-5xl font-display tracking-tighter text-stark-white hover:text-brand-yellow transition-colors"
+                    className="text-left text-5xl font-display text-stark-white hover:text-brand-yellow transition-colors"
                     onClick={() => {
                       if (!item.isDropdown) {
                         handleMobileNavigate(() => {
@@ -191,7 +191,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
                           initial={{ opacity: 0, x: -30 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.3 + catIdx * 0.05 }}
-                          className="text-left text-xl font-display tracking-tighter text-stark-white/60 hover:text-brand-yellow transition-colors"
+                          className="text-left text-xl font-display text-stark-white/60 hover:text-brand-yellow transition-colors"
                           onClick={() => handleMobileNavigate(() => onScrollToSection(cat.id))}
                         >
                           {cat.label}
@@ -209,7 +209,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
               transition={{ delay: 0.5 }}
               className="flex flex-col gap-6"
             >
-              <button className="w-full bg-brand-yellow text-deep-black brutalist-border px-6 py-4 text-xl font-display tracking-widest">
+              <button className="w-full bg-brand-yellow text-deep-black brutalist-border px-6 py-4 text-xl font-display">
                 Project Portal
               </button>
               <div className="flex gap-4 justify-center">

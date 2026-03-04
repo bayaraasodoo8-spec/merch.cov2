@@ -1,6 +1,7 @@
 import React from 'react';
 import Magnetic from './Magnetic';
 import { motion } from 'framer-motion';
+import logo from '../assets/logo.svg';
 
 interface FooterProps {
     onNavigate: (page: 'home' | 'about') => void;
@@ -24,7 +25,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-3xl md:text-4xl font-display font-bold text-deep-black mb-6 uppercase tracking-tight"
+                        className="text-3xl md:text-4xl font-display font-bold text-deep-black mb-6 uppercase"
                     >
                         Our trusted <span className="text-brown">partners</span>
                     </motion.h2>
@@ -47,7 +48,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
                         <div className="flex animate-marquee-fast whitespace-nowrap py-4 gap-6">
                             {[...partners, ...partners].map((partner, i) => (
                                 <div key={i} className="inline-flex items-center justify-center bg-deep-black rounded-2xl min-w-[180px] h-28 p-8 group cursor-pointer transition-all duration-500 hover:scale-105 hover:bg-brand-blue">
-                                    <span className="text-stark-white text-xl font-display font-black uppercase tracking-[0.1em] opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <span className="text-stark-white text-xl font-display font-black uppercase opacity-80 group-hover:opacity-100 transition-opacity">
                                         {partner}
                                     </span>
                                 </div>
@@ -64,10 +65,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
             <footer className="bg-brand-blue text-stark-white pt-12 pb-6 relative overflow-hidden rounded-t-[80px] md:rounded-t-[120px]">
                 {/* Subtle Background Topographical Path */}
                 <div className="absolute inset-0 opacity-[0.1] pointer-events-none select-none">
-                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 150 Q 300 100 600 150 T 1200 150 T 1800 150" fill="none" stroke="white" strokeWidth="1" />
-                        <path d="M0 250 Q 300 200 600 250 T 1200 250" fill="none" stroke="white" strokeWidth="0.5" strokeDasharray="10,10" />
-                    </svg>
+                    <img src={logo} alt="" className="w-full h-full object-center object-cover" />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -84,8 +82,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
                             </svg>
                         </motion.div>
 
-                        <h2 className="text-6xl md:text-8xl font-elegant font-bold tracking-tighter uppercase mb-2">
-                            MERCH<span className="text-brand-yellow">.</span>CORP
+                        <h2 className="text-6xl md:text-8xl font-elegant font-bold  mb-2">
+                            merchand co
                         </h2>
 
                         <div className="flex flex-wrap justify-center gap-6">
@@ -108,7 +106,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
                             <div className="flex flex-wrap items-center gap-4 opacity-70">
                                 <div className="bg-white/5 border border-white/10 px-3 py-1.5 rounded flex items-center gap-2">
                                     <span className="bg-brand-yellow text-deep-black text-[10px] font-black px-1.5 rounded">9.4</span>
-                                    <span className="text-[10px] font-bold uppercase tracking-tighter">Identity Score</span>
+                                    <span className="text-[10px] font-bold uppercase">Identity Score</span>
                                 </div>
                                 <div className="flex gap-3 grayscale hover:grayscale-0 transition-all">
                                     <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-black text-[8px]">ISO</div>
@@ -123,7 +121,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
                             <div className="space-y-6 w-fit">
                                 <h3 className="text-2xl font-display font-bold uppercase text-brown mb-4">Follow us</h3>
                                 {['Facebook', 'Instagram', 'LinkedIn', 'Behance'].map((social) => (
-                                    <a key={social} href="#" className="flex items-center justify-between gap-12 group hover:text-brown transition-all font-bold uppercase tracking-widest text-sm text-stark-white/40">
+                                    <a key={social} href="#" className="flex items-center justify-between gap-12 group hover:text-brown transition-all font-bold uppercase text-sm text-stark-white/40">
                                         {social}
                                         <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform opacity-0 group-hover:opacity-100 text-brown">↗</span>
                                     </a>
@@ -157,10 +155,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
 
                     {/* Footer Bottom Bar */}
                     <div className="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-                        <div className="text-[10px] font-black uppercase tracking-[0.5em] text-stark-white/20">
+                        <div className="text-[10px] font-black uppercase text-stark-white/20">
                             ©2026 MERCH.CORP — LAB ORIGINALS
                         </div>
-                        <div className="flex items-center gap-8 bg-white/5 px-8 py-3 rounded-full backdrop-blur-md border border-white/5 text-[10px] font-black uppercase tracking-widest">
+                        <div className="flex items-center gap-8 bg-white/5 px-8 py-3 rounded-full backdrop-blur-md border border-white/5 text-[10px] font-black uppercase">
                             <a className="opacity-40 hover:opacity-100 hover:text-brand-yellow transition-all" href="#">Cookies policy</a>
                             <a className="opacity-40 hover:opacity-100 hover:text-brown transition-all" href="#">Privacy policy</a>
                         </div>

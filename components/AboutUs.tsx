@@ -37,7 +37,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "circOut" }}
                     >
-                        <h1 className="text-5xl md:text-[80px] font-display uppercase tracking-tighter leading-[0.85] mb-6 drop-shadow-2xl">
+                        <h1 className="text-5xl md:text-[80px] font-display uppercase leading-[0.85] mb-6 drop-shadow-2xl">
                             About <span className="text-brand-yellow">Us</span>
                         </h1>
                     </motion.div>
@@ -46,7 +46,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.8 }}
-                        className="flex items-center justify-center gap-6 text-xl font-bold uppercase tracking-widest"
+                        className="flex items-center justify-center gap-6 text-xl font-bold uppercase"
                     >
                         <Magnetic strength={0.2}>
                             <button
@@ -72,8 +72,8 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                 <div className="max-w-[1440px] mx-auto flex flex-col items-center text-center relative z-10">
                     <div className="flex flex-col gap-8 md:gap-10 max-w-4xl mx-auto">
                         <div>
-                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-blue mb-6 block">Our Mission</span>
-                            <h2 className="text-3xl md:text-5xl font-display uppercase leading-[0.9] tracking-tighter mb-8">
+                            <span className="text-[10px] font-bold uppercase text-brand-blue mb-6 block">Our Mission</span>
+                            <h2 className="text-3xl md:text-5xl font-display uppercase leading-[0.9] mb-8">
                                 We Don't Just Make Merch. <br /><span className="text-brand-yellow">We Build Legacies.</span>
                             </h2>
                         </div>
@@ -85,7 +85,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                 <div className="max-w-[1440px] mx-auto">
                     <div className="flex flex-col lg:flex-row items-end justify-between mb-16 md:mb-20 gap-10">
                         <div className="relative">
-                            <h2 className="text-3xl md:text-6xl font-display uppercase leading-[0.9] tracking-tighter">
+                            <h2 className="text-3xl md:text-6xl font-display uppercase leading-[0.9]">
                                 WHAT WE <br />
                                 <span className="text-brown">STAND FOR</span>
                             </h2>
@@ -170,7 +170,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                         </span>
                                         <span
                                             className={[
-                                                "text-[10px] font-bold uppercase tracking-[0.35em]",
+                                                "text-[10px] font-bold uppercase",
                                                 "px-3 py-2 rounded-full",
                                                 item.textColor ? "bg-white/15 text-white/90" : "bg-deep-black/5 text-deep-black/70"
                                             ].join(" ")}
@@ -178,7 +178,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                             {item.tag}
                                         </span>
                                     </div>
-                                    <h3 className="text-2xl md:text-3xl font-display uppercase mb-3 tracking-tighter leading-tight">
+                                    <h3 className="text-2xl md:text-3xl font-display uppercase mb-3 leading-tight">
                                         {item.title}
                                     </h3>
                                     <p className="text-base md:text-lg font-body font-medium opacity-80 leading-snug italic line-clamp-3">
@@ -213,7 +213,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                 <div className="max-w-[1440px] mx-auto px-6 relative z-10 w-full">
                     <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
                         <div className="relative">
-                            <h2 className="text-4xl md:text-7xl font-display text-deep-black uppercase leading-[0.85] tracking-tighter text-left">
+                            <h2 className="text-4xl md:text-7xl font-display text-deep-black uppercase leading-[0.85] text-left">
                                 HOW WE <br /><span className="text-white">OPERATE</span>
                             </h2>
                             <div className="absolute -left-12 top-1/2 w-3 h-32 bg-deep-black -translate-y-1/2 hidden lg:block"></div>
@@ -231,13 +231,13 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                         whileInView={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
                     >
-                        <h2 className="text-6xl md:text-[8vw] font-display uppercase leading-[0.8] tracking-tighter text-deep-black mb-16">
+                        <h2 className="text-6xl md:text-[8vw] font-display uppercase leading-[0.8] text-deep-black mb-16">
                             Ready To <br /> <span className="text-white">Make It Real?</span>
                         </h2>
                         <Magnetic strength={0.4}>
                             <button
                                 onClick={onContact}
-                                className="bg-deep-black text-white px-16 py-8 text-xl font-bold border border-deep-black hover:bg-transparent hover:text-deep-black uppercase transition-all flex items-center gap-6 mx-auto tracking-widest"
+                                className="bg-deep-black text-white px-16 py-8 text-xl font-bold border border-deep-black hover:bg-transparent hover:text-deep-black uppercase transition-all flex items-center gap-6 mx-auto"
                             >
                                 Get Started
                                 <span className="material-symbols-outlined text-3xl">arrow_forward</span>
