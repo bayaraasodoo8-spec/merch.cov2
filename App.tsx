@@ -80,12 +80,12 @@ const App: React.FC = () => {
               </div>
 
               <div className="absolute bottom-40 md:bottom-48 left-0 right-0 z-20 flex flex-col items-center gap-12 px-6">
-                <div className="max-w-12xl text-center">
+                <div className="max-w-8xl text-center">
                   <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
-                    className="text-5xl md:text-9xl lg:text-12xl font-display font-bold text-white uppercase leading-[1.1] tracking-tighter drop-shadow-2xl mb-24"
+                    className="text-5xl md:text-9xl lg:text-10xl font-display font-bold text-white uppercase leading-[1.1] tracking-tighter drop-shadow-2xl mb-24"
                   >
                     Бид таны брэндийг <br />
                     <span className="text-brand-yellow">бодит болгоно</span>
