@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import Magnetic from './Magnetic';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -9,8 +8,9 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -21,10 +21,16 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
   }, []);
 
   const navItems = [
-    { label: 'Products', id: 'products' },
+    { label: 'Category', id: 'category', isDropdown: true },
     { label: 'Project', id: 'corporate' },
-    { label: 'Work', id: 'projects' },
     { label: 'About Us', id: 'about', type: 'page' },
+  ];
+
+  const categories = [
+    { label: 'Company Merch', id: 'corporate' },
+    { label: 'Employee Merch', id: 'products' },
+    { label: 'Event Merch', id: 'corporate' },
+    { label: 'Customized Merch', id: 'corporate' },
   ];
 
   const handleMobileNavigate = (action: () => void) => {
@@ -53,31 +59,67 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
 
           <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
-              <Magnetic key={item.label} strength={0.2}>
-                <button
-                  className="relative group px-1 py-1"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (item.type === 'page') {
-                      onNavigate('about');
-                    } else {
-                      onScrollToSection(item.id);
-                    }
-                  }}
-                >
-                  <span className={`relative z-10 text-[11px] font-bold uppercase tracking-[0.3em] transition-colors duration-300 ${isScrolled ? 'text-deep-black' : 'text-white'
-                    }`}>
-                    {item.label}
-                  </span>
-                  <motion.div
-                    className={`absolute bottom-0 left-0 w-full h-[1px] ${isScrolled ? 'bg-deep-black' : 'bg-white'
-                      }`}
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-                  />
-                </button>
-              </Magnetic>
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => item.isDropdown && setIsCategoryOpen(true)}
+                onMouseLeave={() => item.isDropdown && setIsCategoryOpen(false)}
+              >
+                <Magnetic strength={0.2}>
+                  <button
+                    className="relative group px-1 py-1"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (item.type === 'page') {
+                        onNavigate('about');
+                      } else if (!item.isDropdown) {
+                        onScrollToSection(item.id);
+                      }
+                    }}
+                  >
+                    <span className={`relative z-10 text-[11px] font-bold uppercase tracking-[0.3em] transition-colors duration-300 ${isScrolled ? 'text-deep-black' : 'text-white'
+                      }`}>
+                      {item.label}
+                    </span>
+                    <motion.div
+                      className={`absolute bottom-0 left-0 w-full h-[1px] ${isScrolled ? 'bg-deep-black' : 'bg-white'
+                        }`}
+                      initial={{ scaleX: 0 }}
+                      whileHover={{ scaleX: 1 }}
+                      transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+                    />
+                  </button>
+                </Magnetic>
+
+                {item.isDropdown && (
+                  <AnimatePresence>
+                    {isCategoryOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        transition={{ duration: 0.3, ease: [0.19, 1, 0.22, 1] }}
+                        className="absolute top-full left-0 mt-2 w-56 bg-white border border-deep-black/10 shadow-xl overflow-hidden"
+                      >
+                        <div className="py-2">
+                          {categories.map((cat) => (
+                            <button
+                              key={cat.label}
+                              className="w-full text-left px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-deep-black hover:bg-brand-yellow hover:text-deep-black transition-colors duration-300"
+                              onClick={() => {
+                                onScrollToSection(cat.id);
+                                setIsCategoryOpen(false);
+                              }}
+                            >
+                              {cat.label}
+                            </button>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -93,7 +135,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
               </Magnetic>
             </div>
 
-            {/* Mobile Menu Toggle */}
             <button
               className={`lg:hidden relative z-[110] p-2 transition-colors duration-500 ${isScrolled ? 'text-deep-black' : 'text-white'
                 }`}
@@ -107,7 +148,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -119,22 +159,43 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, onScrollToSection }) => {
           >
             <nav className="flex flex-col gap-6">
               {navItems.map((item, index) => (
-                <motion.button
-                  key={item.label}
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + index * 0.1 }}
-                  className="text-left text-5xl font-display uppercase tracking-tighter text-stark-white hover:text-brand-yellow transition-colors"
-                  onClick={() => handleMobileNavigate(() => {
-                    if (item.type === 'page') {
-                      onNavigate('about');
-                    } else {
-                      onScrollToSection(item.id);
-                    }
-                  })}
-                >
-                  {item.label}
-                </motion.button>
+                <div key={item.label} className="flex flex-col gap-4">
+                  <motion.button
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + index * 0.1 }}
+                    className="text-left text-5xl font-display uppercase tracking-tighter text-stark-white hover:text-brand-yellow transition-colors"
+                    onClick={() => {
+                      if (!item.isDropdown) {
+                        handleMobileNavigate(() => {
+                          if (item.type === 'page') {
+                            onNavigate('about');
+                          } else {
+                            onScrollToSection(item.id);
+                          }
+                        });
+                      }
+                    }}
+                  >
+                    {item.label}
+                  </motion.button>
+                  {item.isDropdown && (
+                    <div className="flex flex-col gap-2 pl-4">
+                      {categories.map((cat, catIdx) => (
+                        <motion.button
+                          key={cat.label}
+                          initial={{ opacity: 0, x: -30 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 + catIdx * 0.05 }}
+                          className="text-left text-xl font-display uppercase tracking-tighter text-stark-white/60 hover:text-brand-yellow transition-colors"
+                          onClick={() => handleMobileNavigate(() => onScrollToSection(cat.id))}
+                        >
+                          {cat.label}
+                        </motion.button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>
 

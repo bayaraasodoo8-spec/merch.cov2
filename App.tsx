@@ -3,11 +3,10 @@ import Header from './components/Header';
 import LabModal from './components/LabModal';
 import ContactModal from './components/ContactModal';
 import Magnetic from './components/Magnetic';
-import ProcessCard from './components/ProcessCard'; // We might still use this elsewhere or keep for reference
-import VerticalTimeline from './components/VerticalTimeline';
+import ProcessCard from './components/ProcessCard';
 import SolutionsSlider from './components/SolutionsSlider';
 import AboutUs from './components/AboutUs';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import Footer from './components/Footer';
 import { PROMISES, COLLECTIONS, CATEGORIES, PROCESS_STEPS } from './constants';
 import heroImage from './assets/image.png';
@@ -16,11 +15,19 @@ const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
   const [isLabOpen, setIsLabOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [showStickyButton, setShowStickyButton] = useState(false);
+
+  const { scrollY } = useScroll();
+
+  React.useEffect(() => {
+    return scrollY.onChange((latest) => {
+      setShowStickyButton(latest > window.innerHeight * 0.8);
+    });
+  }, [scrollY]);
 
   const handleScrollToSection = (sectionId: string) => {
     if (currentPage !== 'home') {
       setCurrentPage('home');
-      // Wait for the home page to mount
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -36,9 +43,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div
-      className="min-h-screen selection:bg-brand-yellow selection:text-deep-black"
-    >
+    <div className="min-h-screen selection:bg-brand-yellow selection:text-deep-black">
       <Header
         onNavigate={setCurrentPage}
         onScrollToSection={handleScrollToSection}
@@ -48,20 +53,12 @@ const App: React.FC = () => {
         {currentPage === 'home' ? (
           <>
             <section id="home" className="relative w-screen h-[100dvh] flex flex-col justify-center items-center overflow-hidden bg-white m-0 p-0">
-              {/* Background Video Layer - Subtle Grain & Motion */}
               <div className="absolute inset-0 z-0 opacity-20 grayscale pointer-events-none">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
+                <video autoPlay loop muted playsInline className="w-full h-full object-cover">
                   <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-posing-in-a-white-studio-2735-large.mp4" type="video/mp4" />
                 </video>
               </div>
 
-              {/* MAIN HERO IMAGE - FULL BLEED */}
               <motion.div
                 initial={{ scale: 1.1, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -73,19 +70,16 @@ const App: React.FC = () => {
                   alt="High Fashion Editorial"
                   className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
                 />
-                {/* Dark Vignette for Legibility */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
               </motion.div>
 
-              {/* Background Brand Text Layer - Luxury Subtle Over Image */}
               <div className="absolute inset-0 flex items-center justify-center z-10 overflow-hidden pointer-events-none">
                 <h1 className="text-[18vw] font-elegant font-bold uppercase text-white/[0.08] leading-none tracking-tighter select-none mix-blend-overlay">
                   MERCH.CORP
                 </h1>
               </div>
 
-              {/* Action Layer - Luxury Minimal Typography with Merch Energy */}
-              <div className="absolute bottom-16 left-0 right-0 z-20 flex flex-col items-center gap-8">
+              <div className="absolute bottom-32 left-0 right-0 z-20 flex flex-col items-center gap-8">
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 0.9, y: 0 }}
@@ -94,23 +88,12 @@ const App: React.FC = () => {
                 >
                   Defining the next generation of identities
                 </motion.p>
-                <div className="flex gap-16">
-                  <button
-                    onClick={() => handleScrollToSection('products')}
-                    className="group relative px-8 py-3 overflow-hidden border border-white/30 backdrop-blur-sm"
-                  >
-                    <span className="relative z-10 text-[10px] font-bold uppercase tracking-[0.4em] text-white transition-colors duration-500 group-hover:text-deep-black">
-                      Collections
-                    </span>
-                    <motion.div
-                      className="absolute inset-0 bg-brand-yellow translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
-                    />
-                  </button>
+                <div className="flex flex-col items-center">
                   <button
                     onClick={() => setIsContactOpen(true)}
-                    className="group relative px-8 py-3 overflow-hidden border border-brand-yellow bg-brand-yellow"
+                    className="group relative px-10 py-5 overflow-hidden border border-brand-yellow bg-brand-yellow"
                   >
-                    <span className="relative z-10 text-[10px] font-bold uppercase tracking-[0.4em] text-deep-black transition-colors duration-500 group-hover:text-white">
+                    <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.4em] text-deep-black transition-colors duration-500 group-hover:text-white">
                       Get Started
                     </span>
                     <motion.div
@@ -120,13 +103,11 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              {/* Scroll Indicator */}
               <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-40 hidden md:block">
                 <div className="w-[1px] h-12 bg-white/50 animate-pulse"></div>
               </div>
             </section>
 
-            {/* MARQUEE - Refined for Luxury */}
             <div className="bg-brand-yellow border-y-[1px] border-deep-black/10 py-3 overflow-hidden flex whitespace-nowrap">
               <div className="animate-marquee flex gap-8 md:gap-12 items-center">
                 {Array(10).fill(null).map((_, i) => (
@@ -144,7 +125,6 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* ASSET STATEMENT - Standard v.7.0 */}
             <section className="bg-brand-blue py-24 md:py-32 px-6 overflow-hidden border-b-[1px] border-deep-black/10">
               <div className="max-w-[1440px] mx-auto text-center flex flex-col items-center gap-12">
                 <motion.div
@@ -155,14 +135,11 @@ const App: React.FC = () => {
                 >
                   <p className="text-xl md:text-3xl lg:text-5xl font-display text-white leading-[0.9] uppercase tracking-tighter cursor-default">
                     94% of employees receiving swag monthly reported being <span className="text-brand-yellow">very satisfied</span> with the their jobs.<br />
-
                   </p>
                 </motion.div>
-
               </div>
             </section>
 
-            {/* POPULAR CATEGORIES - Standard v.7.0 */}
             <section id="products" className="bg-white py-20 px-6 border-b-[1px] border-deep-black/10">
               <div className="max-w-[1440px] mx-auto">
                 <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
@@ -177,7 +154,6 @@ const App: React.FC = () => {
                   {CATEGORIES.map((cat, i) => (
                     <Magnetic key={i} strength={0.1} className={`${cat.span || ''} group/card`}>
                       <div className={`relative border-[1px] border-deep-black/10 overflow-hidden h-full w-full interactive cursor-pointer ${cat.bgColor}`}>
-                        {/* Background Graphic Pattern */}
                         <div className="absolute inset-0 opacity-10 pointer-events-none group-hover/card:opacity-20 transition-opacity">
                           <div className="grid grid-cols-4 grid-rows-4 w-full h-full">
                             {Array(16).fill(0).map((_, idx) => (
@@ -186,17 +162,14 @@ const App: React.FC = () => {
                           </div>
                         </div>
 
-                        {/* Category Image */}
                         <img
                           alt={cat.name}
                           className="w-full h-full object-cover grayscale transition-all duration-700 scale-100 group-hover/card:scale-105 group-hover/card:grayscale-0"
                           src={cat.image}
                         />
 
-                        {/* Overlay Gradient for contrast */}
                         <div className="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-transparent to-transparent opacity-60 group-hover/card:opacity-90 transition-opacity duration-500"></div>
 
-                        {/* Animated Label Overlay */}
                         <div className="absolute inset-0 p-8 flex flex-col justify-end">
                           <div className="flex flex-col transform translate-y-4 group-hover/card:translate-y-0 transition-transform duration-500">
                             <span className="font-display text-4xl text-white uppercase tracking-tighter leading-none mb-2">{cat.name}</span>
@@ -205,7 +178,6 @@ const App: React.FC = () => {
                           </div>
                         </div>
 
-                        {/* Hover Badge */}
                         <div className="absolute top-6 right-6 bg-brand-yellow text-deep-black font-display text-[10px] px-3 py-1.5 border border-deep-black opacity-0 group-hover/card:opacity-100 transition-all transform -rotate-12 group-hover/card:rotate-0 duration-500">
                           LIMITED EDITION
                         </div>
@@ -216,42 +188,9 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            {/* TAILORED SOLUTIONS SLIDER */}
             <div id="corporate">
               <SolutionsSlider />
             </div>
-
-            {/* WORK PROCESS - Standard v.7.0 */}
-            <section id="projects" className="bg-brand-yellow py-20 border-b-[1px] border-deep-black/10 overflow-hidden relative">
-              {/* Animated Background Grid */}
-              <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <div className="grid grid-cols-8 grid-rows-8 w-full h-full">
-                  {Array(64).fill(0).map((_, idx) => (
-                    <div
-                      key={idx}
-                      className="border border-deep-black/20"
-                      style={{
-                        animation: `pulse ${2 + (idx % 3)}s ease-in-out infinite`,
-                        animationDelay: `${idx * 0.05}s`
-                      }}
-                    ></div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="max-w-[1440px] mx-auto px-6 relative z-10 w-full">
-                <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
-                  <div className="relative">
-                    <h2 className="text-4xl md:text-7xl font-display text-deep-black uppercase leading-[0.85] tracking-tighter">
-                      HOW WE <br /><span className="text-white">OPERATE</span>
-                    </h2>
-                    <div className="absolute -left-12 top-1/2 w-3 h-32 bg-deep-black -translate-y-1/2 hidden lg:block"></div>
-                  </div>
-                </div>
-
-                <VerticalTimeline />
-              </div>
-            </section>
           </>
         ) : (
           <AboutUs
@@ -267,27 +206,32 @@ const App: React.FC = () => {
         onContact={() => setIsContactOpen(true)}
       />
 
-      {/* FLOATING ACTION BUTTON */}
-      <div className="fixed bottom-10 right-10 z-[110]">
-        <Magnetic strength={0.4}>
-          <button
-            onClick={() => setIsContactOpen(true)}
-            className="group relative px-10 py-4 border-[1px] border-brand-pink rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,100,203,0.4)] bg-transparent"
+      <AnimatePresence>
+        {showStickyButton && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.8 }}
+            className="fixed bottom-10 right-10 z-[110]"
           >
-            {/* Hover Background Fill */}
-            <div className="absolute inset-0 bg-brand-pink translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo" />
+            <Magnetic strength={0.4}>
+              <button
+                onClick={() => setIsContactOpen(true)}
+                className="group relative px-10 py-4 border-[1px] border-brand-pink rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,100,203,0.4)] bg-transparent"
+              >
+                <div className="absolute inset-0 bg-brand-pink translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo" />
 
-            <div className="relative z-10 flex items-center gap-3">
-              {/* Minimal Live Dot */}
-              <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse" />
-
-              <span className="font-display text-lg uppercase tracking-[0.3em] text-brand-pink group-hover:text-white transition-colors duration-500">
-                Start
-              </span>
-            </div>
-          </button>
-        </Magnetic>
-      </div>
+                <div className="relative z-10 flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse" />
+                  <span className="font-display text-lg uppercase tracking-[0.3em] text-brand-pink group-hover:text-white transition-colors duration-500">
+                    Start
+                  </span>
+                </div>
+              </button>
+            </Magnetic>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <LabModal isOpen={isLabOpen} onClose={() => setIsLabOpen(false)} />
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />

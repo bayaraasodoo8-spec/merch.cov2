@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Magnetic from './Magnetic';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import VerticalTimeline from './VerticalTimeline';
 
 interface AboutUsProps {
     onNavigate: (page: 'home' | 'about') => void;
@@ -89,8 +90,6 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                 <span className="text-brand-pink">STAND FOR</span>
                             </h2>
                         </div>
-
-
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -149,8 +148,8 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                     "border-[1px] border-deep-black/10",
                                     "rounded-2xl",
                                     "shadow-xl hover:shadow-none transition-all duration-500",
-                                    "p-6 md:p-8",                 // ✅ smaller padding
-                                    "min-h-[220px] md:min-h-[240px]",// ✅ smaller height
+                                    "p-6 md:p-8",
+                                    "min-h-[220px] md:min-h-[240px]",
                                     "flex flex-col justify-between",
                                     item.color || "bg-white",
                                     item.textColor || "text-deep-black",
@@ -158,11 +157,8 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                     item.border || ""
                                 ].join(" ")}
                             >
-                                {/* subtle accent */}
                                 <div className="absolute -right-20 -top-20 w-48 h-48 rounded-full bg-deep-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
                                 <div className="relative z-10">
-                                    {/* header row: icon + tag */}
                                     <div className="flex items-center justify-between mb-6">
                                         <span
                                             className={[
@@ -172,7 +168,6 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                         >
                                             {item.icon}
                                         </span>
-
                                         <span
                                             className={[
                                                 "text-[10px] font-bold uppercase tracking-[0.35em]",
@@ -183,18 +178,13 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                                             {item.tag}
                                         </span>
                                     </div>
-
                                     <h3 className="text-2xl md:text-3xl font-display uppercase mb-3 tracking-tighter leading-tight">
                                         {item.title}
                                     </h3>
-
-                                    {/* ✅ clamp so the card doesn’t look empty, and doesn’t become too tall */}
                                     <p className="text-base md:text-lg font-body font-medium opacity-80 leading-snug italic line-clamp-3">
                                         “{item.desc}”
                                     </p>
                                 </div>
-
-                                {/* footer micro-detail */}
                                 <div className="relative z-10 mt-8 flex items-center gap-3 opacity-70 group-hover:opacity-100 transition-opacity">
                                     <span className="w-8 h-[1px] bg-current opacity-40" />
                                 </div>
@@ -204,7 +194,34 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                 </div>
             </section>
 
-
+            {/* WORK PROCESS - Moved from App.tsx */}
+            <section id="projects" className="bg-brand-yellow py-20 border-b-[1px] border-deep-black/10 overflow-hidden relative">
+                <div className="absolute inset-0 opacity-5 pointer-events-none">
+                    <div className="grid grid-cols-8 grid-rows-8 w-full h-full">
+                        {Array(64).fill(0).map((_, idx) => (
+                            <div
+                                key={idx}
+                                className="border border-deep-black/20"
+                                style={{
+                                    animation: `pulse ${2 + (idx % 3)}s ease-in-out infinite`,
+                                    animationDelay: `${idx * 0.05}s`
+                                } as any}
+                            ></div>
+                        ))}
+                    </div>
+                </div>
+                <div className="max-w-[1440px] mx-auto px-6 relative z-10 w-full">
+                    <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
+                        <div className="relative">
+                            <h2 className="text-4xl md:text-7xl font-display text-deep-black uppercase leading-[0.85] tracking-tighter text-left">
+                                HOW WE <br /><span className="text-white">OPERATE</span>
+                            </h2>
+                            <div className="absolute -left-12 top-1/2 w-3 h-32 bg-deep-black -translate-y-1/2 hidden lg:block"></div>
+                        </div>
+                    </div>
+                    <VerticalTimeline />
+                </div>
+            </section>
 
             {/* CALL TO ACTION - Standard v.7.0 */}
             <section className="relative py-24 md:py-32 px-6 overflow-hidden border-y-[1px] border-deep-black/10 bg-brand-yellow">
@@ -217,7 +234,6 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                         <h2 className="text-6xl md:text-[8vw] font-display uppercase leading-[0.8] tracking-tighter text-deep-black mb-16">
                             Ready To <br /> <span className="text-white">Make It Real?</span>
                         </h2>
-
                         <Magnetic strength={0.4}>
                             <button
                                 onClick={onContact}
@@ -229,8 +245,6 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                         </Magnetic>
                     </motion.div>
                 </div>
-
-                {/* Decorative background lines */}
                 <div className="absolute inset-0 pointer-events-none opacity-10">
                     <div className="w-full h-full" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%)', backgroundSize: '40px 40px' }}></div>
                 </div>
