@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import LabModal from './components/LabModal';
 import ContactModal from './components/ContactModal';
@@ -266,6 +267,7 @@ const App: React.FC = () => {
 
       <LabModal isOpen={isLabOpen} onClose={() => setIsLabOpen(false)} />
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <Analytics />
     </div>
   );
 };
