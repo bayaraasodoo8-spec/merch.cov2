@@ -9,7 +9,7 @@ import AboutUs from './components/AboutUs';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import Footer from './components/Footer';
 import { PROMISES, COLLECTIONS, CATEGORIES, PROCESS_STEPS } from './constants';
-import heroImage from './assets/image.png';
+import heroImage from './assets/image.jpg';
 import BackgroundLogo from './components/BackgroundLogo';
 import { Analytics } from '@vercel/analytics/react';
 
