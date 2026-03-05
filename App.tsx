@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import { PROMISES, COLLECTIONS, CATEGORIES, PROCESS_STEPS } from './constants';
 import heroImage from './assets/image.png';
 import BackgroundLogo from './components/BackgroundLogo';
+import { Analytics } from '@vercel/analytics/react';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
@@ -266,6 +267,7 @@ const App: React.FC = () => {
 
       <LabModal isOpen={isLabOpen} onClose={() => setIsLabOpen(false)} />
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <Analytics />
     </div>
   );
 };
