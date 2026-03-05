@@ -144,6 +144,9 @@ const SolutionsSlider: React.FC = () => {
                                             src={item.image}
                                             alt={item.title}
                                             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                                            loading="lazy"
+                                            width="400"
+                                            height="500"
                                         />
 
                                         {/* Corner Accents */}

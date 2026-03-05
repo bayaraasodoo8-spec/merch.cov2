@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+    /* Colors */
+    --color-brand-blue: #0042D2;
+    --color-brand-yellow: #B9FF00;
+    --color-brown: #938560;
+    --color-deep-black: #000000;
+    --color-stark-white: #FFFFFF;
+
+    /* Fonts */
+    --font-display: "Montserrat", sans-serif;
+    --font-body: "Montserrat", sans-serif;
+    --font-elegant: "Montserrat", sans-serif;
+
+    /* Animations */
+    --animate-marquee: marquee 100s linear infinite;
+    --animate-marquee-fast: marquee 30s linear infinite;
+
+    /* Keyframes */
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+}

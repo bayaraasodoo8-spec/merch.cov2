@@ -26,6 +26,9 @@ const AboutUs: React.FC<AboutUsProps> = ({ onNavigate, onContact }) => {
                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRhmFf_-vZLhO3T3PvH9wxpb5AWYmSqkBHdMZWBskDQHGxdcUuYargz01cHCxXh5fuHyLCp9jqGYcTrzeJf8zP7j6fzsQ3d3j-IfNkIDXPBIhlQJspmNFl-kGk_lHymKeei4hS9FtNbYq6NXckBmJkLhgVKtOQ1cCMQKdTLiqk42nnVg-0Nt6-QAh2VFmRLQKoL9Xu2nOosOxdysJmeJrAtgLSQ3jR3JxBdbNnW5fKBOs389yOv4toFbACkx0f1vRNPsgbAZH78Ax1"
                         alt="Hero Background"
                         className="w-full h-full object-cover grayscale opacity-40"
+                        loading="lazy"
+                        width="1920"
+                        height="1080"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-deep-black/20 via-deep-black/40 to-deep-black"></div>
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>

@@ -9,7 +9,7 @@ import AboutUs from './components/AboutUs';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import Footer from './components/Footer';
 import { PROMISES, COLLECTIONS, CATEGORIES, PROCESS_STEPS } from './constants';
-import heroImage from './assets/image.png';
+import heroImage from './assets/image.jpg';
 import BackgroundLogo from './components/BackgroundLogo';
 
 const App: React.FC = () => {
@@ -25,6 +25,28 @@ const App: React.FC = () => {
       setShowStickyButton(latest > window.innerHeight * 0.8);
     });
   }, [scrollY]);
+
+  React.useEffect(() => {
+    const handleLoad = () => {
+      const loader = document.getElementById('global-loader');
+      if (loader) {
+        // Add a small delay to ensure React has fully rendered the initial frame
+        setTimeout(() => {
+          loader.style.opacity = '0';
+          setTimeout(() => {
+            loader.remove();
+          }, 600);
+        }, 100);
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+      return () => window.removeEventListener('load', handleLoad);
+    }
+  }, []);
 
   const handleScrollToSection = (sectionId: string) => {
     if (currentPage !== 'home') {
@@ -172,6 +194,9 @@ const App: React.FC = () => {
                           alt={cat.name}
                           className="w-full h-full object-cover grayscale transition-all duration-700 scale-100 group-hover/card:scale-105 group-hover/card:grayscale-0"
                           src={cat.image}
+                          loading="lazy"
+                          width="400"
+                          height="400"
                         />
 
                         <div className="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-transparent to-transparent opacity-60 group-hover/card:opacity-90 transition-opacity duration-500"></div>
