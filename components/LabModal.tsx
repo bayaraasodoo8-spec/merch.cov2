@@ -1,216 +1,326 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { generateMerchIdea } from '../services/geminiService';
+// ContactModal.tsx
+import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Magnetic from './Magnetic';
 
-interface LabModalProps {
+interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
+  toEmail?: string; // default: contact@merchand.co
 }
 
-const LabModal: React.FC<LabModalProps> = ({ isOpen, onClose }) => {
-  const [description, setDescription] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<any>(null);
+type ServiceOption =
+  | 'Custom Design'
+  | 'Swag Box'
+  | 'Branding'
+  | 'Bulk Order'
+  | 'Other';
 
-  const panelRef = useRef<HTMLDivElement | null>(null);
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+const DEFAULT_SERVICE: ServiceOption = 'Custom Design';
 
-  if (!isOpen) return null;
+const ContactModal: React.FC<ContactModalProps> = ({
+  isOpen,
+  onClose,
+  toEmail = 'contact@merchand.co',
+}) => {
+  const titleId = useId();
+  const descId = useId();
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  const firstInputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleGenerate = async () => {
-    if (!description.trim() || loading) return;
-    setLoading(true);
-    try {
-      const idea = await generateMerchIdea(description);
-      setResult(idea);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    service: DEFAULT_SERVICE as ServiceOption,
+    message: '',
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  // ESC to close + lock scroll
+  const canSubmit = useMemo(() => {
+    const nameOk = formData.name.trim().length >= 2;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim());
+    const msgOk = formData.message.trim().length >= 10;
+    return nameOk && emailOk && msgOk && !isSending;
+  }, [formData, isSending]);
+
+  // Focus management + lock background scroll
   useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', onKeyDown);
+    if (!isOpen) return;
+
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    // focus textarea on open
-    setTimeout(() => textareaRef.current?.focus(), 50);
+    // focus first field (next tick for animation mount)
+    const t = window.setTimeout(() => firstInputRef.current?.focus(), 0);
 
     return () => {
-      document.removeEventListener('keydown', onKeyDown);
+      window.clearTimeout(t);
       document.body.style.overflow = prevOverflow;
     };
-  }, [onClose]);
+  }, [isOpen]);
+
+  // ESC close
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isOpen, onClose]);
+
+  const resetAndClose = () => {
+    setSubmitted(false);
+    setIsSending(false);
+    setErrorMsg(null);
+    setFormData({ name: '', email: '', service: DEFAULT_SERVICE, message: '' });
+    onClose();
+  };
+
+  const openMailClient = () => {
+    const subject = encodeURIComponent(`New Inquiry: ${formData.service}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name.trim()}\nEmail: ${formData.email.trim()}\nService: ${formData.service}\n\nMessage:\n${formData.message.trim()}`
+    );
+
+    // Safer than window.location.href (doesn't replace the current page)
+    window.open(`mailto:${toEmail}?subject=${subject}&body=${body}`, '_self');
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!canSubmit) return;
+
+    setErrorMsg(null);
+    setIsSending(true);
+
+    try {
+      openMailClient();
+
+      // NOTE: mailto cannot confirm delivery. We just show a success state.
+      setSubmitted(true);
+
+      window.setTimeout(() => {
+        resetAndClose();
+      }, 1800);
+    } catch (err: any) {
+      setSubmitted(false);
+      setErrorMsg(err?.message || 'Something went wrong. Please try again.');
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-deep-black/60 backdrop-blur-md transition-all duration-500">
-          {/* Backdrop interaction layer */}
+        <motion.div
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          aria-hidden={false}
+        >
+          {/* backdrop */}
           <div
-            className="absolute inset-0 cursor-pointer"
+            className="absolute inset-0 bg-[#B9FF00]/15 backdrop-blur-md"
             onMouseDown={(e) => {
               if (e.target === e.currentTarget) onClose();
             }}
           />
 
           <motion.div
-            ref={panelRef}
+            ref={modalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={titleId}
+            aria-describedby={descId}
             initial={{ scale: 0.98, opacity: 0, y: 10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.98, opacity: 0, y: 10 }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className="bg-deep-black w-full max-w-lg max-h-[80vh] flex flex-col border border-white/10 shadow-2xl relative overflow-hidden"
+            transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
+            className="relative w-full max-w-md max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-[0_24px_80px_rgba(0,0,0,0.18)] border border-[#0042D2]/15"
           >
-            {/* Minimal Background indicator (optional, kept very subtle) */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue/5 rounded-full blur-[60px] pointer-events-none" />
-
             {/* header */}
-            <div className="sticky top-0 z-20 bg-deep-black/90 backdrop-blur-sm border-b border-white/5 px-6 py-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-xl font-display text-white uppercase">
-                    LAB <span className="text-brand-yellow font-normal">v2</span>
+            <div className="sticky top-0 z-20 bg-[#0042D2] text-white px-6 py-4">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <h2 id={titleId} className="text-xl font-display uppercase tracking-wide">
+                    Contact Us
                   </h2>
-                  <div className="px-1.5 py-0.5 border border-white/10 rounded text-[8px] font-medium text-white/40 uppercase">
-                    Neural
-                  </div>
+                  <p id={descId} className="text-xs text-white/80 mt-1">
+                    Tell us what you need — we’ll respond shortly.
+                  </p>
                 </div>
 
                 <button
                   onClick={onClose}
-                  className="h-8 w-8 grid place-items-center bg-white/5 hover:bg-white/10 border border-white/5 transition-colors rounded-full"
+                  className="h-9 w-9 grid place-items-center rounded-full bg-white/10 hover:bg-white/20 transition-colors ring-1 ring-white/25"
                   aria-label="Close"
                 >
-                  <span className="material-symbols-outlined text-[18px] text-white/60">close</span>
+                  <span className="material-symbols-outlined text-[18px] leading-none">
+                    close
+                  </span>
                 </button>
               </div>
             </div>
 
-            {/* Scrollable container */}
-            <div className="flex-1 overflow-y-auto custom-scrollbar">
-              <div className="px-6 py-6">
-                <div className="grid gap-5">
-                  <div className="space-y-2">
-                    <div className="flex items-end justify-between px-0.5">
-                      <label className="text-[9px] font-bold uppercase text-white/40">
-                        Concept Vision
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
+              {!submitted ? (
+                <>
+                  {errorMsg && (
+                    <div className="mb-5 px-4 py-3 rounded-xl border border-red-500/30 bg-red-500/10">
+                      <p className="text-xs text-red-700">{errorMsg}</p>
+                    </div>
+                  )}
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Name */}
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-bold uppercase tracking-wide text-[#0042D2] px-0.5">
+                        Name
                       </label>
-                      <span className="text-[8px] font-mono text-white/20">
-                        {description.length}/320
-                      </span>
+                      <input
+                        ref={firstInputRef}
+                        required
+                        type="text"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full rounded-xl bg-gray-50 border border-[#0042D2]/20 p-3 text-sm text-gray-800 placeholder:text-gray-400 outline-none focus:border-[#0042D2] focus:ring-4 focus:ring-[#0042D2]/10 transition"
+                        placeholder="Enter your name"
+                        disabled={isSending}
+                        autoComplete="name"
+                        inputMode="text"
+                      />
+                      <p className="text-[11px] text-gray-500">
+                        Use your full name (min 2 characters).
+                      </p>
                     </div>
 
-                    <div className="relative">
-                      <textarea
-                        ref={textareaRef}
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value.slice(0, 320))}
-                        placeholder="e.g. Minimalist coffee brand, monochromatic, technical typography."
-                        className="w-full h-24 bg-white/5 border border-white/10 p-4 text-sm font-body text-white placeholder:text-white/20 outline-none focus:border-brand-yellow/30 transition-all resize-none rounded-sm"
+                    {/* Email */}
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-bold uppercase tracking-wide text-[#0042D2] px-0.5">
+                        Email
+                      </label>
+                      <input
+                        required
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full rounded-xl bg-gray-50 border border-[#0042D2]/20 p-3 text-sm text-gray-800 placeholder:text-gray-400 outline-none focus:border-[#0042D2] focus:ring-4 focus:ring-[#0042D2]/10 transition"
+                        placeholder="you@company.com"
+                        disabled={isSending}
+                        autoComplete="email"
+                        inputMode="email"
                       />
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      onClick={() => {
-                        setDescription('');
-                        setResult(null);
-                        textareaRef.current?.focus();
-                      }}
-                      className="py-2.5 border border-white/5 bg-white/5 hover:bg-white/10 transition-colors rounded-sm"
-                    >
-                      <span className="text-[9px] font-bold uppercase text-white/40">
-                        Reset
-                      </span>
-                    </button>
+                    {/* Service */}
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-bold uppercase tracking-wide text-[#0042D2] px-0.5">
+                        Service
+                      </label>
+                      <select
+                        value={formData.service}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            service: e.target.value as ServiceOption,
+                          })
+                        }
+                        className="w-full rounded-xl bg-gray-50 border border-[#0042D2]/20 p-3 text-sm text-gray-800 outline-none focus:border-[#0042D2] focus:ring-4 focus:ring-[#0042D2]/10 transition"
+                        disabled={isSending}
+                      >
+                        <option>Custom Design</option>
+                        <option>Swag Box</option>
+                        <option>Branding</option>
+                        <option>Bulk Order</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
 
-                    <button
-                      onClick={handleGenerate}
-                      disabled={loading || !description.trim()}
-                      className="py-2.5 bg-brand-yellow hover:opacity-90 disabled:opacity-20 transition-all rounded-sm"
-                    >
-                      <span className="text-[9px] font-bold uppercase text-deep-black">
-                        {loading ? 'Processing...' : 'Generate'}
-                      </span>
-                    </button>
+                    {/* Message */}
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-bold uppercase tracking-wide text-[#0042D2] px-0.5">
+                        Message
+                      </label>
+                      <textarea
+                        required
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        className="w-full h-28 rounded-xl bg-gray-50 border border-[#0042D2]/20 p-3 text-sm text-gray-800 placeholder:text-gray-400 outline-none focus:border-[#0042D2] focus:ring-4 focus:ring-[#0042D2]/10 transition resize-none"
+                        placeholder="Tell us what you’re looking for (min 10 characters)…"
+                        disabled={isSending}
+                      />
+                      <div className="flex items-center justify-between text-[11px] text-gray-500">
+                        <span>Be specific (timeline, quantity, budget if relevant).</span>
+                        <span
+                          className={
+                            formData.message.trim().length < 10 ? 'text-red-600' : 'text-gray-500'
+                          }
+                        >
+                          {formData.message.trim().length}/10
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* actions */}
+                    <div className="pt-2 space-y-3">
+                      <button
+                        type="submit"
+                        disabled={!canSubmit}
+                        className="w-full rounded-xl py-3 text-[12px] font-bold uppercase tracking-wide text-white
+                                   bg-[#0042D2] hover:bg-[#0042D2]/90 disabled:opacity-45 disabled:hover:bg-[#0042D2]
+                                   transition focus:outline-none focus:ring-4 focus:ring-[#0042D2]/20"
+                      >
+                        {isSending ? 'Opening email…' : 'Send'}
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={onClose}
+                        className="w-full rounded-xl py-3 text-[12px] font-bold uppercase tracking-wide
+                                   border border-[#0042D2]/20 text-[#0042D2] hover:bg-[#0042D2]/5 transition"
+                      >
+                        Cancel
+                      </button>
+
+                      <p className="text-[11px] text-gray-500">
+                        This opens your default email app (mailto). If nothing happens, copy our email:{' '}
+                        <span className="font-medium text-gray-700">{toEmail}</span>
+                      </p>
+                    </div>
+                  </form>
+                </>
+              ) : (
+                <div className="text-center py-12 flex flex-col items-center gap-4">
+                  <div className="w-12 h-12 rounded-full grid place-items-center bg-[#B9FF00]/25 ring-1 ring-[#0042D2]/15">
+                    <span className="material-symbols-outlined text-[#0042D2] text-xl">
+                      check
+                    </span>
                   </div>
+                  <h3 className="text-lg font-display text-gray-900 uppercase tracking-wide">
+                    Ready!
+                  </h3>
+                  <p className="text-sm text-gray-600 max-w-[28ch]">
+                    Your email client should be open. We’ll get back to you soon.
+                  </p>
+                  <button
+                    onClick={resetAndClose}
+                    className="mt-2 px-6 py-2 rounded-xl bg-[#0042D2] text-white text-[12px] font-bold uppercase tracking-wide hover:bg-[#0042D2]/90 transition"
+                  >
+                    Close
+                  </button>
                 </div>
-
-                {/* result */}
-                <AnimatePresence mode="wait">
-                  {result && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="mt-8 space-y-3"
-                    >
-                      {/* Strategic Mapping */}
-                      <div className="bg-white/5 border border-white/10 p-5 rounded-sm">
-                        <div className="flex items-center gap-2 mb-4">
-                          <div className="w-1 h-1 bg-brand-blue rounded-full" />
-                          <h3 className="text-[9px] font-bold uppercase text-brand-blue">
-                            Strategy
-                          </h3>
-                        </div>
-
-                        <p className="text-base font-display text-white uppercase mb-6">
-                          {result.brandAngle}
-                        </p>
-
-                        <div className="space-y-2">
-                          <span className="text-[8px] font-bold text-white/20 uppercase">Artifacts</span>
-                          <div className="flex flex-wrap gap-2">
-                            {result.suggestedItems?.map((item: string, i: number) => (
-                              <span key={i} className="px-2 py-1 bg-white/5 border border-white/5 text-[9px] font-medium text-white/60 uppercase rounded-sm">
-                                {item}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Verbal & Visual direction */}
-                      <div className="bg-white/5 border border-white/10 p-5 rounded-sm">
-                        <div className="flex items-center gap-2 mb-4">
-                          <div className="w-1 h-1 bg-brand-pink rounded-full" />
-                          <h3 className="text-[9px] font-bold uppercase text-brown">
-                            Identity
-                          </h3>
-                        </div>
-
-                        <div className="space-y-2 mb-6">
-                          {result.slogans?.map((slogan: string, i: number) => (
-                            <p key={i} className="text-lg font-display text-white uppercase leading-none">
-                              “{slogan}”
-                            </p>
-                          ))}
-                        </div>
-
-                        <div className="pt-4 border-t border-white/5">
-                          <span className="text-[8px] font-bold text-white/20 uppercase block mb-2">Visual Direction</span>
-                          <p className="text-xs font-body text-white/60 leading-relaxed italic">
-                            {result.visualDirection}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+              )}
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       )}
     </AnimatePresence>
   );
 };
 
-export default LabModal;
+export default ContactModal;
