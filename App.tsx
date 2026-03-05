@@ -103,32 +103,31 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              <div className="absolute bottom-40 md:bottom-48 left-0 right-0 z-20 flex flex-col items-center gap-12 px-6">
-                <div className="max-w-8xl text-center ">
+              <div className="absolute bottom-24 md:bottom-32 xl:bottom-40 2xl:bottom-48 left-0 right-0 z-20 flex flex-col items-center gap-8 md:gap-12 xl:gap-16 px-6">
+                <div className="w-full max-w-7xl 2xl:max-w-screen-2xl text-center flex flex-col items-center">
                   <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
-                    className="text-5xl md:text-9xl lg:text-8xl font-display font-bold text-white uppercase leading-[1.1] drop-shadow-2xl mb-24"
+                    className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] 2xl:text-[12rem] font-display font-bold text-white uppercase leading-[1.1] drop-shadow-2xl mb-8 md:mb-16 xl:mb-20 2xl:mb-28 w-full"
                   >
                     Бид таны брэндийг <br />
                     <span className="text-brand-yellow">бодит болгоно</span>
                   </motion.h2>
 
-                </div>
-
-                <div className="flex flex-col items-center">
-                  <button
-                    onClick={() => setIsContactOpen(true)}
-                    className="group relative px-12 py-6 overflow-hidden border border-brand-yellow bg-brand-yellow transition-transform duration-300 hover:scale-105 active:scale-95 rounded-full"
-                  >
-                    <span className="relative z-10 text-[14px] font-bold tracking-[0em] text-deep-black transition-colors duration-500 group-hover:text-white">
-                      Customize your merch
-                    </span>
-                    <motion.div
-                      className="absolute inset-0 bg-deep-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
-                    />
-                  </button>
+                  <div className="flex flex-col items-center">
+                    <button
+                      onClick={() => setIsContactOpen(true)}
+                      className="group relative px-8 py-4 md:px-12 md:py-6 xl:px-14 xl:py-7 2xl:px-16 2xl:py-8 overflow-hidden border border-brand-yellow bg-brand-yellow transition-transform duration-300 hover:scale-105 active:scale-95 rounded-full"
+                    >
+                      <span className="relative z-10 text-[14px] md:text-[16px] xl:text-[18px] 2xl:text-[20px] font-bold tracking-[0em] text-deep-black transition-colors duration-500 group-hover:text-white whitespace-nowrap">
+                        Customize your merch
+                      </span>
+                      <motion.div
+                        className="absolute inset-0 bg-deep-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
 
