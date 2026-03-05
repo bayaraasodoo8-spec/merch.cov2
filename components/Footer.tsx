@@ -97,26 +97,13 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToSection, onContac
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-8 border-t border-white/10">
                         {/* Column 1: Contact & Accreditation */}
                         <div className="space-y-8">
-                            <h3 className="text-2xl font-display font-bold uppercase text-brand-blue">Contact</h3>
+                            <h3 className="text-2xl font-display font-bold uppercase stark-white">Contact</h3>
                             <address className="not-italic opacity-60 text-base leading-relaxed space-y-2">
-                                <p>Central Street 101,</p>
-                                <p>8926 XD Center</p>
+                                <p>Манлай Баатар Дамдинсүрзнгийн Гудамж, BZD - 43 khoroo, Ulaanbaatar 13374,</p>
+                                <p>UB Tower</p>
                                 <p className="pt-4 font-bold text-stark-white">+976 77377007</p>
                                 <p><a className="hover:text-brand-yellow underline transition-colors" href="mailto:contact@merchand.co">contact@merchand.co</a></p>
                             </address>
-
-                            {/* Badges Area Like Reference */}
-                            <div className="flex flex-wrap items-center gap-4 opacity-70">
-                                <div className="bg-white/5 border border-white/10 px-3 py-1.5 rounded flex items-center gap-2">
-                                    <span className="bg-brand-yellow text-deep-black text-[10px] font-black px-1.5 rounded">9.4</span>
-                                    <span className="text-[10px] font-bold uppercase">Identity Score</span>
-                                </div>
-                                <div className="flex gap-3 grayscale hover:grayscale-0 transition-all">
-                                    <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-black text-[8px]">ISO</div>
-                                    <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-black text-[8px]">GDPR</div>
-                                    <div className="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-black text-[8px]">ECO</div>
-                                </div>
-                            </div>
                         </div>
 
                         {/* Column 2: Social Connectivity */}
